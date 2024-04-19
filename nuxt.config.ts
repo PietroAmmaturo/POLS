@@ -11,4 +11,15 @@ export default defineNuxtConfig({
     // prerender index route by default
     '/': { prerender: true },
   },
+  modules: ['@nuxtjs/supabase', '@pinia/nuxt'],
+  pinia: {
+    storesDirs: [
+      './stores/**'
+    ]
+  },
+  // supabase options
+  supabase: {
+    // do not redirect if not authenticated (not needed)
+    redirect: false
+  },
 });
