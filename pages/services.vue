@@ -20,37 +20,37 @@
     <div class="services">
         <div>
             <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service.jpg" /><br>
+                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
                 <span>SERVICE 1</span>
             </NuxtLink></a>
         </div>
         <div>
             <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service.jpg" /><br>
+                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
                 <span>SERVICE 2</span>
             </NuxtLink></a>
         </div>
         <div>
             <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service.jpg" /><br>
+                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
                 <span>SERVICE 3</span>
             </NuxtLink></a>
         </div>
         <div>
             <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service.jpg" /><br>
+                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
                 <span>SERVICE 4</span>
             </NuxtLink></a>
         </div>
         <div>
             <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service.jpg" /><br>
+                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
                 <span>SERVICE 5</span>
             </NuxtLink></a>
         </div>
         <div>
             <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service.jpg" /><br>
+                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
                 <span>SERVICE 6</span>
             </NuxtLink></a>
         </div>
