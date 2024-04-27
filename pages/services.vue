@@ -1,5 +1,7 @@
 <script setup lang="ts">
-
+    import { useServiceStore } from '~/stores/Service';
+    const store = useServiceStore()
+    const Service = store.Service
 </script>
 
 <template>
@@ -30,16 +32,10 @@
                 <span>SERVICE 2</span>
             </NuxtLink></a>
         </div>
-        <div>
-            <a><NuxtLink to="/">
+        <div v-for="(Service, index) in Service" :key="index">
+            <a><NuxtLink to="/service">
                 <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
-                <span>SERVICE 3</span>
-            </NuxtLink></a>
-        </div>
-        <div>
-            <a><NuxtLink to="/">
-                <img id = "service" src = "~/assets/img/service-image.jpg" /><br>
-                <span>SERVICE 4</span>
+                <span>{{ Service.name }}</span>
             </NuxtLink></a>
         </div>
         <div>
@@ -60,7 +56,10 @@
 <style scoped>
 .navbar{
     text-align: center;
+    top: 0;
+    width: 100%;
     background-color: bisque;
+    position: fixed;
 }
 h1{
     text-align: center;
@@ -72,6 +71,7 @@ p {
     margin-right: auto;
 }
 .description {
+    margin-top: 50px;
     margin-bottom: 15px;
 }
 .services {

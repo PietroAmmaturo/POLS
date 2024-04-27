@@ -1,5 +1,3 @@
-
-
 <script setup lang="ts">
   import { useDogStore } from '~/stores/dogs';
   const store = useDogStore()
@@ -25,7 +23,7 @@
 
 <style scoped>
 #main-img {
-  width: 80%;
+  width: 35%;
   max-width: 1000px;
   height: auto;
 }
