@@ -19,6 +19,7 @@
       </li>
     </ul>
   </div>
+  <RouterLink to="/services">Go to All Services</RouterLink>
 </template>
 
 <style scoped>
