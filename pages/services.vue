@@ -4,9 +4,9 @@
 
 <template>
     <div class="navbar">
-        <a><RouterLink to="/">
+        <a><NuxtLink to="/">
             <span><h3>HOMEPAGE</h3></span>
-        </RouterLink></a>
+        </NuxtLink></a>
     </div>
     <div class="description">
         <h1>OUR SERVICES</h1>
@@ -19,40 +19,40 @@
     </div>
     <div class="services">
         <div>
-            <a><RouterLink to="/">
+            <a><NuxtLink to="/">
                 <img id = "service" src = "~/assets/img/service.jpg" /><br>
                 <span>SERVICE 1</span>
-            </RouterLink></a>
+            </NuxtLink></a>
         </div>
         <div>
-            <a><RouterLink to="/">
+            <a><NuxtLink to="/">
                 <img id = "service" src = "~/assets/img/service.jpg" /><br>
                 <span>SERVICE 2</span>
-            </RouterLink></a>
+            </NuxtLink></a>
         </div>
         <div>
-            <a><RouterLink to="/">
+            <a><NuxtLink to="/">
                 <img id = "service" src = "~/assets/img/service.jpg" /><br>
                 <span>SERVICE 3</span>
-            </RouterLink></a>
+            </NuxtLink></a>
         </div>
         <div>
-            <a><RouterLink to="/">
+            <a><NuxtLink to="/">
                 <img id = "service" src = "~/assets/img/service.jpg" /><br>
                 <span>SERVICE 4</span>
-            </RouterLink></a>
+            </NuxtLink></a>
         </div>
         <div>
-            <a><RouterLink to="/">
+            <a><NuxtLink to="/">
                 <img id = "service" src = "~/assets/img/service.jpg" /><br>
                 <span>SERVICE 5</span>
-            </RouterLink></a>
+            </NuxtLink></a>
         </div>
         <div>
-            <a><RouterLink to="/">
+            <a><NuxtLink to="/">
                 <img id = "service" src = "~/assets/img/service.jpg" /><br>
                 <span>SERVICE 6</span>
-            </RouterLink></a>
+            </NuxtLink></a>
         </div>
     </div>
 </template>

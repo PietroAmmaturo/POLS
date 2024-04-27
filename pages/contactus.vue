@@ -3,6 +3,11 @@
 </script>
 
 <template>
+  <div class="navbar">
+    <a><NuxtLink to="/">
+      <span><h3>HOMEPAGE</h3></span>
+    </NuxtLink></a>
+  </div>
   <p>
     This are our contacts:
     <ul>

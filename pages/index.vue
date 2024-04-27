@@ -19,7 +19,8 @@
       </li>
     </ul>
   </div>
-  <RouterLink to="/services">Go to All Services</RouterLink>
+  <NuxtLink to="/services">Go to All Services</NuxtLink>
+  <NuxtLink to="/contactus">Contact Us</NuxtLink>
 </template>
 
 <style scoped>
