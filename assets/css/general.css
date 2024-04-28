@@ -10,7 +10,7 @@ html, body, #__nuxt, #__layout{
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    background-color: lightgoldenrodyellow;
+    background-color: LightSlateGrey;
     margin: 0;
 }
 
