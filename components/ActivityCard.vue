@@ -14,7 +14,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
     <img :src="picture" alt="article-cover" />
   </nuxt-link>
 
-  <nuxt-link class="activity-card" v-else-if="type === 'service'" :to="{ name: 'service', params: { id: id } }">
+  <nuxt-link class="activity-card" v-else-if="type === 'service'"  :to="`/service/${id}`">
     <font-awesome-icon class="icon" icon="'bell-concierge" />
     <div class="content">
       <p class="title">{{name}}</p>
