@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <header class="header" :style="{ backgroundImage: `url(${background})` }">
+  <header>
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
   </header>
@@ -11,32 +11,30 @@
 
 <style scoped>
 /* Header styles */
-.header {
+header {
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  height: 30vh;  /* Adjust height as needed */
-  justify-content: center;
-  align-items: center;
-  color: #fff;  /* Text color for elements on top of the image */
-  text-align: center;
+  justify-content: left;
+  color: black;
+  display: flex;
+  flex-direction: column;
   padding-top: 10vh;
 }
 
 h1 {
-  font-size: 2em;
-  margin-top: 10vh;
-  padding: 0;
+  font-size: 4em;
+  margin: auto;
+  margin-top: 0.5em;
 }
 
 p {
   font-size: 1.2em;
-  margin-top: 10px;
+  margin: auto;
+  margin-top: 0.5em;
 }
 </style>
 
 <script>
 export default {
-  props: ['title', 'subtitle', 'background']
+  props: ['title', 'subtitle']
 }
 </script>
