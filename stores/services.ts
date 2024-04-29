@@ -6,10 +6,12 @@ interface Service {
     responsible:number
 }
 
-export const useServiceStore = defineStore('Service', () => {
+// store/servicesStore.ts
+
+export const useServiceStore = defineStore('services', () => {
     const supabase = useSupabaseClient();
 
-    const Service = reactive([] as Service[]);
+    const services = reactive([] as Service[]);
 
     async function init() {
         try {
@@ -18,14 +20,14 @@ export const useServiceStore = defineStore('Service', () => {
                 throw error;
             }
             if (data) {
-                Service.splice(0, Service.length, ...data);
+                services.splice(0, services.length, ...data);
             }
         } catch (error) {
-            console.error('Error initializing dogs:', error);
+            console.error('Error initializing services:', error);
         }
     }
 
     init();
 
-    return { Service };
+    return { services };
 });

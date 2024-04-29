@@ -18,6 +18,7 @@
     </ul>
   </div>
   <NuxtLink to="/services">Go to All Services</NuxtLink>
+  <NuxtLink to="/projects">Go to All Projects</NuxtLink>
   <NuxtLink to="/contactus">Contact Us</NuxtLink>
 </template>
 
