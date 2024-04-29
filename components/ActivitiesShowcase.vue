@@ -12,7 +12,7 @@
 
 <style scoped>
 .container {
-  width: 100vw;
+  width: 100%;
 }
 .box {
   margin: 0 auto;

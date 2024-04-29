@@ -1,17 +1,27 @@
 <script setup lang="ts">
 
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+
 </script>
 
 <template>
-      <div class="activity-card">
-        <font-awesome-icon class="icon" v-if="type === 'project'" icon="puzzle-piece" />
-        <font-awesome-icon class="icon" v-else-if="type === 'service'" icon="'bell-concierge" />
-        <div class="content">
+
+  <nuxt-link class="activity-card" v-if="type === 'project'" :to="`/project/${id}`">
+    <font-awesome-icon class="icon" icon="puzzle-piece" />
+    <div class="content">
       <p class="title">{{name}}</p>
     </div>
     <img :src="picture" alt="article-cover" />
-  </div>
+  </nuxt-link>
+
+  <nuxt-link class="activity-card" v-else-if="type === 'service'"  :to="`/service/${id}`">
+    <font-awesome-icon class="icon" icon="bell-concierge" />
+    <div class="content">
+      <p class="title">{{name}}</p>
+    </div>
+    <img :src="picture" alt="article-cover" />
+  </nuxt-link>
+
 </template>
 
 <style scoped>
@@ -66,6 +76,6 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 <script lang="ts">
 export default {
-  props: ['name', 'picture', 'type']
+  props: ['name', 'picture', 'type', 'id']
 }
 </script>

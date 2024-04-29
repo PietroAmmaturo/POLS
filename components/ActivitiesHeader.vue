@@ -12,7 +12,7 @@
 <style scoped>
 /* Header styles */
 .header {
-  width: 100vw;
+  width: 100%;
   background-size: cover;
   background-position: center;
   height: 30vh;  /* Adjust height as needed */
