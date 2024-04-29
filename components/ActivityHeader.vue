@@ -8,7 +8,9 @@
       <h1>{{title}}</h1>
       <img :src="picture" alt="cover" />
     </div>
-    <p>{{subtitle}}</p>
+    <section>
+      <p>{{subtitle}}</p>
+    </section>
   </header>
 </template>
 
@@ -48,8 +50,9 @@ header h1 {
 }
 
 p {
+  margin: auto;
+  margin-top: 1em;
   font-size: 1.2em;
-  padding-inline: 10vw;
 }
 </style>
 

@@ -9,6 +9,7 @@ html, body, #__nuxt, #__layout{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat';
 }
 
 #__nuxt{
@@ -17,8 +18,10 @@ html, body, #__nuxt, #__layout{
 .icon{
     font-family: 'AwesomeFont';
 }
-h1{
-    font-family: 'Montserrat';
-}
 
+section {
+    width: 80vw;
+    margin: auto;
+    max-width: 1000px;
+}
 

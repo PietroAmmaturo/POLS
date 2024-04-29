@@ -8,6 +8,7 @@ definePageMeta({
   }
 })
 import { useProjectStore } from '~/stores/projects';
+import ActivityResponsible from "~/components/ActivityResponsible.vue";
 const route = useRoute();
 const store = useProjectStore();
 const id = parseInt(route.params.id as string);
@@ -17,6 +18,8 @@ const projects = store.projects; // Initialize project as null
   <div  v-for="(project, index) in projects">
     <ActivityHeader v-if="project.id === id" :title="project.name" :subtitle="project.description" :picture="project.picture" >
     </ActivityHeader>
+    <ActivityResponsible v-if="project.id === id">
+    </ActivityResponsible>
   </div>
 
 </template>
