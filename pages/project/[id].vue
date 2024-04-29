@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import Navbar from "~/components/navbar.vue";
+
+definePageMeta({
+  validate: async (route) => {
+    // Check if the id is made up of digits
+    return typeof route.params.id === 'string' && !Number.isNaN(parseInt(route.params.id));
+  }
+})
+import { useProjectStore } from '~/stores/projects';
+const route = useRoute();
+const store = useProjectStore();
+const id = parseInt(route.params.id as string);
+const projects = store.projects; // Initialize project as null
+</script>
+<template>
+  <Navbar></Navbar>
+  <div  v-for="(project, index) in projects">
+    <ActivitiesHeader v-if="project.id === id" :title="project.name" :subtitle="project.description" :background="project.picture" >
+    </ActivitiesHeader>
+  </div>
+
+</template>
+
+<style scoped>
+</style>
