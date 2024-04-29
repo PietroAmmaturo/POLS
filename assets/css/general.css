@@ -23,6 +23,8 @@ section {
     width: 80vw;
     margin: auto;
     max-width: 1000px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 a {
     color: inherit; /* blue colors for links too */

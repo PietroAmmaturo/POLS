@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 
 <template>
-  <section class="columns">
+  <div class="columns">
     <NuxtLink class="column" to="/projects">
       <font-awesome-icon class="icon" icon="puzzle-piece" />
       <div class="projects">
@@ -19,7 +19,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
       </div>
       <font-awesome-icon class="icon" icon="bell-concierge" />
     </NuxtLink>
-  </section>
+  </div>
 </template>
 
 <style scoped>
@@ -31,6 +31,8 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 100%;
+  margin-block: 2em;
 }
 .icon {
   font-size: 8em;
@@ -40,9 +42,10 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   display: flex;
   justify-content: space-evenly;
   background-color: #D9D9D9;
-  margin: 5px;
   padding: 2em;
   flex-wrap: wrap;
+  margin-inline: 0.5em;
+  margin-block: 0.25em;
 }
 
 h2 {
