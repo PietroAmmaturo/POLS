@@ -1,5 +1,3 @@
-
-
 <script setup lang="ts">
   import { useDogStore } from '~/stores/dogs';
   const store = useDogStore()
@@ -20,12 +18,13 @@
     </ul>
   </div>
   <NuxtLink to="/services">Go to All Services</NuxtLink>
+  <NuxtLink to="/projects">Go to All Projects</NuxtLink>
   <NuxtLink to="/contactus">Contact Us</NuxtLink>
 </template>
 
 <style scoped>
 #main-img {
-  width: 80%;
+  width: 35%;
   max-width: 1000px;
   height: auto;
 }
