@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useProjectStore } from '~/stores/projects';
-import Navbar from "~/components/navbar.vue";
+import Navbar from "~/components/NavigationBar.vue";
 const projectStore = useProjectStore()
 const projects = projectStore.projects
 import { useServiceStore } from '~/stores/services';
