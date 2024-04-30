@@ -14,10 +14,9 @@ const id = parseInt(route.params.id as string);
 const services = store.services; // Initialize project as null
 </script>
 <template>
-  <Navbar></Navbar>
   <div  v-for="(service, index) in services">
-    <ActivitiesHeader v-if="service.id === id" :title="service.name" :subtitle="service.description" :background="service.picture" >
-    </ActivitiesHeader>
+    <ActivityHeader v-if="service.id === id" :title="service.name" :subtitle="service.description" :picture="service.picture" >
+    </ActivityHeader>
   </div>
 
 </template>

@@ -1,18 +1,33 @@
-/*
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: 'AwesomeFont';
+    src: url(assets/fonts/fa-solid-900.ttf);
+}
 html, body, #__nuxt, #__layout{
     height:100%!important;
     width: 100%!important;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
 }
 
-#__nuxt
-{
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    background-color: LightSlateGrey;
+#__nuxt{
     margin: 0;
 }
-*/
+.icon{
+    font-family: 'AwesomeFont';
+}
+
+section {
+    width: 80vw;
+    margin: auto;
+    max-width: 1000px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
 

@@ -15,7 +15,7 @@
   width: 100%;
 }
 .box {
-  margin: 0 auto;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,7 +24,7 @@
   align-items: flex-start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-
-  padding: 50px;
+  padding: 20px;
+  justify-content: space-around;
 }
 </style>
