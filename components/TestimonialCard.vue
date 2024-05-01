@@ -7,7 +7,8 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 <template>
 
   <div class="testimonial-card">
-    <font-awesome-icon class="icon" icon="fa-solid fa-user" />
+    <font-awesome-icon class="star" icon="fa-solid fa-star" />
+    <font-awesome-icon class="comment" icon="fa-solid fa-comment" />
       <div class="content">
         <p class="author">{{author}}</p>
         <p class="text">{{text}}</p>
@@ -19,7 +20,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 <style scoped>
 
 .testimonial-card {
-  color: white;
+  color: rgb(255, 150, 150);
   width: 350px;
   height: 220px;
   border-radius: 12px;
@@ -43,22 +44,35 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   padding: 30px 20px 20px 20px;
   height: auto;
   bottom: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  background: linear-gradient(transparent, rgb(255, 150, 150));
 }
 
 .testimonial-card .author {
   margin: 0;
   font-size: 22px;
   font-style: italic;
+  font-weight: bold;
   color: black;
 }
 
-.testimonial-card .icon {
+.testimonial-card .text {
+  color: black;
+}
+
+.testimonial-card .comment {
   position: absolute;
   top: 10px;
   right: 10px;
   font-size: 2em;
   color: black;
+}
+
+.testimonial-card .star {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 2em;
+  color: yellow;
 }
 </style>
 
