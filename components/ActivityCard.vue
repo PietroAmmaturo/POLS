@@ -7,19 +7,15 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 <template>
 
   <nuxt-link class="activity-card" v-if="type === 'project'" :to="`/project/${id}`">
-    <font-awesome-icon class="icon" icon="puzzle-piece" />
-    <div class="content">
-      <p class="title">{{name}}</p>
-    </div>
-    <img :src="picture" alt="article-cover" />
+    <div><span>PROJECT</span><font-awesome-icon class="icon" icon="puzzle-piece" /></div>
+    <div class="picture"><img :src="picture" alt="cover" /></div>
+    <h3 class="title">{{name}}</h3>
   </nuxt-link>
 
   <nuxt-link class="activity-card" v-else-if="type === 'service'"  :to="`/service/${id}`">
-    <font-awesome-icon class="icon" icon="bell-concierge" />
-    <div class="content">
-      <p class="title">{{name}}</p>
-    </div>
-    <img :src="picture" alt="article-cover" />
+    <div><span>SERVICE</span><font-awesome-icon class="icon" icon="bell-concierge" /></div>
+    <div class="picture"><img :src="picture" alt="cover" /></div>
+    <h3 class="title">{{name}}</h3>
   </nuxt-link>
 
 </template>
@@ -27,16 +23,17 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 <style scoped>
 
 .activity-card {
-  color: white;
+  background-color: #D9D9D9;
   width: 350px;
-  height: 220px;
-  border-radius: 12px;
+  height: auto;
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
-  font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
-  margin: 10px;
+  margin: 2em;
+  padding: 1em;
+  padding-top: 0;
 }
 
 .activity-card:hover {
@@ -44,33 +41,42 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.activity-card img {
+.activity-card .picture {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.activity-card .content {
-  box-sizing: border-box;
-  width: 100%;
-  position: absolute;
-  padding: 30px 20px 20px 20px;
   height: auto;
-  bottom: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+}
+.activity-card .picture img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.article-card .title {
-  margin: 0;
-  font-size: 17px;
-  color: #fff;
-}
-
-.activity-card .icon {
+.activity-card .picture::after {
+  content: "";
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 2em;
+  inset: 0;
+  box-shadow: inset 0 0 1px 1px #D9D9D9;
+}
+
+.activity-card h3 {
+  position: relative;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.activity-card div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 1em;
+  align-items: center;
+}
+
+.activity-card div span {
+  margin: 0.25em;
 }
 </style>
 
