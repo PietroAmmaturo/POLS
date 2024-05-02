@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <NavigationBar @open-menu="openMenu()" @close-menu="closeMenu()"></NavigationBar>
+    <NavigationBar @open-menu="openMenu()" @close-menu="closeMenu()" @open-mobile-menu="openMobileMenu()" @close-mobile-menu="closeMobileMenu()"></NavigationBar>
     <NuxtPage></NuxtPage>
   </NuxtLayout>
 </template>
@@ -21,9 +21,7 @@ function openMenu(){
       caretdown.style.display = "none";
       caretup.style.display = "inline";
     }else{
-      menu.style.display = "none";
-      caretdown.style.display = "inline";
-      caretup.style.display = "none";
+      closeMenu();
     }
   }
 }
@@ -35,6 +33,20 @@ function closeMenu(){
     menu.style.display = "none";
     caretdown.style.display = "inline";
     caretup.style.display = "none";
+  }
+}
+
+function openMobileMenu(){
+  const menu = document.getElementById("mobile-menu");
+  if(menu != null){
+    menu.style.display = "flex";
+  }
+}
+
+function closeMobileMenu(){
+  const menu = document.getElementById("mobile-menu");
+  if(menu != null){
+    menu.style.display = "none";
   }
 }
 </script>

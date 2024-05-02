@@ -4,7 +4,7 @@
 
 <template>
 <div class="searchbar">
-  <input type="text" placeholder="Search..">
+  <input id="search-bar" type="text" placeholder="Search..">
   <div class="lens" style="cursor: pointer;">
     <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
   </div>
@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
   }
-  input {
+  #search-bar {
     display: block;
     width: 50%;
     height: 30px;
