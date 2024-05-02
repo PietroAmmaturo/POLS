@@ -1,34 +1,38 @@
 interface Service {
-    id:number,
-    name:string,
-    picture:string
-    description:string
-    information:string
-    responsible:number
+  id:number,
+  name:string,
+  picture:string,
+  description:string,
+  information:string,
+  responsible:number
 }
 
 // store/servicesStore.ts
 
 export const useServiceStore = defineStore('services', () => {
-    const supabase = useSupabaseClient();
+  const supabase = useSupabaseClient();
 
-    const services = reactive([] as Service[]);
+  const services = reactive([] as Service[]);
 
-    async function init() {
-        try {
-            const { data, error } = await supabase.from('Service').select('*');
-            if (error) {
-                throw error;
-            }
-            if (data) {
-                services.splice(0, services.length, ...data);
-            }
-        } catch (error) {
-            console.error('Error initializing services:', error);
-        }
+  async function init() {
+    try {
+      const { data, error } = await supabase.from('Service').select('*');
+      if (error) {
+        throw error;
+      }
+      if (data) {
+        services.splice(0, services.length, ...data);
+      }
+    } catch (error) {
+      console.error('Error initializing services:', error);
     }
+  }
 
-    init();
+  async function getServiceById(id: number) {
+    return services.find((services) => services.id === id);
+  }
 
-    return { services };
+  init();
+
+  return { services, getServiceById };
 });
