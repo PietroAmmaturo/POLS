@@ -17,9 +17,9 @@
       </li>
     </ul>
   </div>
-  <NuxtLink to="/services">Go to All Services</NuxtLink>
-  <NuxtLink to="/projects">Go to All Projects</NuxtLink>
-  <NuxtLink to="/contactus">Contact Us</NuxtLink>
+  <NuxtLink to="/services">Go to All Services</NuxtLink><br>
+  <NuxtLink to="/projects">Go to All Projects</NuxtLink><br>
+  <NuxtLink to="/contact">Contact Us</NuxtLink>
 </template>
 
 <style scoped>

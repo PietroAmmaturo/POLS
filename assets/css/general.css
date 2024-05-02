@@ -1,8 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@font-face {
-    font-family: 'AwesomeFont';
-    src: url(assets/fonts/fa-solid-900.ttf);
-}
 html, body, #__nuxt, #__layout{
     height:100%!important;
     width: 100%!important;
@@ -14,9 +10,6 @@ html, body, #__nuxt, #__layout{
 
 #__nuxt{
     margin: 0;
-}
-.icon{
-    font-family: 'AwesomeFont';
 }
 
 section {
