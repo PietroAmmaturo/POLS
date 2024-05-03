@@ -1,16 +1,16 @@
 <template>
   <NuxtLayout>
-    <NavigationBar @open-menu="openMenu()" @close-menu="closeMenu()"></NavigationBar>
+    <NavigationBar @open-menu="openMenu()" @close-menu="closeMenu()" @open-mobile-menu="openMobileMenu()" @close-mobile-menu="closeMobileMenu()"></NavigationBar>
     <NuxtPage></NuxtPage>
   </NuxtLayout>
 </template>
 <script setup lang="ts">
 import NavigationBar from "~/components/NavigationBar.vue"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas, faPuzzlePiece, faBellConcierge } from '@fortawesome/free-solid-svg-icons'
+import { fas, faPuzzlePiece, faBellConcierge, faComments } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
-library.add(fas, faTwitter, faFontAwesome, faPuzzlePiece, faBellConcierge)
+library.add(fas, faTwitter, faFontAwesome, faPuzzlePiece, faBellConcierge, faComments)
 function openMenu(){
   const menu = document.getElementById("menu");
   let caretdown = document.getElementById("caret-down");
@@ -21,9 +21,7 @@ function openMenu(){
       caretdown.style.display = "none";
       caretup.style.display = "inline";
     }else{
-      menu.style.display = "none";
-      caretdown.style.display = "inline";
-      caretup.style.display = "none";
+      closeMenu();
     }
   }
 }
@@ -35,6 +33,20 @@ function closeMenu(){
     menu.style.display = "none";
     caretdown.style.display = "inline";
     caretup.style.display = "none";
+  }
+}
+
+function openMobileMenu(){
+  const menu = document.getElementById("mobile-menu");
+  if(menu != null){
+    menu.style.display = "flex";
+  }
+}
+
+function closeMobileMenu(){
+  const menu = document.getElementById("mobile-menu");
+  if(menu != null){
+    menu.style.display = "none";
   }
 }
 </script>

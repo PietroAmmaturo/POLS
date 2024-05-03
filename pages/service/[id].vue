@@ -18,15 +18,13 @@
   const route = useRoute();
   const id = parseInt(route.params.id as string);
   const store = useServiceStore();
-  const services = store.services;
+  const service = store.getServiceById(id);
   const store2 = useTestimonialStore();
-  const testimonials = store2.testimonials;
+  const testimonials = store2.getTestimonialsByServiceId(id);
 </script>
 
 <template>
-  <div v-for="(service, index) in services">
-    <div v-if="service.id === id">
-      <ActivityHeader :title="service.name" :subtitle="service.description" :picture="service.picture">
+      <ActivityHeader v-if="service" :title="service.name" :subtitle="service.description" :picture="service.picture">
       </ActivityHeader>
       <section>
         <ServicesBanner>
@@ -34,7 +32,7 @@
       </section>
       <section class="info">
         <h1>Practical Info</h1>
-        <p>{{service.information}}</p>
+        <p v-if="service">{{service.information}}</p>
       </section>
       <ActivityResponsible>
       </ActivityResponsible>
@@ -45,8 +43,6 @@
         <TestimonialCard v-for="(testimonial, index) in testimonials" :key="index" :author="testimonial.author" :text="testimonial.text">
         </TestimonialCard>
       </ActivitiesShowcase>
-    </div>
-  </div>
 </template>
 
 <style scoped>

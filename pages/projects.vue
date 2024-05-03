@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useProjectStore } from '~/stores/projects';
-import Navbar from "~/components/NavigationBar.vue";
+
 const store = useProjectStore()
 const projects = store.projects
 </script>
 
+<script>
+
+</script>
 <template>
   <ActivitiesHeader title="Projects" subtitle="Our projects are ...">
   </ActivitiesHeader>
@@ -13,3 +16,4 @@ const projects = store.projects
       </ActivityCard>
   </ActivitiesShowcase>
 </template>
+

@@ -1,4 +1,5 @@
-interface Service {
+
+export interface Service {
   id:number,
   name:string,
   picture:string,
@@ -16,7 +17,7 @@ export const useServiceStore = defineStore('services', () => {
 
   async function init() {
     try {
-      const { data, error } = await supabase.from('Service').select('*');
+      const {data, error} = await supabase.from('Service').select('*');
       if (error) {
         throw error;
       }
@@ -28,11 +29,13 @@ export const useServiceStore = defineStore('services', () => {
     }
   }
 
-  async function getServiceById(id: number) {
-    return services.find((services) => services.id === id);
-  }
+
+  const getServiceById = (id: number) => computed(() => services.find(service => service.id === id));
+
 
   init();
+
+
 
   return { services, getServiceById };
 });
