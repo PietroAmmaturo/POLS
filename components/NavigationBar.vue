@@ -2,7 +2,7 @@
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 onMounted(() => window.addEventListener("resize", onResize, true))
 function onResize() {
-  closeMobileMenu();
+  closeMobileMenu(true);
 }
 function openMenu(){
   const menu = document.getElementById("menu");
@@ -39,12 +39,15 @@ function openMobileMenu(){
   }
 }
 
-function closeMobileMenu(){
+function closeMobileMenu(resize: boolean){
   const menu = document.getElementById("mobile-menu");
   if(menu != null){
     menu.classList.remove("menu-open");
     setTimeout(() => {menu.classList.add("menu-closed")}, 0);
-    setTimeout(() => {menu.style.display = "none"}, 500);
+    if(resize)
+      menu.style.display = "none";
+    else
+      setTimeout(() => {menu.style.display = "none"}, 500);
     document.body.style.overflow = "scroll";
   }
 }
@@ -73,18 +76,18 @@ function closeMobileMenu(){
   </div>
   <div id="mobile-menu" class="nav-menu" style="display: none">
     <div id="container_close">
-      <font-awesome-icon class="icon" icon="xmark" id="mobile_close" @click="closeMobileMenu"/>
+      <font-awesome-icon class="icon" icon="xmark" id="mobile_close" @click="closeMobileMenu(false)"/>
     </div>
     <div id="mobile-landmarks">
-      <NuxtLink to="/activities" @click="closeMobileMenu"><font-awesome-icon class="icon" icon="hand-holding-heart" /> All activities</NuxtLink>
+      <NuxtLink to="/activities" @click="closeMobileMenu(false)"><font-awesome-icon class="icon" icon="hand-holding-heart" /> All activities</NuxtLink>
       <div id="mobile-subactivities">
-        <NuxtLink to="/projects" @click="closeMobileMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the projects</NuxtLink>
-        <NuxtLink to="/services" @click="closeMobileMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the services</NuxtLink>
+        <NuxtLink to="/projects" @click="closeMobileMenu(false)"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the projects</NuxtLink>
+        <NuxtLink to="/services" @click="closeMobileMenu(false)"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the services</NuxtLink>
       </div>
-      <NuxtLink to="/people" @click="closeMobileMenu"><font-awesome-icon class="icon" icon="users" /> All people</NuxtLink>
-      <NuxtLink to="/contact" @click="closeMobileMenu"><font-awesome-icon class="icon" icon="headphones-simple" /> Contact us</NuxtLink>
-      <NuxtLink to="/about" @click="closeMobileMenu"><font-awesome-icon class="icon" icon="pen-to-square" /> About us</NuxtLink>
-      <NuxtLink to="/chatbot" @click="closeMobileMenu"><font-awesome-icon class="icon" icon="comments" /> Chatbot</NuxtLink>
+      <NuxtLink to="/people" @click="closeMobileMenu(false)"><font-awesome-icon class="icon" icon="users" /> All people</NuxtLink>
+      <NuxtLink to="/contact" @click="closeMobileMenu(false)"><font-awesome-icon class="icon" icon="headphones-simple" /> Contact us</NuxtLink>
+      <NuxtLink to="/about" @click="closeMobileMenu(false)"><font-awesome-icon class="icon" icon="pen-to-square" /> About us</NuxtLink>
+      <NuxtLink to="/chatbot" @click="closeMobileMenu(false)"><font-awesome-icon class="icon" icon="comments" /> Chatbot</NuxtLink>
     </div>
   </div>
 </template>
@@ -181,7 +184,7 @@ function closeMobileMenu(){
     font-size: 32px;
     font-weight: bold;
     align-items: center;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 1px 1px;
     height: 0;
     width: auto;
     transition: height 0.5s ease;
