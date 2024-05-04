@@ -35,6 +35,8 @@ body{
 h1{
   font-size: 64px;
   margin: 0;
+  width: auto;
+  text-align: center;
 }
 .information{
   margin: 0;
@@ -53,7 +55,8 @@ h1{
 .form_container{
   background: #D9D9D9;
   border: black solid 1px;
-  width: 33%;
+  width: auto;
+  margin: 0 25px 0 25px;
 }
 form{
   font-size: 16px;
@@ -64,10 +67,12 @@ form{
   align-items: flex-end;
   padding: 18px 33px;
   gap: 10px;
+  width: auto;
 }
 input{
   font-family: 'Montserrat';
   font-size: 16px;
+  width: 75%;
 }
 textarea{
   width: 100%;
