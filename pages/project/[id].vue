@@ -13,18 +13,17 @@ import ProjectsBanner from "~/components/ProjectsBanner.vue";
 const route = useRoute();
 const store = useProjectStore();
 const id = parseInt(route.params.id as string);
-const projects = store.projects; // Initialize project as null
+const project = store.getProjectById(id);
 </script>
+
 <template>
-  <div  v-for="(project, index) in projects">
-    <ActivityHeader v-if="project.id === id" :title="project.name" :subtitle="project.description" :picture="project.picture" >
+    <ActivityHeader v-if="project" :title="project.name" :subtitle="project.description" :picture="project.picture" >
     </ActivityHeader>
     <section>
-      <ProjectsBanner v-if="project.id === id"></ProjectsBanner>
+      <ProjectsBanner ></ProjectsBanner>
     </section>
-    <ActivityResponsible v-if="project.id === id">
+    <ActivityResponsible>
     </ActivityResponsible>
-  </div>
 
 </template>
 

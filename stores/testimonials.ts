@@ -1,4 +1,4 @@
-interface Testimonial {
+export interface Testimonial {
   id:number,
   text:string,
   author:string,
@@ -25,8 +25,9 @@ export const useTestimonialStore = defineStore('testimonials', () => {
       console.error('Error initializing testimonials:', error);
     }
   }
+  const getTestimonialsByServiceId = (id: number) => computed(() => testimonials.filter(testimonial => testimonial.referTo === id));
 
   init();
 
-  return { testimonials };
+  return { testimonials, getTestimonialsByServiceId };
 });

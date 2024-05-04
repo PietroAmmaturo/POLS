@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
   }
-  input {
+  #search-bar {
     display: block;
     width: 50%;
     height: 30px;

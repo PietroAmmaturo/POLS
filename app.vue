@@ -7,10 +7,10 @@
 <script setup lang="ts">
 import NavigationBar from "~/components/NavigationBar.vue"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas, faPuzzlePiece, faBellConcierge } from '@fortawesome/free-solid-svg-icons'
+import { fas, faPuzzlePiece, faBellConcierge, faComments } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
-library.add(fas, faTwitter, faFontAwesome, faPuzzlePiece, faBellConcierge)
+library.add(fas, faTwitter, faFontAwesome, faPuzzlePiece, faBellConcierge, faComments)
 function openMenu(){
   const menu = document.getElementById("menu");
   let caretdown = document.getElementById("caret-down");
