@@ -3,7 +3,8 @@ interface Project {
     name:string,
     picture:string,
     description:string,
-    responsible:number
+    responsible:number,
+    tags: any[]
 }
 
 // store/projectsStore.ts
@@ -29,7 +30,11 @@ export const useProjectStore = defineStore('projects', () => {
 
     const getProjectById = (id: number) => computed(() => projects.find(project => project.id === id));
 
+    const getFilteredProjects = (filter: Ref<string>) => computed(() => filter.value ? projects.filter(project => project.tags.includes(filter.value)) : projects);
+
+    const getProjectsFilters = () => computed(() => Array.from(new Set(projects.flatMap(project => project.tags))));
+
     init();
 
-    return { projects, getProjectById };
+    return { projects, getProjectById, getFilteredProjects, getProjectsFilters };
 });
