@@ -6,11 +6,14 @@ html, body, #__nuxt, #__layout{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
-    overflow: auto;
 }
 
 #__nuxt{
     margin: 0;
+}
+
+body{
+    overflow: auto;
 }
 
 section {
