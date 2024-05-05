@@ -1,3 +1,7 @@
+import {activityOrders} from "~/composables/exploring";
+import {orderActivities} from "~/composables/exploring";
+import {filterActivities} from "~/composables/exploring";
+
 interface Project {
     id:number,
     name:string,
@@ -8,7 +12,6 @@ interface Project {
 }
 
 // store/projectsStore.ts
-
 export const useProjectStore = defineStore('projects', () => {
     const supabase = useSupabaseClient();
 
@@ -30,11 +33,19 @@ export const useProjectStore = defineStore('projects', () => {
 
     const getProjectById = (id: number) => computed(() => projects.find(project => project.id === id));
 
-    const getFilteredProjects = (filter: Ref<string>) => computed(() => filter.value ? projects.filter(project => project.tags.includes(filter.value)) : projects);
+    const getProjects = (filter: Ref<string>, order:  Ref<string>) => computed(() => {
+        console.log(filter.value, order.value)
+        if (!filter.value && !order.value) return projects;
+        if (!filter.value) return orderActivities(projects, order.value);
+        if (!order.value) return filterActivities(projects, filter.value);
+        return orderActivities(filterActivities(projects, filter.value), order.value);
+    });
 
     const getProjectsFilters = () => computed(() => Array.from(new Set(projects.flatMap(project => project.tags))));
 
+    const getProjectsOrders = () => computed(() => activityOrders);
+
     init();
 
-    return { projects, getProjectById, getFilteredProjects, getProjectsFilters };
+    return { projects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders };
 });

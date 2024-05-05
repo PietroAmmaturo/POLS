@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { useProjectStore } from '~/stores/projects';
-import {activityOrders} from "~/composables/ordering";
-import {orderActivities} from "~/composables/ordering";
 
 const store = useProjectStore();
 const tags = store.getProjectsFilters();
+const orders = store.getProjectsOrders();
+
 const selectedTag = ref("");
 const selectedOrder = ref("");
-const projects = store.getFilteredProjects(selectedTag);
-const orders = activityOrders;
+const projects = store.getProjects(selectedTag, selectedOrder);
 function updateTag(tag: string) {
   selectedTag.value = tag;
 }
 function updateOrder(order: string) {
   selectedOrder.value = order;
-  orderActivities(projects.value, selectedOrder.value);
 }
 </script>
 
