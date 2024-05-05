@@ -18,6 +18,11 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
     <h3 class="title">{{name}}</h3>
   </nuxt-link>
 
+  <nuxt-link class="activity-card" v-else  :to="`/service/${id}`">
+    <div><span></span></div>
+    <div class="picture"><img :src="picture" alt="cover" /></div>
+    <h3 class="title">{{name}}</h3>
+  </nuxt-link>
 </template>
 
 <style scoped>
@@ -32,8 +37,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
   margin: 2em;
-  padding: 1em;
-  padding-top: 0;
+  padding-inline: 1em;
 }
 
 .activity-card:hover {
@@ -63,8 +67,6 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 .activity-card h3 {
   position: relative;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 .activity-card div {
@@ -76,6 +78,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 }
 
 .activity-card div span {
+  min-height: 0.5em;
   margin: 0.25em;
 }
 </style>

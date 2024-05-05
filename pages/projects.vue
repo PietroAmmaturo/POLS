@@ -30,9 +30,14 @@ function updateOrder(order: string) {
     </template>
     <template  #showcase>
       <ActivitiesExplorerShowcase>
-        <ActivityCard v-for="(project, index) in projects" :key="index" :name="project.name" :picture="project.picture" :type="'project'" :id="project.id">
-        </ActivityCard>
+        <transition-group name="bounce-fade" appear>
+          <ActivityCard v-for="(project) in projects" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
+          </ActivityCard>
+          </transition-group>
       </ActivitiesExplorerShowcase>
     </template>
   </ActivitiesExplorer>
 </template>
+
+<style>
+</style>

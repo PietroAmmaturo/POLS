@@ -25,3 +25,20 @@ a {
     text-decoration: inherit; /* no underline */
 }
 
+.bounce-fade-enter-active {
+    animation: bounce-in .5s;
+}
+.bounce-fade-leave-active {
+    animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

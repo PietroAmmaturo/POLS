@@ -12,10 +12,12 @@ const services = serviceStore.services
   <ActivitiesHeader title="Activities" subtitle="Our actvities are ...">
   </ActivitiesHeader>
   <ActivitiesCategories></ActivitiesCategories>
-  <ActivitiesShowcase>
-      <ActivityCard v-for="(project, index) in projects" :key="index" :name="project.name" :picture="project.picture" :type="'project'" :id="project.id">
+  <ActivitiesExplorerShowcase>
+    <transition-group name="bounce-fade" appear>
+  <ActivityCard v-for="(project, index) in projects" :key="index" :name="project.name" :picture="project.picture" :type="'project'" :id="project.id">
       </ActivityCard>
       <ActivityCard v-for="(service, index) in services" :key="index" :name="service.name" :picture="service.picture" :type="'service'" :id="service.id">
       </ActivityCard>
-  </ActivitiesShowcase>
+  </transition-group>
+  </ActivitiesExplorerShowcase>
 </template>
