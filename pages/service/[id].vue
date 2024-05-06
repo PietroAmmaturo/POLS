@@ -12,7 +12,7 @@
   import ActivityHeader from '~/components/ActivityHeader.vue';
   import ServicesBanner from "~/components/ServicesBanner.vue";
   import ActivityResponsible from "~/components/ActivityResponsible.vue";
-  import ActivitiesShowcase from '~/components/ActivitiesShowcase.vue';
+  import ActivitiesShowcase from '~/components/ActivitiesExplorerShowcase.vue';
   import TestimonialCard from "~/components/TestimonialCard.vue";
 
   const route = useRoute();

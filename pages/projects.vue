@@ -1,19 +1,43 @@
 <script setup lang="ts">
 import { useProjectStore } from '~/stores/projects';
 
-const store = useProjectStore()
-const projects = store.projects
+const store = useProjectStore();
+const tags = store.getProjectsFilters();
+const orders = store.getProjectsOrders();
+
+const selectedTag = ref("");
+const selectedOrder = ref("");
+const projects = store.getProjects(selectedTag, selectedOrder);
+function updateTag(tag: string) {
+  selectedTag.value = tag;
+}
+function updateOrder(order: string) {
+  selectedOrder.value = order;
+}
 </script>
 
-<script>
-
-</script>
 <template>
   <ActivitiesHeader title="Projects" subtitle="Our projects are ...">
   </ActivitiesHeader>
-  <ActivitiesShowcase>
-      <ActivityCard v-for="(project, index) in projects" :key="index" :name="project.name" :picture="project.picture" :type="'project'" :id="project.id">
-      </ActivityCard>
-  </ActivitiesShowcase>
+  <ActivitiesExplorer>
+    <template #options>
+      <ActivitiesExplorerOptions>
+        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
+        </ActivitiesExplorerOptionsFilter>
+        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
+        </ActivitiesExplorerOptionsOrder>
+      </ActivitiesExplorerOptions>
+    </template>
+    <template  #showcase>
+      <ActivitiesExplorerShowcase>
+        <transition-group name="bounce-fade" appear>
+          <ActivityCard v-for="(project) in projects" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
+          </ActivityCard>
+          </transition-group>
+      </ActivitiesExplorerShowcase>
+    </template>
+  </ActivitiesExplorer>
 </template>
 
+<style>
+</style>

@@ -3,7 +3,7 @@
 
   import ActivitiesHeader from '~/components/ActivitiesHeader.vue';
   import SearchBar from '~/components/SearchBar.vue';
-  import ActivitiesShowcase from '~/components/ActivitiesShowcase.vue';
+  import ActivitiesExplorerShowcase from '~/components/ActivitiesExplorerShowcase.vue';
   import ActivityCard from '~/components/ActivityCard.vue';
 
   const store = useServiceStore();
@@ -22,10 +22,10 @@
   </section>
   <SearchBar>
   </SearchBar>
-  <ActivitiesShowcase>
+  <ActivitiesExplorerShowcase>
     <ActivityCard v-for="(service, index) in services" :key="index" :name="service.name" :picture="service.picture" :type="'service'" :id="service.id">
     </ActivityCard>
-  </ActivitiesShowcase>
+  </ActivitiesExplorerShowcase>
 </template>
 
 <style scoped>

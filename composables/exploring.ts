@@ -1,0 +1,16 @@
+interface Activity {
+    name: string
+    tags: string[]
+}
+export const activityOrders = ["name(asc)", "name(desc)"];
+export const orderActivities = (activities: Activity[], order: string) => {
+    switch (order) {
+        case activityOrders[0]:
+            return activities.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        case activityOrders[1]:
+            return activities.sort((a, b) => (a.name < b.name) ? 1 : -1);
+        default:
+    }
+}
+
+export const filterActivities = (activities: Activity[], filter: string) => activities.filter(activity => activity.tags.includes(filter));
