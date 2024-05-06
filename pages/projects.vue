@@ -31,7 +31,7 @@ function updateOrder(order: string) {
     <template  #showcase>
       <ActivitiesExplorerShowcase>
         <transition-group name="bounce-fade" appear>
-          <ActivityCard v-for="(project) in projects" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
+          <ActivityCard v-for="(project) in projects" type="project" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
           </ActivityCard>
           </transition-group>
       </ActivitiesExplorerShowcase>
