@@ -8,6 +8,11 @@ const orders = store.getProjectsOrders();
 const selectedTag = ref("");
 const selectedOrder = ref("");
 const projects = store.getProjects(selectedTag, selectedOrder);
+const parents = ref([
+  { page: 'All the activities', path: '/activities' }
+]);
+const currentPage = "All the projects";
+
 function updateTag(tag: string) {
   selectedTag.value = tag;
 }
@@ -17,6 +22,7 @@ function updateOrder(order: string) {
 </script>
 
 <template>
+  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Projects" subtitle="Our projects are ...">
   </ActivitiesHeader>
   <ActivitiesExplorer>

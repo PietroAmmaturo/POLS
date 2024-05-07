@@ -7,6 +7,10 @@
   const selectedTag = ref("");
   const selectedOrder = ref("");
   const services = store.getServices(selectedTag, selectedOrder);
+  const parents = ref([
+    { page: 'All the activities', path: '/activities' }
+  ]);
+  const currentPage = "All the services";
 
   function updateTag(tag: string) {
     selectedTag.value = tag;
@@ -17,6 +21,7 @@
 </script>
 
 <template>
+  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Services" subtitle="Our services are ...">
   </ActivitiesHeader>
   <section class="description">

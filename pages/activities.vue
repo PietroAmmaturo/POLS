@@ -35,11 +35,12 @@ function updateTag(tag: string) {
 function updateOrder(order: string) {
   selectedOrder.value = order;
 }
-
+const currentPage = "All the activities";
 
 </script>
 
 <template>
+  <Breadcrumb :current-page="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Activities" subtitle="Our actvities are ...">
   </ActivitiesHeader>
   <ActivitiesCategories></ActivitiesCategories>
@@ -53,6 +54,6 @@ function updateOrder(order: string) {
     <transition-group name="bounce-fade" appear>
       <ActivityCard v-for="(activity) in activities" :key="[activity.type, activity.id]" :name="activity.name" :picture="activity.picture" :type="activity.type" :id="activity.id">
       </ActivityCard>
-  </transition-group>
+    </transition-group>
   </ActivitiesExplorerShowcase>
 </template>

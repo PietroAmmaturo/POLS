@@ -21,9 +21,15 @@
   const service = store.getServiceById(id);
   const store2 = useTestimonialStore();
   const testimonials = store2.getTestimonialsByServiceId(id);
+  const parents = ref([
+    { page: 'All the activities', path: '/activities' },
+    { page: 'All the services', path: '/services'}
+  ]);
+  const currentPage = service.value != undefined ? service.value.name : null;
 </script>
 
 <template>
+  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
       <ActivityHeader v-if="service" :title="service.name" :subtitle="service.description" :picture="service.picture">
       </ActivityHeader>
       <section>

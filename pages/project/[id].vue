@@ -14,9 +14,15 @@ const route = useRoute();
 const store = useProjectStore();
 const id = parseInt(route.params.id as string);
 const project = store.getProjectById(id);
+const parents = ref([
+  { page: 'All the activities', path: '/activities' },
+  { page: 'All the projects', path: '/projects'}
+]);
+const currentPage = project.value != undefined ? project.value.name : null;
 </script>
 
 <template>
+  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
     <ActivityHeader v-if="project" :title="project.name" :subtitle="project.description" :picture="project.picture" >
     </ActivityHeader>
     <section>
