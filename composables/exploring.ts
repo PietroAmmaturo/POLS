@@ -12,6 +12,7 @@ export const orderActivities = (activities: Activity[], order: string) => {
         case activityOrders[1]:
             return activities.sort((a, b) => (a.name < b.name) ? 1 : -1);
         default:
+            return activities;
     }
 }
 
