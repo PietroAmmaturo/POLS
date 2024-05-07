@@ -1,26 +1,73 @@
 <script setup lang="ts">
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {useBreadcrumbStore} from "~/stores/breadcrumbs";
+
 defineProps(['parents', 'currentPage']);
+
+const breadcrumbStore = useBreadcrumbStore();
+const parents = breadcrumbStore.breadcrumbs;
+const history = breadcrumbStore.history;
+
+function openHistory() {
+  const el = document.querySelector(".breadcrumb");
+  if (el) {
+    el.classList.add("expanded");
+  }
+}
+function closeHistory() {
+  const el = document.querySelector(".breadcrumb");
+  if (el) el.classList.remove("expanded");
+}
 </script>
 
 <template>
   <div class="breadcrumb">
-    <div class="home">
-      <NuxtLink to="/">Home</NuxtLink>
-      <font-awesome-icon class="breadcrumb-icon" icon="angles-right"/>
-    </div>
-    <div class="parents" v-for="parent in parents">
-      <NuxtLink v-bind:to="parent.path">{{ parent.page }}</NuxtLink>
-      <font-awesome-icon class="breadcrumb-icon" icon="angles-right"/>
-    </div>
-    <div class="current-page">
-      {{ currentPage }}
-      <div class="current-shape"></div>
-    </div>
+    <template v-for="(parent, index) in parents">
+      <div v-if="index !== parents.length - 1" class="parents">
+        <NuxtLink v-bind:to="parent.path">{{ parent.page }}</NuxtLink>
+        <font-awesome-icon class="breadcrumb-icon" icon="angles-right"/>
+      </div>
+      <div v-else class="current-page">
+        {{ currentPage }}
+        <div class="current-shape"></div>
+      </div>
+    </template>
+      <font-awesome-icon @click="openHistory" class="open-icon" icon="plus"/>
+      <font-awesome-icon @click="closeHistory" class="close-icon" icon="minus"/>
+        <template v-for="(item, index) in history">
+          <div class="parents history">
+            <NuxtLink v-bind:to="item.path">{{ item.page }}</NuxtLink>
+            <font-awesome-icon class="breadcrumb-icon" icon="angles-right"/>
+          </div>
+        </template>
   </div>
 </template>
 
 <style scoped>
+
+.breadcrumb .history {
+  display: none;
+}
+.breadcrumb.expanded .history {
+  display: inherit;
+}
+.breadcrumb .open-icon{
+  display: inline-block;
+  font-size: 20px;
+  color: var(--color);
+  opacity: var(--opacity);
+}
+.breadcrumb.expanded .open-icon{
+  display: none;
+}
+.breadcrumb .close-icon{
+  display: none;
+}
+.breadcrumb.expanded .close-icon{
+  display: inline-block;
+  font-size: 20px;
+  color: var(--color);
+  opacity: var(--opacity);}
 .breadcrumb{
   --distance: 15px;
   --opacity: 0.4;

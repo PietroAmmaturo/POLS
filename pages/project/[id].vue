@@ -10,15 +10,17 @@ definePageMeta({
 import { useProjectStore } from '~/stores/projects';
 import ActivityResponsible from "~/components/ActivityResponsible.vue";
 import ProjectsBanner from "~/components/ProjectsBanner.vue";
+import {useBreadcrumbStore} from "~/stores/breadcrumbs";
 const route = useRoute();
 const store = useProjectStore();
 const id = parseInt(route.params.id as string);
 const project = store.getProjectById(id);
-const parents = ref([
-  { page: 'All the activities', path: '/activities' },
-  { page: 'All the projects', path: '/projects'}
-]);
-const currentPage = project.value != undefined ? project.value.name : null;
+
+const breadcrumbStore = useBreadcrumbStore();
+const parents = breadcrumbStore.breadcrumbs;
+const currentPage = project.value ? project.value.name : "Project";
+const currentPath = "/project/" + route.params.id;
+breadcrumbStore.updateBreadcrumbs(currentPage, currentPath, "Project");
 </script>
 
 <template>

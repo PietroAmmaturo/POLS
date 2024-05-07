@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { useServiceStore } from '~/stores/services';
+  import {useBreadcrumbStore} from "~/stores/breadcrumbs";
 
   const store = useServiceStore();
   const tags = store.getServicesFilters();
@@ -7,10 +8,6 @@
   const selectedTag = ref("");
   const selectedOrder = ref("");
   const services = store.getServices(selectedTag, selectedOrder);
-  const parents = ref([
-    { page: 'All the activities', path: '/activities' }
-  ]);
-  const currentPage = "All the services";
 
   function updateTag(tag: string) {
     selectedTag.value = tag;
@@ -18,6 +15,12 @@
   function updateOrder(order: string) {
     selectedOrder.value = order;
   }
+
+  const breadcrumbStore = useBreadcrumbStore();
+  const parents = breadcrumbStore.breadcrumbs;
+  const currentPage = "All the projects";
+  const currentPath = "/projects";
+  breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 </script>
 
 <template>

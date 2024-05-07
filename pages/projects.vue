@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useProjectStore } from '~/stores/projects';
+import {useProjectStore} from '~/stores/projects';
+import {useBreadcrumbStore} from "~/stores/breadcrumbs";
 
 const store = useProjectStore();
 const tags = store.getProjectsFilters();
@@ -8,10 +9,12 @@ const orders = store.getProjectsOrders();
 const selectedTag = ref("");
 const selectedOrder = ref("");
 const projects = store.getProjects(selectedTag, selectedOrder);
-const parents = ref([
-  { page: 'All the activities', path: '/activities' }
-]);
+
+const breadcrumbStore = useBreadcrumbStore();
+const parents = breadcrumbStore.breadcrumbs;
 const currentPage = "All the projects";
+const currentPath = "/projects";
+breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 
 function updateTag(tag: string) {
   selectedTag.value = tag;

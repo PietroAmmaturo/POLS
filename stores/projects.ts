@@ -17,8 +17,6 @@ export const useProjectStore = defineStore('projects', () => {
 
     const projects = reactive([] as Project[]);
 
-    const refProjects = ref([] as Project[]);
-
     async function init() {
         try {
             const { data, error } = await supabase.from('Project').select('*');
@@ -27,7 +25,6 @@ export const useProjectStore = defineStore('projects', () => {
             }
             if (data) {
                 projects.splice(0, projects.length, ...data);
-                refProjects.value = [...data];
             }
         } catch (error) {
             console.error('Error initializing projects:', error);
@@ -37,7 +34,6 @@ export const useProjectStore = defineStore('projects', () => {
     const getProjectById = (id: number) => computed(() => projects.find(project => project.id === id));
 
     const getProjects = (filter: Ref<string>, order:  Ref<string>) => computed(() => {
-        console.log(filter.value, order.value)
         if (!filter.value && !order.value) return projects;
         if (!filter.value) return orderActivities(projects, order.value);
         if (!order.value) return filterActivities(projects, filter.value);
@@ -50,5 +46,5 @@ export const useProjectStore = defineStore('projects', () => {
 
     init();
 
-    return { projects, refProjects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders };
+    return { projects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders };
 });
