@@ -18,8 +18,8 @@
 
   const breadcrumbStore = useBreadcrumbStore();
   const parents = breadcrumbStore.breadcrumbs;
-  const currentPage = "All the projects";
-  const currentPath = "/projects";
+  const currentPage = "All the services";
+  const currentPath = "/services";
   breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 </script>
 

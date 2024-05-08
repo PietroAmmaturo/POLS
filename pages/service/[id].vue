@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import {useBreadcrumbStore} from "~/stores/breadcrumbs";
+
   definePageMeta({
     validate: async (route) => {
       // Check if the id is made up of digits
@@ -21,15 +23,15 @@
   const service = store.getServiceById(id);
   const store2 = useTestimonialStore();
   const testimonials = store2.getTestimonialsByServiceId(id);
-  const parents = ref([
-    { page: 'All the activities', path: '/activities' },
-    { page: 'All the services', path: '/services'}
-  ]);
-  const currentPage = service.value != undefined ? service.value.name : null;
+
+  const breadcrumbStore = useBreadcrumbStore();
+  const parents = breadcrumbStore.breadcrumbs;
+  const currentPath = "/project/" + route.params.id;
+  watch(service, (newValue) => breadcrumbStore.updateBreadcrumbs(newValue ? newValue.name : "Service", currentPath, "Service"), {immediate: true});
 </script>
 
 <template>
-  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
+  <Breadcrumb v-if="service" :parents="parents" :current-page="service.name"></Breadcrumb>
       <ActivityHeader v-if="service" :title="service.name" :subtitle="service.description" :picture="service.picture">
       </ActivityHeader>
       <section>

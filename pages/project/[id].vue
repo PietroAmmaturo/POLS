@@ -18,13 +18,12 @@ const project = store.getProjectById(id);
 
 const breadcrumbStore = useBreadcrumbStore();
 const parents = breadcrumbStore.breadcrumbs;
-const currentPage = project.value ? project.value.name : "Project";
 const currentPath = "/project/" + route.params.id;
-breadcrumbStore.updateBreadcrumbs(currentPage, currentPath, "Project");
+watch(project, (newValue) => breadcrumbStore.updateBreadcrumbs(newValue ? newValue.name : "Project", currentPath, "Project"), {immediate: true});
 </script>
 
 <template>
-  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
+  <Breadcrumb v-if="project" :parents="parents" :current-page="project.name"></Breadcrumb>
     <ActivityHeader v-if="project" :title="project.name" :subtitle="project.description" :picture="project.picture" >
     </ActivityHeader>
     <section>
