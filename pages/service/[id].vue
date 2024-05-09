@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import {useBreadcrumbStore} from "~/stores/breadcrumbs";
+
   definePageMeta({
     validate: async (route) => {
       // Check if the id is made up of digits
@@ -12,7 +14,7 @@
   import ActivityHeader from '~/components/ActivityHeader.vue';
   import ServicesBanner from "~/components/ServicesBanner.vue";
   import ActivityResponsible from "~/components/ActivityResponsible.vue";
-  import ActivitiesShowcase from '~/components/ActivitiesShowcase.vue';
+  import ActivitiesShowcase from '~/components/ActivitiesExplorerShowcase.vue';
   import TestimonialCard from "~/components/TestimonialCard.vue";
 
   const route = useRoute();
@@ -21,9 +23,15 @@
   const service = store.getServiceById(id);
   const store2 = useTestimonialStore();
   const testimonials = store2.getTestimonialsByServiceId(id);
+
+  const breadcrumbStore = useBreadcrumbStore();
+  const parents = breadcrumbStore.breadcrumbs;
+  const currentPath = "/project/" + route.params.id;
+  watch(service, (newValue) => breadcrumbStore.updateBreadcrumbs(newValue ? newValue.name : "Service", currentPath, "Service"), {immediate: true});
 </script>
 
 <template>
+  <Breadcrumb v-if="service" :parents="parents" :current-page="service.name"></Breadcrumb>
       <ActivityHeader v-if="service" :title="service.name" :subtitle="service.description" :picture="service.picture">
       </ActivityHeader>
       <section>

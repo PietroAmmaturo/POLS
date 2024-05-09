@@ -1,16 +1,30 @@
 <script setup lang="ts">
   import { useServiceStore } from '~/stores/services';
-
-  import ActivitiesHeader from '~/components/ActivitiesHeader.vue';
-  import SearchBar from '~/components/SearchBar.vue';
-  import ActivitiesShowcase from '~/components/ActivitiesShowcase.vue';
-  import ActivityCard from '~/components/ActivityCard.vue';
+  import {useBreadcrumbStore} from "~/stores/breadcrumbs";
 
   const store = useServiceStore();
-  const services = store.services;
+  const tags = store.getServicesFilters();
+  const orders = store.getServicesOrders();
+  const selectedTag = ref("");
+  const selectedOrder = ref("");
+  const services = store.getServices(selectedTag, selectedOrder);
+
+  function updateTag(tag: string) {
+    selectedTag.value = tag;
+  }
+  function updateOrder(order: string) {
+    selectedOrder.value = order;
+  }
+
+  const breadcrumbStore = useBreadcrumbStore();
+  const parents = breadcrumbStore.breadcrumbs;
+  const currentPage = "All the services";
+  const currentPath = "/services";
+  breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 </script>
 
 <template>
+  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Services" subtitle="Our services are ...">
   </ActivitiesHeader>
   <section class="description">
@@ -22,10 +36,24 @@
   </section>
   <SearchBar>
   </SearchBar>
-  <ActivitiesShowcase>
-    <ActivityCard v-for="(service, index) in services" :key="index" :name="service.name" :picture="service.picture" :type="'service'" :id="service.id">
-    </ActivityCard>
-  </ActivitiesShowcase>
+  <ActivitiesExplorer>
+    <template #options>
+      <ActivitiesExplorerOptions>
+        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
+        </ActivitiesExplorerOptionsFilter>
+        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
+        </ActivitiesExplorerOptionsOrder>
+      </ActivitiesExplorerOptions>
+    </template>
+    <template #showcase>
+      <ActivitiesExplorerShowcase>
+        <transition-group name="bounce-fade" appear>
+          <ActivityCard v-for="(service) in services" type="service" :key="service.name" :name="service.name" :picture="service.picture" :id="service.id">
+          </ActivityCard>
+          </transition-group>
+      </ActivitiesExplorerShowcase>
+    </template>
+  </ActivitiesExplorer>
 </template>
 
 <style scoped>
