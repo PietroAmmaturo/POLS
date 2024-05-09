@@ -22,4 +22,7 @@ export default defineNuxtConfig({
     // do not redirect if not authenticated (not needed)
     redirect: false
   },
+  build: {
+    transpile: ['@fortawesome/vue-fontawesome']
+  },
 });
