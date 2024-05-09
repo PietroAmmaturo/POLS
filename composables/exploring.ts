@@ -2,7 +2,8 @@ interface Activity {
     name: string,
     tags: string[],
     picture: string,
-    id: number
+    id: number,
+    type: string
 }
 export const activityOrders = ["name(asc)", "name(desc)"];
 export const orderActivities = (activities: Activity[], order: string) => {

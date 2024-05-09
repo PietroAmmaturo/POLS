@@ -58,7 +58,7 @@ breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
   </ActivitiesExplorerOptions>
   <ActivitiesExplorerShowcase>
     <transition-group name="bounce-fade" appear>
-      <ActivityCard v-for="(activity) in activities" :key="[activity.type, activity.id]" :name="activity.name" :picture="activity.picture" :type="activity.type" :id="activity.id">
+      <ActivityCard v-for="(activity) in activities" :name="activity.name" :picture="activity.picture" :type="activity.type" :id="activity.id">
       </ActivityCard>
     </transition-group>
   </ActivitiesExplorerShowcase>
