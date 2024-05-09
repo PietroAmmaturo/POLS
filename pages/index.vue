@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import {useDogStore} from '~/stores/dogs';
-import {useBreadcrumbStore} from "~/stores/breadcrumbs";
-
-const store = useDogStore()
+  import { useDogStore } from '~/stores/dogs';
+  const store = useDogStore()
   const dogs = store.dogs
-
-const breadcrumbStore = useBreadcrumbStore();
-const currentPage = "Home";
-const currentPath = "/";
-breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 </script>
 
 <template>
