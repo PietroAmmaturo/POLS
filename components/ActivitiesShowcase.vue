@@ -5,13 +5,12 @@
 <template>
   <div class="container">
     <div class="box">
-        <slot></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <style scoped>
-
 .container {
   width: 100%;
 }
