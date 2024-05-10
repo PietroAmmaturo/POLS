@@ -28,6 +28,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 <style scoped>
 
 .activity-card {
+  max-width: 80vw;
   background-color: #D9D9D9;
   width: 350px;
   height: auto;
@@ -36,7 +37,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   position: relative;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
-  margin: 2em;
+  margin-block: 2em;
   padding-inline: 1em;
 }
 

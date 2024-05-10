@@ -39,17 +39,36 @@ function updateOrder(order: string) {
 <template>
   <ActivitiesHeader title="Activities" subtitle="Our actvities are ...">
   </ActivitiesHeader>
-  <ActivitiesCategories></ActivitiesCategories>
-  <ActivitiesExplorerOptions>
-    <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
-    </ActivitiesExplorerOptionsFilter>
-    <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
-    </ActivitiesExplorerOptionsOrder>
-  </ActivitiesExplorerOptions>
-  <ActivitiesExplorerShowcase>
-    <transition-group name="bounce-fade" appear>
-      <ActivityCard v-for="(activity) in activities" :name="activity.name" :picture="activity.picture" :type="activity.type" :id="activity.id">
-      </ActivityCard>
-    </transition-group>
-  </ActivitiesExplorerShowcase>
+  <ActivitiesExplorer>
+    <template #options>
+      <ActivitiesExplorerOptions>
+        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
+        </ActivitiesExplorerOptionsFilter>
+        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
+        </ActivitiesExplorerOptionsOrder>
+      </ActivitiesExplorerOptions>
+    </template>
+    <template #showcase>
+      <ActivitiesExplorerShowcaseDouble>
+        <template #projects>
+          <ActivitiesExplorerShowcase>
+            <transition-group name="bounce-fade" appear>
+              <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
+                            :type="activity.type" :id="activity.id">
+              </ActivityCard>
+            </transition-group>
+          </ActivitiesExplorerShowcase>
+        </template>
+        <template #services>
+          <ActivitiesExplorerShowcase>
+            <transition-group name="bounce-fade" appear>
+              <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
+                            :type="activity.type" :id="activity.id">
+              </ActivityCard>
+            </transition-group>
+          </ActivitiesExplorerShowcase>
+        </template>
+      </ActivitiesExplorerShowcaseDouble>
+    </template>
+  </ActivitiesExplorer>
 </template>

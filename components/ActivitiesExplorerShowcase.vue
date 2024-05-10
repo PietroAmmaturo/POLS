@@ -16,6 +16,7 @@
   width: 100%;
 }
 .box {
+  flex-grow: 1;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,7 +26,8 @@
   align-items: flex-start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 1em;
+  gap: 0.1em;
   justify-content: space-around;
 }
 </style>
