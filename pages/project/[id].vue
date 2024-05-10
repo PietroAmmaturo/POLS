@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Navbar from "~/components/NavigationBar.vue";
-
 definePageMeta({
   validate: async (route) => {
     // Check if the id is made up of digits
@@ -9,8 +7,9 @@ definePageMeta({
 })
 import { useProjectStore } from '~/stores/projects';
 import ActivityResponsible from "~/components/ActivityResponsible.vue";
-import ProjectsBanner from "~/components/ProjectsBanner.vue";
+import ProjectsBanner from "~/components/ActivitiesBanner.vue";
 import {useBreadcrumbStore} from "~/stores/breadcrumbs";
+import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 const route = useRoute();
 const store = useProjectStore();
 const id = parseInt(route.params.id as string);
@@ -27,7 +26,7 @@ watch(project, (newValue) => breadcrumbStore.updateBreadcrumbs(newValue ? newVal
     <ActivityHeader v-if="project" :title="project.name" :subtitle="project.description" :picture="project.picture" >
     </ActivityHeader>
     <section>
-      <ProjectsBanner ></ProjectsBanner>
+      <ActivitiesBanner align="center" path="/projects" title="PROJECTS" subtitle="Click here for an overview of our initiatives and accomplishments. Dive into a curated selection of our PROJECTS spanning various domains. Click to explore further in the all projects section."></ActivitiesBanner>
     </section>
     <ActivityResponsible>
     </ActivityResponsible>

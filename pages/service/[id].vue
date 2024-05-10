@@ -12,10 +12,10 @@
   import { useTestimonialStore } from '~/stores/testimonials';
 
   import ActivityHeader from '~/components/ActivityHeader.vue';
-  import ServicesBanner from "~/components/ServicesBanner.vue";
   import ActivityResponsible from "~/components/ActivityResponsible.vue";
   import ActivitiesShowcase from '~/components/ActivitiesExplorerShowcase.vue';
   import TestimonialCard from "~/components/TestimonialCard.vue";
+  import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 
   const route = useRoute();
   const id = parseInt(route.params.id as string);
@@ -35,8 +35,7 @@
       <ActivityHeader v-if="service" :title="service.name" :subtitle="service.description" :picture="service.picture">
       </ActivityHeader>
       <section>
-        <ServicesBanner>
-        </ServicesBanner>
+        <ActivitiesBanner align="left" path="/services" title="SERVICES" subtitle="Click here for an overview of our initiatives and accomplishments. Dive into a curated selection of our SERVICES spanning various domains. Click to explore further in the all projects section."></ActivitiesBanner>
       </section>
       <section class="info">
         <h1>Practical Info</h1>
