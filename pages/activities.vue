@@ -21,12 +21,6 @@ const orders = computed( () => [...new Set(projectsOrders.value.filter(value => 
 const projects = projectStore.getProjects(selectedTag, selectedOrder);
 const services = serviceStore.getServices(selectedTag, selectedOrder);
 
-const activities =  computed( () => {
-  const typedServices = services.value ? services.value.map(s => ({...s, type: "service"})) : [];
-  const typedProjects = projects.value ? projects.value.map(p => ({...p, type: "project"})) : [];
-  return orderActivities([...typedServices, ...typedProjects], selectedOrder.value);
-});
-
 function updateTag(tag: string) {
   selectedTag.value = tag;
 }
@@ -54,7 +48,7 @@ function updateOrder(order: string) {
           <ActivitiesExplorerShowcase>
             <transition-group name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
-                            :type="activity.type" :id="activity.id">
+                            type="project" :id="activity.id">
               </ActivityCard>
             </transition-group>
           </ActivitiesExplorerShowcase>
@@ -63,7 +57,7 @@ function updateOrder(order: string) {
           <ActivitiesExplorerShowcase>
             <transition-group name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
-                            :type="activity.type" :id="activity.id">
+                            type="service" :id="activity.id">
               </ActivityCard>
             </transition-group>
           </ActivitiesExplorerShowcase>

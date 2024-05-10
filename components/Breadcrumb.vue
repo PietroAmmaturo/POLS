@@ -27,7 +27,6 @@ const parents = getPages(props.currentAlias);
   --distance: 15px;
   --opacity: 0.4;
   --color: #9e0048;
-  font-size: 16px;
   font-weight: 550;
   display: flex;
   flex-direction: row;

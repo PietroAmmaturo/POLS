@@ -1,25 +1,10 @@
 <script setup lang="ts">
 
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-
 </script>
 
 <template>
 
-  <nuxt-link class="activity-card" v-if="type === 'project'" :to="`/project/${id}`">
-    <div><span>PROJECT</span><font-awesome-icon class="icon" icon="puzzle-piece" /></div>
-    <div class="picture"><img :src="picture" alt="cover" /></div>
-    <h3 class="title">{{name}}</h3>
-  </nuxt-link>
-
-  <nuxt-link class="activity-card" v-else-if="type === 'service'"  :to="`/service/${id}`">
-    <div><span>SERVICE</span><font-awesome-icon class="icon" icon="bell-concierge" /></div>
-    <div class="picture"><img :src="picture" alt="cover" /></div>
-    <h3 class="title">{{name}}</h3>
-  </nuxt-link>
-
-  <nuxt-link class="activity-card" v-else  :to="`/service/${id}`">
-    <div><span></span></div>
+  <nuxt-link class="activity-card" :to="`/${type}/${id}`">
     <div class="picture"><img :src="picture" alt="cover" /></div>
     <h3 class="title">{{name}}</h3>
   </nuxt-link>
@@ -38,7 +23,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
   margin-block: 2em;
-  padding-inline: 1em;
+  padding: 1em;
 }
 
 .activity-card:hover {
@@ -68,19 +53,6 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 .activity-card h3 {
   position: relative;
   text-align: center;
-}
-
-.activity-card div {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  font-size: 1em;
-  align-items: center;
-}
-
-.activity-card div span {
-  min-height: 0.5em;
-  margin: 0.25em;
 }
 </style>
 

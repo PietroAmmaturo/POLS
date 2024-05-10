@@ -34,7 +34,6 @@ header img {
 }
 
 header h1 {
-  font-size: 2em;
   padding: 1em;
   text-align: center;
   margin: 0;
@@ -52,7 +51,6 @@ header h1 {
 p {
   margin: auto;
   margin-top: 1em;
-  font-size: 1.2em;
   text-align: center;
 }
 </style>

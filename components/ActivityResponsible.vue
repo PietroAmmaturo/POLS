@@ -5,12 +5,12 @@ Code snippet
 
 <template>
   <section>
-    <h1>Who is the responsible?</h1>
+    <h2>Who is the responsible?</h2>
     <div class="responsible-content">
-      <img class="responsible-image" src="https://via.placeholder.com/300" alt="Placeholder image" />
+      <img class="responsible-image" src="https://via.placeholder.com/200" alt="Placeholder image" />
       <div class="responsible-info">
-        <h2>Name Surname</h2>
-        <p>Brief descriptive phrase</p>
+        <h3>Name Surname</h3>
+        <p>Brief descriptive or motivational phrase about me</p>
         <span>Know more</span>
       </div>
     </div>
@@ -22,36 +22,28 @@ Code snippet
 .responsible-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
 }
 .responsible-image {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 5px;
 }
 
 .responsible-info {
-  width: 40%;
+  width: fit-content;
   margin: 40px;
 }
 
-h1 {
-  margin-bottom: 10px;
-  font-size: 2em;
-  text-align: center;
-}
-
 h2 {
-  margin-bottom: 5px;
-  font-size: 1.5em;
+  text-align: center;
 }
 
 p {
   margin-bottom: 10px;
-  font-size: 0.9rem;
 }
 
 span {

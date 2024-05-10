@@ -21,13 +21,11 @@ header {
 }
 
 h1 {
-  font-size: 4em;
   margin: auto;
   margin-top: 0.5em;
 }
 
 p {
-  font-size: 1.2em;
   margin: auto;
   margin-top: 0.5em;
 }

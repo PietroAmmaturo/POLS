@@ -6,6 +6,7 @@ html, body, #__nuxt, #__layout{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
+    font-size: 1em;
 }
 
 #__nuxt{
@@ -26,6 +27,15 @@ section {
 a {
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.3em;
 }
 
 .bounce-fade-enter-active {

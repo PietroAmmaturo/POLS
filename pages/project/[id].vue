@@ -20,7 +20,7 @@ const project = store.getProjectById(id);
     <ActivityHeader v-if="project" :title="project.name" :subtitle="project.description" :picture="project.picture" >
     </ActivityHeader>
     <section>
-      <ActivitiesBanner align="center" path="/projects" title="PROJECTS" subtitle="Click here for an overview of our initiatives and accomplishments. Dive into a curated selection of our PROJECTS spanning various domains. Click to explore further in the all projects section."></ActivitiesBanner>
+      <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
     </section>
     <ActivityResponsible>
     </ActivityResponsible>
