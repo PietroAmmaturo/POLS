@@ -31,7 +31,6 @@ body{
   margin: 0;
 }
 h1{
-  font-size: 64px;
   margin: 0;
   width: auto;
   text-align: center;
@@ -57,7 +56,6 @@ h1{
   margin: 0 25px 0 25px;
 }
 form{
-  font-size: 16px;
   color: black;
   display: flex;
   flex-direction: column;

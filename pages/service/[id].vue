@@ -29,16 +29,16 @@
       <ActivityHeader v-if="service" :title="service.name" :subtitle="service.description" :picture="service.picture">
       </ActivityHeader>
       <section>
-        <ActivitiesBanner align="left" path="/services" title="SERVICES" subtitle="Click here for an overview of our initiatives and accomplishments. Dive into a curated selection of our SERVICES spanning various domains. Click to explore further in the all projects section."></ActivitiesBanner>
+        <ActivitiesBanner align="left" path="/services" title="SERVICES"></ActivitiesBanner>
       </section>
       <section class="info">
-        <h1>Practical Info</h1>
+        <h2>Practical Info</h2>
         <p v-if="service">{{service.information}}</p>
       </section>
       <ActivityResponsible>
       </ActivityResponsible>
       <span>
-        <h1>They say of Us...</h1>
+        <h2>They say of Us...</h2>
       </span>
       <ActivitiesShowcase>
         <TestimonialCard v-for="(testimonial, index) in testimonials" :key="index" :author="testimonial.author" :text="testimonial.text">
