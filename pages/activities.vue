@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import {orderActivities} from "~/composables/exploring";
-import {useBreadcrumbStore} from "~/stores/breadcrumbs";
-
-// TODO: move most of this logic either in a store or in composable (enhancement)
 
 const projectStore = useProjectStore()
 const serviceStore = useServiceStore()
@@ -37,29 +34,41 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 
-const breadcrumbStore = useBreadcrumbStore();
-const parents = breadcrumbStore.breadcrumbs;
-const currentPage = "All the activities";
-const currentPath = "/activities";
-breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
-
 </script>
 
 <template>
-  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Activities" subtitle="Our actvities are ...">
   </ActivitiesHeader>
-  <ActivitiesCategories></ActivitiesCategories>
-  <ActivitiesExplorerOptions>
-    <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
-    </ActivitiesExplorerOptionsFilter>
-    <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
-    </ActivitiesExplorerOptionsOrder>
-  </ActivitiesExplorerOptions>
-  <ActivitiesExplorerShowcase>
-    <transition-group name="bounce-fade" appear>
-      <ActivityCard v-for="(activity) in activities" :name="activity.name" :picture="activity.picture" :type="activity.type" :id="activity.id">
-      </ActivityCard>
-    </transition-group>
-  </ActivitiesExplorerShowcase>
+  <ActivitiesExplorer>
+    <template #options>
+      <ActivitiesExplorerOptions>
+        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
+        </ActivitiesExplorerOptionsFilter>
+        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
+        </ActivitiesExplorerOptionsOrder>
+      </ActivitiesExplorerOptions>
+    </template>
+    <template #showcase>
+      <ActivitiesExplorerShowcaseDouble>
+        <template #projects>
+          <ActivitiesExplorerShowcase>
+            <transition-group name="bounce-fade" appear>
+              <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
+                            :type="activity.type" :id="activity.id">
+              </ActivityCard>
+            </transition-group>
+          </ActivitiesExplorerShowcase>
+        </template>
+        <template #services>
+          <ActivitiesExplorerShowcase>
+            <transition-group name="bounce-fade" appear>
+              <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
+                            :type="activity.type" :id="activity.id">
+              </ActivityCard>
+            </transition-group>
+          </ActivitiesExplorerShowcase>
+        </template>
+      </ActivitiesExplorerShowcaseDouble>
+    </template>
+  </ActivitiesExplorer>
 </template>

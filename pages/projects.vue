@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {useProjectStore} from '~/stores/projects';
-import {useBreadcrumbStore} from "~/stores/breadcrumbs";
 
 const store = useProjectStore();
 const tags = store.getProjectsFilters();
@@ -10,11 +9,7 @@ const selectedTag = ref("");
 const selectedOrder = ref("");
 const projects = store.getProjects(selectedTag, selectedOrder);
 
-const breadcrumbStore = useBreadcrumbStore();
-const parents = breadcrumbStore.breadcrumbs;
 const currentPage = "All the projects";
-const currentPath = "/projects";
-breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 
 function updateTag(tag: string) {
   selectedTag.value = tag;
@@ -25,7 +20,7 @@ function updateOrder(order: string) {
 </script>
 
 <template>
-  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
+  <Breadcrumb :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Projects" subtitle="Our projects are ...">
   </ActivitiesHeader>
   <ActivitiesExplorer>

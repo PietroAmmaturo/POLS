@@ -20,7 +20,6 @@
   width: 100%;
 }
 .column {
-  flex: 1 1 0; /* Ensures equal width on all screens */
 }
 h2 {
   flex-grow: 1;

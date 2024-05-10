@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useDogStore} from '~/stores/dogs';
-import {useBreadcrumbStore} from "~/stores/breadcrumbs";
+import {useBreadcrumbStore} from "~/stores/history";
 
 const store = useDogStore()
   const dogs = store.dogs

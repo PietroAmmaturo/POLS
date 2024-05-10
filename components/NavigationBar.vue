@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
-onMounted(() => window.addEventListener("resize", onResize, true))
+onMounted(() => window.addEventListener("resize", onResize, true));
+onMounted(() => window.addEventListener("click", (e) => closeDropDown(e), true));
 function onResize() {
   closeMobileMenu(true);
+  closeMenu();
+}
+function closeDropDown (event: MouseEvent) {
+  const dropdown_button = document.getElementById("dropdown_button");
+  const dropdown_menu = document.getElementById("menu");
+  if(dropdown_menu && dropdown_button){
+    const targetNode = event.target as Node;
+    if(!dropdown_menu.contains(targetNode) && !dropdown_button.contains(targetNode))
+      closeMenu();
+  }
 }
 function openMenu(){
   const menu = document.getElementById("menu");
@@ -57,7 +68,7 @@ function closeMobileMenu(resize: boolean){
   <div class="navigation_bar">
     <div class="navbar_left">
       <div></div>
-      <p class="menu-button" @click="openMenu">Activities <font-awesome-icon id="caret-down" class="icon" icon="caret-down" /><font-awesome-icon style="display: none" id="caret-up" class="icon" icon="caret-up" /></p>
+      <p class="menu-button" id="dropdown_button" @click="openMenu">Activities <font-awesome-icon id="caret-down" class="icon" icon="caret-down" /><font-awesome-icon style="display: none" id="caret-up" class="icon" icon="caret-up" /></p>
       <NuxtLink to="/people"><p>People</p></NuxtLink>
     </div>
     <NuxtLink to="/" id="home"><font-awesome-icon class="icon" icon="house"/></NuxtLink>
@@ -70,9 +81,11 @@ function closeMobileMenu(resize: boolean){
     <font-awesome-icon class="icon" icon="bars" id="mobile_open" @click="openMobileMenu"/>
   </div>
   <div id="menu" class="nav-menu" style="display: none">
-    <NuxtLink to="/projects" @click="closeMenu"><font-awesome-icon class="icon" icon="arrow-right-long" /> All projects</NuxtLink>
-    <NuxtLink to="/services" @click="closeMenu"><font-awesome-icon class="icon" icon="arrow-right-long" /> All services</NuxtLink>
-    <NuxtLink to="/activities" @click="closeMenu"><font-awesome-icon class="icon" icon="arrow-right-long" /> See all activities</NuxtLink>
+    <NuxtLink id="overview" to="/activities" @click="closeMenu">Overview</NuxtLink>
+    <div class="subactivities">
+      <NuxtLink to="/projects"  @click="closeMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the projects</NuxtLink>
+      <NuxtLink to="/services"  @click="closeMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the services</NuxtLink>
+    </div>
   </div>
   <div id="mobile-menu" class="nav-menu" style="display: none">
     <div id="container_close">
@@ -135,11 +148,28 @@ function closeMobileMenu(resize: boolean){
   top: 60px;
   background: #9e9e9e;
   z-index: 10;
-  padding: 30px 20px 30px 20px;
+  padding: 20px 20px 20px 20px;
   font-size: 16px;
   font-weight: bold;
-  gap: 20px;
-  border-radius: 0 0 15px 15px
+  gap: 10px;
+  border-radius: 0 0 15px 15px;
+  align-items: center;
+}
+.subactivities{
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  /*margin-left: 10px;*/
+}
+#overview{
+  font-size: 24px;
+  font-weight: 800;
+}
+.icon-sub{
+  font-size: 10px;
+  margin-bottom: 1px;
 }
 #mobile_open{
  display: none;
