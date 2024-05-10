@@ -1,10 +1,8 @@
 <script setup lang="ts">
   import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-  const currentPage = 'Contact us'
 </script>
 
 <template>
-  <Breadcrumb  :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
   <div class="content">
     <h1>Our contacts</h1>
     <div class="information">

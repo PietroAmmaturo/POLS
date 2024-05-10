@@ -10,12 +10,13 @@ const parents = getPages(props.currentAlias);
 <template>
   <div class="breadcrumb">
     <template v-for="(parent, index) in parents">
-      <div v-if="index !== parents.length - 1" class="parents">
+      <div v-if="index < parents.length - 2" class="parents">
         <NuxtLink v-bind:to="parent.path">{{ parent.page }}</NuxtLink>
-        <font-awesome-icon class="breadcrumb-icon" icon="angles-right"/>
+        <font-awesome-icon class="breadcrumb-icon" icon="angles-left"/>
       </div>
-      <div v-else class="parents">
-          <font-awesome-icon icon="map-pin" />
+      <div v-else-if="index == parents.length - 2" class="current-category">
+        <NuxtLink v-bind:to="parent.path">{{ parent.page }}</NuxtLink>
+        <div class="current-shape"></div>
       </div>
     </template>
   </div>
@@ -24,7 +25,7 @@ const parents = getPages(props.currentAlias);
 <style scoped>
 
 .breadcrumb{
-  --distance: 15px;
+  --distance: 30px;
   --opacity: 0.4;
   --color: #9e0048;
   font-size: 16px;
@@ -32,7 +33,7 @@ const parents = getPages(props.currentAlias);
   display: flex;
   flex-direction: row;
   gap: var(--distance);
-  padding: 10px;
+  padding: 10px 30px 10px 30px;
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -61,7 +62,7 @@ const parents = getPages(props.currentAlias);
   gap: var(--distance);
   opacity: var(--opacity);
 }
-.current-page{
+.current-category{
   color: var(--color);
   font-weight: 700;
   opacity: 1;
@@ -71,15 +72,15 @@ const parents = getPages(props.currentAlias);
   align-items: center;
 }
 .current-shape{
-  width: 105%;
+  width: 75%;
   height: 5px;
   background: var(--color);
   border-radius: 15px;
   transition: width 0.4s ease;
 }
-/*.current-page:hover{
+.current-category:hover{
   .current-shape{
     width: 100%;
   }
-}*/
+}
 </style>
