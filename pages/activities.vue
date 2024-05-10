@@ -25,7 +25,7 @@ const projects = projectStore.getProjects(selectedTag, selectedOrder);
 const services = serviceStore.getServices(selectedTag, selectedOrder);
 
 const activities =  computed( () => {
-  const typedServices = services.value ? services.value.map(s => ({...s, type: "services"})) : [];
+  const typedServices = services.value ? services.value.map(s => ({...s, type: "service"})) : [];
   const typedProjects = projects.value ? projects.value.map(p => ({...p, type: "project"})) : [];
   return orderActivities([...typedServices, ...typedProjects], selectedOrder.value);
 });

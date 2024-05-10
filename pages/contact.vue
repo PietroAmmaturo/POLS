@@ -4,7 +4,6 @@
 </script>
 
 <template>
-  <body>
   <Breadcrumb :current-page="currentPage"></Breadcrumb>
   <div class="content">
     <h1>Our contacts</h1>
@@ -27,7 +26,6 @@
       </form>
     </div>
   </div>
-  </body>
 </template>
 
 <style scoped>
