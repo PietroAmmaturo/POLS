@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { useServiceStore } from '~/stores/services';
-  import {useBreadcrumbStore} from "~/stores/breadcrumbs";
 
   const store = useServiceStore();
   const tags = store.getServicesFilters();
@@ -16,15 +15,11 @@
     selectedOrder.value = order;
   }
 
-  const breadcrumbStore = useBreadcrumbStore();
-  const parents = breadcrumbStore.breadcrumbs;
   const currentPage = "All the services";
-  const currentPath = "/services";
-  breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 </script>
 
 <template>
-  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
+  <Breadcrumb :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Services" subtitle="Our services are ...">
   </ActivitiesHeader>
   <section class="description">

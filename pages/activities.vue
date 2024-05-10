@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import {orderActivities} from "~/composables/exploring";
-import {useBreadcrumbStore} from "~/stores/breadcrumbs";
-
-// TODO: move most of this logic either in a store or in composable (enhancement)
 
 const projectStore = useProjectStore()
 const serviceStore = useServiceStore()
@@ -37,16 +34,9 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 
-const breadcrumbStore = useBreadcrumbStore();
-const parents = breadcrumbStore.breadcrumbs;
-const currentPage = "All the activities";
-const currentPath = "/activities";
-breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
-
 </script>
 
 <template>
-  <Breadcrumb :parents="parents" :current-page="currentPage"></Breadcrumb>
   <ActivitiesHeader title="Activities" subtitle="Our actvities are ...">
   </ActivitiesHeader>
   <ActivitiesCategories></ActivitiesCategories>
