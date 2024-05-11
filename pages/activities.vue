@@ -30,7 +30,6 @@ const services = serviceStore.getServices(selectedTag, selectedOrder);
 
 function updateTag(tag: string) {
   selectedTag.value = tag;
-  route.query.tag = tag;
 }
 function updateOrder(order: string) {
   selectedOrder.value = order;
@@ -41,6 +40,8 @@ onMounted(() => {
   if (projects.value && projects.value.length === 0) projectsFound.value = false;
   if (services.value && services.value.length === 0) servicesFound.value = false;
 })
+watch(projects, newValue => (newValue && newValue.length === 0) ? projectsFound.value = false : null)
+watch(services, newValue => (newValue && newValue.length === 0) ? servicesFound.value = false : null)
 </script>
 
 <template>
