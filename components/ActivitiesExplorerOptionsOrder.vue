@@ -24,5 +24,12 @@ select {
   color: black;
   display: block;
   margin: auto;
+  font-family: 'Montserrat';
+  width: auto;
+  height: auto;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 12px;
+  font-size: 20px;
 }
 </style>
