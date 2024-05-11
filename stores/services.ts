@@ -2,13 +2,7 @@ import {activityOrders} from "~/composables/exploring";
 import {orderActivities} from "~/composables/exploring";
 import {filterActivities} from "~/composables/exploring";
 
-interface Activity {
-  name: string,
-  tags: string[],
-  picture: string,
-  id: number,
-  type: string
-}
+
 export interface Service extends Activity{
   description:string,
   information:string,

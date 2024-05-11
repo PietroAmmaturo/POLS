@@ -1,12 +1,14 @@
 <script setup lang="ts">
 
-const string = "Choose filter";
-const selectedFilter = ref(string);
+const props = defineProps(['filters', 'initialFilter']);
+
+const defaultFilter =  "Choose filter";
+const selectedFilter = ref(props.initialFilter ? props.initialFilter : defaultFilter);
 </script>
 
 <template>
   <select v-model="selectedFilter" @change="$emit('filterSelected', selectedFilter)">
-    <option disabled selected>{{string}}</option>
+    <option disabled selected>{{defaultFilter}}</option>
     <option v-for="filter in filters" :key="filter" :value="filter">{{ filter }}</option>
   </select>
 </template>

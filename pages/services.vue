@@ -4,9 +4,12 @@
   const store = useServiceStore();
   const tags = store.getServicesFilters();
   const orders = store.getServicesOrders();
-  const selectedTag = ref("");
+  const route = useRoute();
+  const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
   const selectedOrder = ref("");
   const services = store.getServices(selectedTag, selectedOrder);
+
+  const currentPage = "All the services";
 
   function updateTag(tag: string) {
     selectedTag.value = tag;
@@ -15,7 +18,10 @@
     selectedOrder.value = order;
   }
 
-  const currentPage = "All the services";
+  const servicesFound = ref(true);
+  onMounted(() => {
+    if (services.value && services.value.length === 0) servicesFound.value = false;
+  })
 </script>
 
 <template>
@@ -42,10 +48,12 @@
     </template>
     <template #showcase>
       <ActivitiesExplorerShowcase>
-        <transition-group name="bounce-fade" appear>
+        <transition-group v-if="services.length"  name="bounce-fade" appear>
           <ActivityCard v-for="(service) in services" type="service" :key="service.name" :name="service.name" :picture="service.picture" :id="service.id">
           </ActivityCard>
           </transition-group>
+        <AppLoader v-else-if="servicesFound"></AppLoader>
+        <p v-else>There are no services with the selected tag.</p>
       </ActivitiesExplorerShowcase>
     </template>
   </ActivitiesExplorer>
