@@ -81,7 +81,7 @@ function closeMobileMenu(resize: boolean){
     <font-awesome-icon class="icon" icon="bars" id="mobile_open" @click="openMobileMenu"/>
   </div>
   <div id="menu" class="nav-menu" style="display: none">
-    <NuxtLink id="overview" to="/activities" @click="closeMenu">Overview</NuxtLink>
+    <NuxtLink id="overview" to="/activities" @click="closeMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> Overview</NuxtLink>
     <div class="subactivities">
       <NuxtLink to="/projects"  @click="closeMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the projects</NuxtLink>
       <NuxtLink to="/services"  @click="closeMenu"><font-awesome-icon class="icon-sub" icon="chevron-right" /> All the services</NuxtLink>
@@ -150,10 +150,10 @@ function closeMobileMenu(resize: boolean){
   z-index: 10;
   padding: 20px 20px 20px 20px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   gap: 10px;
   border-radius: 0 0 15px 15px;
-  align-items: center;
+  align-items: flex-start;
 }
 .subactivities{
   flex-direction: column;
@@ -161,10 +161,10 @@ function closeMobileMenu(resize: boolean){
   gap: 10px;
   align-items: flex-start;
   width: 100%;
-  /*margin-left: 10px;*/
+  margin-left: 10px;
 }
 #overview{
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 800;
 }
 .icon-sub{
