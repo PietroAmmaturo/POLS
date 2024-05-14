@@ -17,6 +17,9 @@ body{
     overflow: auto;
 }
 
+.backgroundColor {
+    background-color: #D9D9D9;
+}
 section {
     width: 80vw;
     margin: auto;

@@ -6,12 +6,10 @@ import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 <template>
   <div class="columns">
     <div class="column">
-      <ActivitiesBanner class="banner" align="right" path="/projects" title="PROJECTS"></ActivitiesBanner>
       <slot name="projects"></slot>
     </div>
     <div></div>
     <div class="column color">
-      <ActivitiesBanner class="banner"  align="left" path="/services" title="SERVICES"></ActivitiesBanner>
       <slot name="services"></slot>
     </div>
   </div>

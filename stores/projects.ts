@@ -1,14 +1,10 @@
-import {activityOrders} from "~/composables/exploring";
+import {type Activity, activityOrders} from "~/composables/exploring";
 import {orderActivities} from "~/composables/exploring";
 import {filterActivities} from "~/composables/exploring";
 
-interface Project {
-    id:number,
-    name:string,
-    picture:string,
+interface Project extends Activity{
     description:string,
     responsible:number,
-    tags: any[]
 }
 
 // store/projectsStore.ts
