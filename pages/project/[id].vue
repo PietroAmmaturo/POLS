@@ -31,8 +31,16 @@ const project = store.getProjectById(id);
       <ActivityTags :tags="project.tags"></ActivityTags>
     </section>
   </div>
+  <div v-else>
+    <span>
+      <h2>No Project Found</h2>
+    </span>
+  </div>
 
 </template>
 
 <style scoped>
+  span {
+    text-align: center;
+  }
 </style>
