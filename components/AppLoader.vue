@@ -14,7 +14,7 @@
 <style scoped>
 .lds-ellipsis {
   /* change color here */
-  color: #1c4c5b
+  color: #9e0048
 }
 .lds-ellipsis,
 .lds-ellipsis div {
