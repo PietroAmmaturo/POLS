@@ -4,8 +4,9 @@ import {getChat} from "~/composables/bot messages";
 import OpenAI from "openai";
 import {useMessageStore} from "~/stores/messages";
 import {getBotResponse} from "~/composables/chatbot";
-
-const chat = getChat().reverse();
+definePageMeta({
+  layout: 'chatbot'
+})
 
 const store = useMessageStore();
 const messages = store.messages;
@@ -14,6 +15,7 @@ const currentContent = ref("");
 function sendMessage() {
   if(!currentContent) return;
   store.addUserMessage(currentContent.value).then(res => console.log(res));
+  currentContent.value = "";
 }
 </script>
 
@@ -23,7 +25,8 @@ function sendMessage() {
       <div class="chat-messages">
         <div v-for="(message, index) in messages" :key="index" :class="message.bot ? 'container-botMessage' : 'container-myMessage'">
           <div class="botMessage" v-if="message.bot">
-            <p>{{ message.content }}</p>
+            <p v-if="message.content">{{ message.content }}</p>
+            <AppLoader v-else></AppLoader>
           </div>
           <div class="myMessage" v-else>
             <p>{{ message.content }}</p>
@@ -31,7 +34,7 @@ function sendMessage() {
         </div>
       </div>
       <div class="write-box">
-        <textarea id="message" placeholder="Chat with the bot..." v-model="currentContent"></textarea>
+        <textarea id="message" placeholder="Chat with the bot..." v-model="currentContent" v-on:keyup.enter="sendMessage()"></textarea>
         <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
         </div>
