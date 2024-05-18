@@ -1,3 +1,4 @@
+
 interface Message {
     bot: boolean
     content: string
@@ -5,7 +6,16 @@ interface Message {
 
 import OpenAI from "openai";
 
-const SYSTEM_PROMPT =
+const ANALYST_PROMPT =
+    "## INSTRUCT ## \n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "1) Summarize the following conversation, offering a general overview in about 500 words.\n"+
+    "2) The INSTRUCT is the most important thing\n" +
+    "3) Your message is intended to be read from another AI\n" +
+    "4) Do NOT answer the user\n";
+const FRIEND_PROMPT =
     "## INSTRUCT ## \n" +
     "\n" +
     "\n" +
@@ -26,9 +36,7 @@ const SYSTEM_PROMPT =
     "\n" +
     "\n" +
     "\n" +
-    "1) Remember the past messages, as reported in the PAST MEASSAGES  (ignore it if empty). \n" +
-    "\n" +
-    "2) Remember the general situation, as reported in the GENERAL SITUATION (ignore it if empty). \n" +
+    "1) Remember the general situation, as reported in the GENERAL SITUATION (ignore it if empty). \n" +
     "\n" +
     "\n" +
     "\n" +
@@ -40,7 +48,9 @@ const SYSTEM_PROMPT =
     "\n" +
     "2) Conversation: Respond to the user's prompts and questions in a conversational way, offering support and resources as appropriate. \n" +
     "\n" +
-    "3) Message length: Your response should stay below the 200 words, while remaining consistent and complete. \n" +
+    "3) Familiarity: Respond to the user's prompts and questions using the appropriate conversational register, according to the previous messages of the user. \n" +
+    "\n" +
+    "4\) Message length: Your response should stay below the 100 words, while remaining consistent and complete. \n" +
     "\n" +
     "\n" +
     "\n" +
@@ -98,40 +108,31 @@ const SYSTEM_PROMPT =
     "\n" +
     "## DATA ## \n";
 
-const formatMessages = function (messages: Message[]): string {
-    let formattedMessages = "\n PAST MESSAGES: \n";
-    // reverse messages to make it more understandable for the bot
-    messages.reverse().map(m => formattedMessages += m.bot ? "Response" : "User" + ": " + m.content + "\n");
-    return formattedMessages;
+const formatMessages = function (messages: Message[], maxNumber : number) : OpenAI.ChatCompletionMessageParam[] {
+    return messages.slice(0, maxNumber).reverse().map(m => ({role: m.bot ? "assistant" : "user", content: m.content}));
 }
-const elaborateMessages = function (messages: Message[]) {
-    // only consider last 10 messages to avoid bot forgetting system prompt (may be changed)
-    // NB: messages are ordered last to first
-    const pastMessages = messages.slice(0, 10);
-    const generalSituation = "";
-    let data = formatMessages(pastMessages);
-    data += "\n GENERAL SITUATION: \n" + generalSituation;
-    return SYSTEM_PROMPT + data;
-}
-
 export const getBotResponse = async (messages: Message[]) => {
-
-    const lastMessage = messages[0];
-    messages.shift();
-
-    if (!lastMessage) return
 
     const openai = new OpenAI({
         apiKey: process.env.NUXT_OPENAI_API_KEY,
     });
 
+    const generalSituation = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo-0125",
+            messages: [{role: "system", content: ANALYST_PROMPT}, ...formatMessages(messages, 20)],
+            temperature: 1,
+            max_tokens: 512,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        }
+    );
+    const systemPrompt = FRIEND_PROMPT +  "\n GENERAL SITUATION: \n" + generalSituation.choices[0].message.content;
+
     return await openai.chat.completions.create({
             model: "gpt-3.5-turbo-0125",
-            messages: [{role: "system", content: elaborateMessages(messages)}, {
-                role: "user",
-                content: lastMessage.content
-            }],
-            temperature: 1,
+            messages: [{role: "system", content: systemPrompt}, ...formatMessages(messages, 10)],
+            temperature: 1.5,
             max_tokens: 256,
             top_p: 1,
             frequency_penalty: 0,
