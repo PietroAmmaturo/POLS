@@ -6,7 +6,7 @@ interface Person {
     description: string
 }
 
-export const usePeopleStore = defineStore('people', () => {
+export const usePersonStore = defineStore('people', () => {
     const supabase = useSupabaseClient();
 
     const people = reactive([] as Person[]);

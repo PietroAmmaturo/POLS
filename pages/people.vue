@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {usePeopleStore} from '~/stores/people';
+import {usePersonStore} from '~/stores/people';
 definePageMeta({
   validate: async (route) => {
     return (!route.query.tag || typeof route.query.tag === 'string');
   }
 })
-const store = usePeopleStore();
+const store = usePersonStore();
 
 const people = store.getPeople();
 

@@ -7,28 +7,27 @@ definePageMeta({
     return typeof route.params.id === 'string' && !Number.isNaN(parseInt(route.params.id));
   }
 })
-import { useProjectStore } from '~/stores/projects';
+import { usePersonStore } from '~/stores/people';
 import ActivityResponsible from "~/components/ActivityResponsible.vue";
 import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 const route = useRoute();
-const store = useProjectStore();
+const store = usePersonStore();
 const id = parseInt(route.params.id as string);
-const project = store.getProjectById(id);
-
+const person = store.getPersonById(id);
 </script>
 
 <template>
-  <div v-if="project" >
-    <Breadcrumb :current-page="project.name" current-alias="Project"></Breadcrumb>
-    <ActivityHeader :title="project.name" :subtitle="project.description" :picture="project.picture" >
+  <div v-if="person" >
+    <Breadcrumb :current-page="person.name" current-alias="Person"></Breadcrumb>
+    <ActivityHeader :title="person.name" :subtitle="person.description" :picture="person.picture" >
     </ActivityHeader>
     <section>
-      <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
+      <ActivitiesBanner align="center" path="/people" title="PEOPLE" ></ActivitiesBanner>
     </section>
     <ActivityResponsible>
     </ActivityResponsible>
     <section>
-      <ActivityTags :tags="project.tags"></ActivityTags>
+      <ActivityTags :tags="person.tags"></ActivityTags>
     </section>
   </div>
 
