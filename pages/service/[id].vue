@@ -19,10 +19,12 @@ definePageMeta({
 
 const route = useRoute();
   const id = parseInt(route.params.id as string);
-  const store = useServiceStore();
-  const service = store.getServiceById(id);
-  const store2 = useTestimonialStore();
-  const testimonials = store2.getTestimonialsByServiceId(id);
+  const serviceStore = useServiceStore();
+  const service = serviceStore.getServiceById(id);
+  const testimonialStore = useTestimonialStore();
+  const testimonials = testimonialStore.getTestimonialsByServiceId(id);
+  const personStore = usePersonStore();
+  const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined); 
 </script>
 
 <template>
@@ -37,7 +39,7 @@ const route = useRoute();
         <h2>Practical Info</h2>
         <p v-if="service">{{service.information}}</p>
       </section>
-      <ActivityResponsible>
+      <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture">
       </ActivityResponsible>
       <span>
         <h2>They say of Us...</h2>
