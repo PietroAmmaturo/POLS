@@ -54,6 +54,11 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
       </ActivitiesExplorerShowcase>
     </section>
   </div>
+  <div v-else>
+    <span>
+      <h2>No Person Found</h2>
+    </span>
+  </div>
 
 </template>
 
@@ -81,5 +86,9 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
   
   .banner {
     width: 100%;
+  }
+
+   span {
+    text-align: center;
   }
 </style>
