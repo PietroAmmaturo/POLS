@@ -1,31 +1,48 @@
 <script setup lang="ts">
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {getChat} from "~/composables/bot messages";
-const chat = getChat().reverse();
+import OpenAI from "openai";
+import {useMessageStore} from "~/stores/messages";
+import {getBotResponse} from "~/composables/chatbot";
+definePageMeta({
+  layout: 'chatbot'
+})
+
+const store = useMessageStore();
+const messages = store.messages;
+
+const currentContent = ref("");
+function sendMessage() {
+  if(!currentContent) return;
+  store.addUserMessage(currentContent.value).then(res => console.log(res));
+  currentContent.value = "";
+}
 </script>
 
 <template>
   <div class="content">
     <div class="chat">
       <div class="chat-messages">
-        <div v-for="(message, index) in chat" :key="index" :class="message.bot ? 'container-botMessage' : 'container-myMessage'">
+        <div v-for="(message, index) in messages" :key="index" :class="message.bot ? 'container-botMessage' : 'container-myMessage'">
           <div class="botMessage" v-if="message.bot">
-            <p>{{ message.message }}</p>
+            <p v-if="message.content">{{ message.content }}</p>
+            <AppLoader v-else></AppLoader>
           </div>
           <div class="myMessage" v-else>
-            <p>{{ message.message }}</p>
+            <p>{{ message.content }}</p>
           </div>
         </div>
       </div>
       <div class="write-box">
-        <textarea id="message" placeholder="Chat with the bot..."></textarea>
-        <div id="send-button">
+        <textarea id="message" placeholder="Chat with the bot..." v-model="currentContent" v-on:keyup.enter="sendMessage()"></textarea>
+        <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .content{

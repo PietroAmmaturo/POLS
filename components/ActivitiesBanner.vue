@@ -18,8 +18,6 @@
   align-items: center;
   width: 100%;
 }
-.column {
-}
 h2 {
   flex-grow: 1;
   text-align: center;

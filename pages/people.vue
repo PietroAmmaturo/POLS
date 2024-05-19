@@ -21,7 +21,7 @@ watch(people, newValue => (newValue && newValue.length === 0) ? peopleFound.valu
 
 <template>
   <Breadcrumb :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
-  <ActivitiesHeader title="Person" subtitle="Our people are ...">
+  <ActivitiesHeader title="People" subtitle="Our people are ...">
   </ActivitiesHeader>
   <ActivitiesExplorer>
     <template  #showcase>

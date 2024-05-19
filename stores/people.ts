@@ -1,6 +1,6 @@
 import { type Project } from "./projects"
 
-interface Person {
+export interface Person {
     id: number,
     name: string,
     picture: string,
@@ -34,11 +34,16 @@ export const usePersonStore = defineStore('people', () => {
         return people.find(person => person.id === personId);
     });
 
+    const getPersonByService = (service: Service) => computed(() => {
+        const personId = service.responsible;
+        return people.find(person => person.id === personId);
+    });
+
     const getPeople = () => computed(() => {
         return people;
     });
 
     init();
 
-    return { people, getPersonById, getPersonByProject, getPeople};
+    return { people, getPersonById, getPersonByProject, getPersonByService, getPeople};
 });
