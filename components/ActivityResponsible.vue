@@ -5,10 +5,10 @@
   <section>
     <h2>Who is the responsible?</h2>
     <div class="responsible-content">
-      <img class="responsible-image" :src="person ? person.picture : 'https://via.placeholder.com/200'" alt="Placeholder image" />
+      <img class="responsible-image" :src="picture ? picture : 'https://via.placeholder.com/200'" alt="Placeholder image" />
       <div class="responsible-info">
-        <h3>{{person ? person.name : "No person responsible"}}</h3>
-        <p>{{person ? person.description : "No description"}}</p>
+        <h3>{{name ? name : "No person responsible"}}</h3>
+        <p>{{description ? description : "No description available"}}</p>
         <span>Know more</span>
       </div>
     </div>
@@ -58,6 +58,6 @@ span:hover {
 
 <script>
 export default {
-  props: ['person']
+  props: ['name', 'description', 'picture']
 }
 </script>

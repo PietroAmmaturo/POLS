@@ -17,7 +17,7 @@ const projectStore = useProjectStore();
 const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
 const project = projectStore.getProjectById(id);
-const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined).value; 
+const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined); 
 
 </script>
 
@@ -29,7 +29,7 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
     <section>
       <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
     </section>
-    <ActivityResponsible :person="person"> 
+    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture"> 
     </ActivityResponsible>
     <section>
       <ActivityTags :tags="project.tags"></ActivityTags>
