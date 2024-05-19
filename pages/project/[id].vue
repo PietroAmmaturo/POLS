@@ -8,12 +8,16 @@ definePageMeta({
   }
 })
 import { useProjectStore } from '~/stores/projects';
+import { usePersonStore } from "~/stores/people";
 import ActivityResponsible from "~/components/ActivityResponsible.vue";
 import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
+
 const route = useRoute();
-const store = useProjectStore();
+const projectStore = useProjectStore();
+const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
-const project = store.getProjectById(id);
+const project = projectStore.getProjectById(id);
+const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined); 
 
 </script>
 
@@ -25,7 +29,7 @@ const project = store.getProjectById(id);
     <section>
       <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
     </section>
-    <ActivityResponsible>
+    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture"> 
     </ActivityResponsible>
     <section>
       <ActivityTags :tags="project.tags"></ActivityTags>
