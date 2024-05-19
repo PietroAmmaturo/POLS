@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import ActivityTags from "~/components/ActivityTags.vue";
 
+import { useProjectStore } from '~/stores/projects';
+import { usePersonStore } from "~/stores/people";
+import ActivityResponsible from "~/components/ActivityResponsible.vue";
+import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
+
+
 definePageMeta({
   validate: async (route) => {
     // Check if the id is made up of digits
     return typeof route.params.id === 'string' && !Number.isNaN(parseInt(route.params.id));
   }
 })
-import { useProjectStore } from '~/stores/projects';
-import { usePersonStore } from "~/stores/people";
-import ActivityResponsible from "~/components/ActivityResponsible.vue";
-import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 
 const route = useRoute();
 const projectStore = useProjectStore();
