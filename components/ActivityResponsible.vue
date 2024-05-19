@@ -1,16 +1,14 @@
-Code snippet
 <script setup lang="ts">
-//TODO: add the logic to connect to the person db
 </script>
 
 <template>
   <section>
     <h2>Who is the responsible?</h2>
     <div class="responsible-content">
-      <img class="responsible-image" src="https://via.placeholder.com/200" alt="Placeholder image" />
+      <img class="responsible-image" :src="picture ? picture : 'https://via.placeholder.com/200'" alt="Placeholder image" />
       <div class="responsible-info">
-        <h3>Name Surname</h3>
-        <p>Brief descriptive or motivational phrase about me</p>
+        <h3>{{name ? name : "No person responsible"}}</h3>
+        <p>{{description ? description : "No description available"}}</p>
         <span>Know more</span>
       </div>
     </div>
@@ -57,3 +55,9 @@ span:hover {
   background-color: #ccc;
 }
 </style>
+
+<script>
+export default {
+  props: ['name', 'description', 'picture']
+}
+</script>

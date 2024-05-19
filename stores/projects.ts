@@ -2,7 +2,7 @@ import {type Activity, activityOrders} from "~/composables/exploring";
 import {orderActivities} from "~/composables/exploring";
 import {filterActivities} from "~/composables/exploring";
 
-interface Project extends Activity{
+export interface Project extends Activity{
     description:string,
     responsible:number,
 }
