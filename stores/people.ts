@@ -1,6 +1,6 @@
 import { type Project } from "./projects"
 
-interface Person {
+export interface Person {
     id: number,
     name: string,
     picture: string,

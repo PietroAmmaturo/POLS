@@ -14,9 +14,9 @@ const store = usePersonStore();
 const projectStore = useProjectStore();
 const serviceStore = useServiceStore();
 const id = parseInt(route.params.id as string);
-const person = store.getPersonById(id);
-const projects = projectStore.projects.filter((project: Project) => project.responsible === id);
-const services = serviceStore.services.filter((service: Service) => service.responsible === id);
+const person = store.getPersonById(id); 
+const projects = projectStore.getProjectsByPerson(id)
+const services = serviceStore.getServicesByPerson(id)
 
 const projectsFound = ref(true);
 const servicesFound = ref(true);
@@ -29,8 +29,6 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
     <Breadcrumb :current-page="person.name" current-alias="Person"></Breadcrumb>
     <ActivityHeader :title="person.name" :subtitle="person.description" :picture="person.picture" >
     </ActivityHeader>
-    <p>{{projects}}</p>
-    <p>{{services}}</p>
     <section>
       <ActivitiesBanner class="banner" align="right" :path="'/projects?tag='+selectedTag" title="PROJECTS"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>

@@ -40,11 +40,16 @@ export const useServiceStore = defineStore('services', () => {
     return orderActivities(filterActivities(services, filter.value), order.value);
   });
 
+  const getServicesByPerson = (filter: number) => computed (() => {
+    if (!filter) return services;
+    return services.filter(service => service.responsible==filter);
+  });
+
   const getServicesFilters = () => computed(() => Array.from(new Set(services.flatMap(service => service.tags))));
 
   const getServicesOrders = () => computed(() => activityOrders);
 
   init();
 
-  return { services, getServiceById, getServices, getServicesFilters, getServicesOrders };
+  return { services, getServiceById, getServices, getServicesFilters, getServicesOrders, getServicesByPerson};
 });

@@ -36,11 +36,16 @@ export const useProjectStore = defineStore('projects', () => {
         return orderActivities(filterActivities(projects, filter.value), order.value);
     });
 
+    const getProjectsByPerson = (filter: number) => computed (() => {
+        if (!filter) return projects;
+        return projects.filter(project => project.responsible==filter);
+    });
+
     const getProjectsFilters = () => computed(() => Array.from(new Set(projects.flatMap(project => project.tags))));
 
     const getProjectsOrders = () => computed(() => activityOrders);
 
     init();
 
-    return { projects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders };
+    return { projects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders , getProjectsByPerson};
 });
