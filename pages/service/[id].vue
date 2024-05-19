@@ -52,6 +52,11 @@ const route = useRoute();
       <ActivityTags :tags="service.tags"></ActivityTags>
     </section>
   </div>
+  <div v-else>
+    <span>
+      <h2>No Service Found</h2>
+    </span>
+  </div>
 </template>
 
 <style scoped>
