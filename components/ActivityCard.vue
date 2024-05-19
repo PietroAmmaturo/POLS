@@ -37,7 +37,7 @@
 }
 .activity-card .picture img {
   width: 100%;
-  height: auto;
+  height: 200px;
   position: relative;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
