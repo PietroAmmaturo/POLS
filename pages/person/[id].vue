@@ -34,9 +34,8 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 
 const personFound = ref(true);
 onMounted(() => {
-  if (person.value) personFound.value = false;
+  if (!person.value) personFound.value = false;
 })
-watch(person, newValue => (newValue) ? personFound.value = false : null)
 </script>
 
 <template>

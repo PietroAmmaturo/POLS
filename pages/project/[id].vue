@@ -23,9 +23,8 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
 
 const projectFound = ref(true);
 onMounted(() => {
-  if (project.value) projectFound.value = false;
+  if (!project.value) projectFound.value = false;
 })
-watch(project, newValue => (newValue) ? projectFound.value = false : null)
 </script>
 
 <template>
@@ -36,7 +35,7 @@ watch(project, newValue => (newValue) ? projectFound.value = false : null)
     <section>
       <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
     </section>
-    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id"> 
+    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">
     </ActivityResponsible>
     <section>
       <ActivityTags :tags="project.tags"></ActivityTags>
@@ -48,6 +47,14 @@ watch(project, newValue => (newValue) ? projectFound.value = false : null)
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  loading: {
+    color: 'blue',
+    height: '5px'
+  }
+}
+</script>
 <style scoped>
   .placeholder {
     margin: auto;

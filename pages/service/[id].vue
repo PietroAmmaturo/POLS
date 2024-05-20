@@ -28,9 +28,8 @@ const route = useRoute();
 
 const serviceFound = ref(true);
 onMounted(() => {
-  if (service.value) serviceFound.value = false;
+  if (!service.value) serviceFound.value = false;
 })
-watch(service, newValue => (newValue) ? serviceFound.value = false : null)
 </script>
 
 <template>

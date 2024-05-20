@@ -40,8 +40,6 @@ onMounted(() => {
   if (projects.value && projects.value.length === 0) projectsFound.value = false;
   if (services.value && services.value.length === 0) servicesFound.value = false;
 })
-watch(projects, newValue => (newValue && newValue.length === 0) ? projectsFound.value = false : null)
-watch(services, newValue => (newValue && newValue.length === 0) ? servicesFound.value = false : null)
 </script>
 
 <template>

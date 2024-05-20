@@ -27,7 +27,6 @@ const projectsFound = ref(true);
 onMounted(() => {
   if (projects.value && projects.value.length === 0) projectsFound.value = false;
 })
-watch(projects, newValue => (newValue && newValue.length === 0) ? projectsFound.value = false : null)
 </script>
 
 <template>
