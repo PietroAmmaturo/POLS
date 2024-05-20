@@ -19,8 +19,13 @@ const projectStore = useProjectStore();
 const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
 const project = projectStore.getProjectById(id);
-const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined); 
+const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined);
 
+const projectFound = ref(true);
+onMounted(() => {
+  if (project.value) projectFound.value = false;
+})
+watch(project, newValue => (newValue) ? projectFound.value = false : null)
 </script>
 
 <template>
@@ -37,16 +42,15 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
       <ActivityTags :tags="project.tags"></ActivityTags>
     </section>
   </div>
-  <div v-else>
-    <span>
-      <h2>No Project Found</h2>
-    </span>
+  <div v-else class="placeholder">
+    <AppLoader v-if="projectFound"></AppLoader>
+    <p v-else>There are no projects with the selected tag.</p>
   </div>
-
 </template>
 
 <style scoped>
-  span {
-    text-align: center;
+  .placeholder {
+    margin: auto;
+    width: fit-content;
   }
 </style>

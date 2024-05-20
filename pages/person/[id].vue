@@ -32,6 +32,11 @@ watch(services, newValue => (newValue && newValue.length === 0) ? servicesFound.
 
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 
+const personFound = ref(true);
+onMounted(() => {
+  if (person.value) personFound.value = false;
+})
+watch(person, newValue => (newValue) ? personFound.value = false : null)
 </script>
 
 <template>
@@ -64,15 +69,18 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
       </ActivitiesExplorerShowcase>
     </section>
   </div>
-  <div v-else>
-    <span>
-      <h2>No Person Found</h2>
-    </span>
+  <div v-else class="placeholder">
+    <AppLoader v-if="personFound"></AppLoader>
+    <p v-else>There are no projects with the selected tag.</p>
   </div>
 
 </template>
 
 <style scoped>
+.placeholder {
+  margin: auto;
+  width: fit-content;
+}
   .title {
     display: flex;
     justify-content: center;
