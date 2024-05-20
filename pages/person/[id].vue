@@ -19,7 +19,17 @@ const projects = projectStore.getProjectsByPerson(id)
 const services = serviceStore.getServicesByPerson(id)
 
 const projectsFound = ref(true);
+onMounted(() => {
+  if (projects.value && projects.value.length === 0) projectsFound.value = false;
+})
+watch(projects, newValue => (newValue && newValue.length === 0) ? projectsFound.value = false : null)
+
 const servicesFound = ref(true);
+onMounted(() => {
+    if (services.value && services.value.length === 0) servicesFound.value = false;
+})
+watch(services, newValue => (newValue && newValue.length === 0) ? servicesFound.value = false : null)
+
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 
 </script>

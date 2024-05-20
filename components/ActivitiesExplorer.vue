@@ -1,7 +1,5 @@
 <template>
-  <section>
-    <slot name="options"></slot>
-  </section>
+  <slot name="options"></slot>
   <slot name="showcase"></slot>
 </template>
 

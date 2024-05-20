@@ -7,9 +7,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import { fas, faPuzzlePiece, faBellConcierge, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter, faFacebook, faInstagram, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
-library.add(fas, faTwitter, faFontAwesome, faPuzzlePiece, faBellConcierge, faPlus, faMinus)
+library.add(fas, faTwitter, faFacebook, faInstagram, faFontAwesome, faPuzzlePiece, faBellConcierge, faPlus, faMinus)
 
 // The following import prevents a Font Awesome icon server-side rendering bug,
 // where the icons flash from a very large icon down to a properly sized one:

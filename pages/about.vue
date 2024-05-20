@@ -29,6 +29,7 @@ h1{
   margin: 0;
   width: auto;
   text-align: center;
+  padding-top: 10vh;
 }
 
 #group_img {
