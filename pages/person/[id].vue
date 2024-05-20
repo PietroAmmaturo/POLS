@@ -53,7 +53,7 @@ watch(person, newValue => (newValue) ? personFound.value = false : null)
               </ActivityCardSmall>
             </transition-group>
             <AppLoader v-else-if="projectsFound"></AppLoader>
-            <p v-else>There are no projects with the selected tag.</p>
+            <p v-else>{{person.name}} is not responsible for any project.</p>
           </ActivitiesExplorerShowcase>
     </section>
     <section>
@@ -65,13 +65,13 @@ watch(person, newValue => (newValue) ? personFound.value = false : null)
           </ActivityCardSmall>
         </transition-group>
         <AppLoader v-else-if="servicesFound"></AppLoader>
-        <p v-else>There are no services with the selected tag.</p>
+        <p v-else>{{person.name}} is not responsible for any service.</p>
       </ActivitiesExplorerShowcase>
     </section>
   </div>
   <div v-else class="placeholder">
     <AppLoader v-if="personFound"></AppLoader>
-    <p v-else>There are no projects with the selected tag.</p>
+    <p v-else>Person not found.</p>
   </div>
 
 </template>

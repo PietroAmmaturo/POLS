@@ -60,7 +60,7 @@ watch(service, newValue => (newValue) ? serviceFound.value = false : null)
   </div>
   <div v-else class="placeholder">
     <AppLoader v-if="serviceFound"></AppLoader>
-    <p v-else>There are no projects with the selected tag.</p>
+    <p v-else>Service ot found.</p>
   </div>
 </template>
 

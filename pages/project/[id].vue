@@ -44,7 +44,7 @@ watch(project, newValue => (newValue) ? projectFound.value = false : null)
   </div>
   <div v-else class="placeholder">
     <AppLoader v-if="projectFound"></AppLoader>
-    <p v-else>There are no projects with the selected tag.</p>
+    <p v-else>Project not found.</p>
   </div>
 </template>
 
