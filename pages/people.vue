@@ -16,7 +16,6 @@ const peopleFound = ref(true);
 onMounted(() => {
   if (people.value && people.value.length === 0) peopleFound.value = false;
 })
-watch(people, newValue => (newValue && newValue.length === 0) ? peopleFound.value = false : null)
 </script>
 
 <template>

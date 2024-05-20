@@ -24,7 +24,12 @@ const route = useRoute();
   const testimonialStore = useTestimonialStore();
   const testimonials = testimonialStore.getTestimonialsByServiceId(id);
   const personStore = usePersonStore();
-  const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined); 
+  const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined);
+
+const serviceFound = ref(true);
+onMounted(() => {
+  if (!service.value) serviceFound.value = false;
+})
 </script>
 
 <template>
@@ -52,15 +57,18 @@ const route = useRoute();
       <ActivityTags :tags="service.tags"></ActivityTags>
     </section>
   </div>
-  <div v-else>
-    <span>
-      <h2>No Service Found</h2>
-    </span>
+  <div v-else class="placeholder">
+    <AppLoader v-if="serviceFound"></AppLoader>
+    <p v-else>Service ot found.</p>
   </div>
 </template>
 
 <style scoped>
   .info, span {
     text-align: center;
+  }
+  .placeholder {
+    margin: auto;
+    width: fit-content;
   }
 </style>

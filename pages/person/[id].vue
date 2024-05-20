@@ -32,6 +32,10 @@ watch(services, newValue => (newValue && newValue.length === 0) ? servicesFound.
 
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 
+const personFound = ref(true);
+onMounted(() => {
+  if (!person.value) personFound.value = false;
+})
 </script>
 
 <template>
@@ -48,7 +52,7 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
               </ActivityCardSmall>
             </transition-group>
             <AppLoader v-else-if="projectsFound"></AppLoader>
-            <p v-else>There are no projects with the selected tag.</p>
+            <p v-else>{{person.name}} is not responsible for any project.</p>
           </ActivitiesExplorerShowcase>
     </section>
     <section>
@@ -60,19 +64,22 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
           </ActivityCardSmall>
         </transition-group>
         <AppLoader v-else-if="servicesFound"></AppLoader>
-        <p v-else>There are no services with the selected tag.</p>
+        <p v-else>{{person.name}} is not responsible for any service.</p>
       </ActivitiesExplorerShowcase>
     </section>
   </div>
-  <div v-else>
-    <span>
-      <h2>No Person Found</h2>
-    </span>
+  <div v-else class="placeholder">
+    <AppLoader v-if="personFound"></AppLoader>
+    <p v-else>Person not found.</p>
   </div>
 
 </template>
 
 <style scoped>
+.placeholder {
+  margin: auto;
+  width: fit-content;
+}
   .title {
     display: flex;
     justify-content: center;

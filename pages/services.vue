@@ -22,7 +22,6 @@
   onMounted(() => {
     if (services.value && services.value.length === 0) servicesFound.value = false;
   })
-  watch(services, newValue => (newValue && newValue.length === 0) ? servicesFound.value = false : null)
 </script>
 
 <template>

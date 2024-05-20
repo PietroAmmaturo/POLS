@@ -19,8 +19,12 @@ const projectStore = useProjectStore();
 const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
 const project = projectStore.getProjectById(id);
-const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined); 
+const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined);
 
+const projectFound = ref(true);
+onMounted(() => {
+  if (!project.value) projectFound.value = false;
+})
 </script>
 
 <template>
@@ -31,22 +35,29 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
     <section>
       <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
     </section>
-    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id"> 
+    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">
     </ActivityResponsible>
     <section>
       <ActivityTags :tags="project.tags"></ActivityTags>
     </section>
   </div>
-  <div v-else>
-    <span>
-      <h2>No Project Found</h2>
-    </span>
+  <div v-else class="placeholder">
+    <AppLoader v-if="projectFound"></AppLoader>
+    <p v-else>Project not found.</p>
   </div>
-
 </template>
 
+<script lang="ts">
+export default {
+  loading: {
+    color: 'blue',
+    height: '5px'
+  }
+}
+</script>
 <style scoped>
-  span {
-    text-align: center;
+  .placeholder {
+    margin: auto;
+    width: fit-content;
   }
 </style>
