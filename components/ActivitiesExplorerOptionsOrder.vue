@@ -25,7 +25,7 @@ select {
   display: block;
   margin: auto;
   font-family: 'Montserrat';
-  width: auto;
+  width: 190px;
   height: auto;
   padding: 5px;
   border: 2px solid black;

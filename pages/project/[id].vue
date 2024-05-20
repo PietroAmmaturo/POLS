@@ -31,7 +31,7 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
     <section>
       <ActivitiesBanner align="center" path="/projects" title="PROJECTS" ></ActivitiesBanner>
     </section>
-    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture"> 
+    <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id"> 
     </ActivityResponsible>
     <section>
       <ActivityTags :tags="project.tags"></ActivityTags>

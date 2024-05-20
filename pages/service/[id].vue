@@ -39,7 +39,7 @@ const route = useRoute();
         <h2>Practical Info</h2>
         <p v-if="service">{{service.information}}</p>
       </section>
-      <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture">
+      <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">
       </ActivityResponsible>
       <span>
         <h2>They say of Us...</h2>

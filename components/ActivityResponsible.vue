@@ -9,7 +9,7 @@
       <div class="responsible-info">
         <h3>{{name ? name : "No person responsible"}}</h3>
         <p>{{description ? description : "No description available"}}</p>
-        <span>Know more</span>
+        <NuxtLink :to="`/${type}/${id}`"><span>Know more</span></NuxtLink>
       </div>
     </div>
   </section>
@@ -58,6 +58,6 @@ span:hover {
 
 <script>
 export default {
-  props: ['name', 'description', 'picture']
+  props: ['name', 'description', 'picture', 'type', 'id']
 }
 </script>
