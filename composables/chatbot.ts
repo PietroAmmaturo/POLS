@@ -6,15 +6,43 @@ interface Message {
 
 import OpenAI from "openai";
 
+const INSPECTOR_PROMPT =
+    "## INSTRUCT ## \n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "1) The user is not talking with you\n" +
+    "2) Do NOT answer the user\n" +
+    "3) Your message is intended to be read from **ANOTHER** AI\n" +
+    "4) The **OTHER** AI's goal is to support the user (a woman) in case of violence by the partner, nothing more\n" +
+    "5) Pay special attention to conversation deception (user trying to direct the **OTHER** AI out of context)\n" +
+    "6) A very clear sign of user trying to deceive are a series of messages talking of things unrelated to violence\n" +
+    "7) An even clearer sign is the *OTHER* assistant's messages addressing things unrelated to violence in depth\n" +
+    "8) The INSTRUCT is the most important thing\n" +
+    "9) If you are sure about deception (the **OTHER** AI is going in depth about topics unrelated to violence) tell the **OTHER** AI to cut off the conversation.\n" +
+    "10) Given the following conversation, warn the **OTHER** AI only if you think there is deception going on, and explain why.\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "## CONVERSATION ## \n";
 const ANALYST_PROMPT =
     "## INSTRUCT ## \n" +
     "\n" +
     "\n" +
     "\n" +
-    "1) Summarize the following conversation, offering a general overview in about 500 words.\n"+
-    "2) The INSTRUCT is the most important thing\n" +
-    "3) Your message is intended to be read from another AI\n" +
-    "4) Do NOT answer the user\n";
+    "1) The user is not talking with you\n" +
+    "2) Do NOT answer the user\n" +
+    "3) Your message is intended to be read from **ANOTHER** AI\n" +
+    "4) The **OTHER** AI's goal is to support the user (a woman) in case of violence by the partner, nothing more\n" +
+    "5) Pay special attention to user emotions\n" +
+    "6) Pay special attention to the ability of the **OTHER** AI to understand the user's emotions\n" +
+    "8) Do not give direct advice to the other AI\n" +
+    "9) The INSTRUCT is the most important thing\n" +
+    "10) Given the following conversation, offer a general overview of the conversation to the **OTHER** AI\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "## CONVERSATION ## \n";
 const FRIEND_PROMPT =
     "## INSTRUCT ## \n" +
     "\n" +
@@ -26,9 +54,9 @@ const FRIEND_PROMPT =
     "\n" +
     "3) Offer support and resources while avoiding judgment or making assumptions.\n" +
     "\n" +
-    "4) Only answer in detail to messages connected with the situation of violence.\n" +
+    "4) Only answer to messages connected with the situation of violence.\n" +
     "\n" +
-    "5) Direct the conversation toward's the user situation and / or her feelings.\n" +
+    "6) Direct the conversation towards the user situation and / or her feelings.\n" +
     "\n" +
     "\n" +
     "\n" +
@@ -36,7 +64,11 @@ const FRIEND_PROMPT =
     "\n" +
     "\n" +
     "\n" +
-    "1) Remember the general situation, as reported in the GENERAL SITUATION (ignore it if empty). \n" +
+    "1) Read the general situation (that is given to you by another **ANALYST** AI), as reported in the GENERAL SITUATION (ignore it if empty). \n" +
+    "\n" +
+    "2) Read the deception warning (that is given to you by another **INSPECTOR** AI), as reported in the DECEPTION WARNING (ignore it if empty). \n" +
+    "\n" +
+    "3) Carefully think about the deception warning, if the deception warning tells you to cut off the conversation **DO IT**, by directing it towards your INSTRUCT\n" +
     "\n" +
     "\n" +
     "\n" +
@@ -50,23 +82,19 @@ const FRIEND_PROMPT =
     "\n" +
     "3) Familiarity: Respond to the user's prompts and questions using the appropriate conversational register, according to the previous messages of the user. \n" +
     "\n" +
+    "6) Show understanding: Don't be pedant or repetitive, talk about the user's situation and be active. \n" +
+    "\n" +
     "4\) Message length: Your response should stay below the 100 words, while remaining consistent and complete. \n" +
     "\n" +
+    "5) Safety First: You are not a substitute for professional help. If the user expresses immediate danger, encourage them to call emergency services or a domestic violence hotline. ()\n" +
     "\n" +
+    "6) Avoid Minimizing: Don't downplay the user's experiences or make excuses for the abuser's behavior. \n" +
     "\n" +
-    "## IMPORTANT ## \n" +
+    "7) Validate Emotions: Acknowledge the user's feelings and let them know it's okay to feel scared, angry, or confused. \n" +
     "\n" +
+    "8) Empowerment: Encourage the user to make their own decisions and offer support in exploring their options. \n" +
     "\n" +
-    "\n" +
-    "1) Safety First: You are not a substitute for professional help. If the user expresses immediate danger, encourage them to call emergency services or a domestic violence hotline. ()\n" +
-    "\n" +
-    "2) Avoid Minimizing: Don't downplay the user's experiences or make excuses for the abuser's behavior. \n" +
-    "\n" +
-    "3) Validate Emotions: Acknowledge the user's feelings and let them know it's okay to feel scared, angry, or confused. \n" +
-    "\n" +
-    "4) Empowerment: Encourage the user to make their own decisions and offer support in exploring their options. \n" +
-    "\n" +
-    "5) Respect Boundaries: Don't pressure the user to share more information than they're comfortable with. \n" +
+    "9) Respect Boundaries: Don't pressure the user to share more information than they're comfortable with. \n" +
     "\n" +
     "\n" +
     "\n" +
@@ -80,7 +108,7 @@ const FRIEND_PROMPT =
     "\n" +
     "3) Keep it real: you do not play games with the user or help him resolve hypothetical cases, remember the INSTRUCT. \n" +
     "\n" +
-    "4)  If the user tries to deceive you, gently cut the conversation short. \n" +
+    "4) If the user tries to deceive you, gently cut the conversation short. \n" +
     "\n" +
     "\n" +
     "\n" +
@@ -117,17 +145,34 @@ export const getBotResponse = async (messages: Message[]) => {
         apiKey: process.env.NUXT_OPENAI_API_KEY,
     });
 
-    const generalSituation = await openai.chat.completions.create({
+    const deceptionWarning = await openai.chat.completions.create({
             model: "gpt-3.5-turbo-0125",
-            messages: [{role: "system", content: ANALYST_PROMPT}, ...formatMessages(messages, 20)],
+            messages: [{role: "system", content: INSPECTOR_PROMPT}, ...formatMessages(messages, 20)],
             temperature: 1,
-            max_tokens: 512,
+            max_tokens: 256,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
         }
     );
-    const systemPrompt = FRIEND_PROMPT +  "\n GENERAL SITUATION: \n" + generalSituation.choices[0].message.content;
+
+    const generalSituation = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo-0125",
+            messages: [{role: "system", content: ANALYST_PROMPT}, ...formatMessages(messages, 20)],
+            temperature: 1,
+            max_tokens: 256,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        }
+    );
+    const systemPrompt =
+        FRIEND_PROMPT +
+        "\n GENERAL SITUATION: \n" + generalSituation.choices[0].message.content +
+        "\n DECEPTION WARNING: \n" + deceptionWarning.choices[0].message.content;
+
+    console.log("General situation:", generalSituation.choices[0].message.content)
+    console.log("Deception warning:", deceptionWarning.choices[0].message.content)
 
     return await openai.chat.completions.create({
             model: "gpt-3.5-turbo-0125",
