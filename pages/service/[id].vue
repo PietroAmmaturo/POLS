@@ -59,7 +59,7 @@ onMounted(() => {
   </div>
   <div v-else class="placeholder">
     <AppLoader v-if="serviceFound"></AppLoader>
-    <p v-else>Service ot found.</p>
+    <p v-else><h2>Service not found.</h2></p>
   </div>
 </template>
 
@@ -70,5 +70,9 @@ onMounted(() => {
   .placeholder {
     margin: auto;
     width: fit-content;
+    height: calc(100% - 300px);
+  }
+  .placeholder > p {
+    margin-top: 20;
   }
 </style>
