@@ -9,8 +9,6 @@ export interface Person {
 }
 
 export const usePersonStore = defineStore('people', () => {
-    const supabase = useSupabaseClient();
-
     const people = reactive([] as Person[]);
 
     async function init() {

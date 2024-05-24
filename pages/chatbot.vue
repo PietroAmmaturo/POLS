@@ -3,7 +3,6 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {getChat} from "~/composables/bot messages";
 import OpenAI from "openai";
 import {useMessageStore} from "~/stores/messages";
-import {getBotResponse} from "~/composables/chatbot";
 definePageMeta({
   layout: 'chatbot'
 })

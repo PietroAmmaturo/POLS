@@ -1,5 +1,4 @@
 import {useAsyncData} from "#app";
-import {getBotResponse} from "~/composables/chatbot";
 
 interface Message {
     bot: boolean
