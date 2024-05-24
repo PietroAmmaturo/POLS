@@ -43,7 +43,7 @@ onMounted(() => {
   </div>
   <div v-else class="placeholder">
     <AppLoader v-if="projectFound"></AppLoader>
-    <p v-else>Project not found.</p>
+    <p v-else><h2>Project not found.</h2></p>
   </div>
 </template>
 
@@ -59,5 +59,9 @@ export default {
   .placeholder {
     margin: auto;
     width: fit-content;
+    height: calc(100% - 300px);
+  }
+  .placeholder > p {
+    margin-top: 20;
   }
 </style>
