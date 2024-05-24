@@ -39,8 +39,8 @@ onMounted(() => {
 </script>
 
 <template>
+  <Breadcrumb current-alias="Person"></Breadcrumb>
   <div v-if="person" >
-    <Breadcrumb :current-page="person.name" current-alias="Person"></Breadcrumb>
     <ActivityHeader :title="person.name" :subtitle="person.description" :picture="person.picture" >
     </ActivityHeader>
     <section>
