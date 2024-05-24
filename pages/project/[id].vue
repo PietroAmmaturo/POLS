@@ -13,6 +13,12 @@ definePageMeta({
     return typeof route.params.id === 'string' && !Number.isNaN(parseInt(route.params.id));
   }
 })
+const loading = ref(true);
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false;
+  }, 300);
+});
 
 const route = useRoute();
 const projectStore = useProjectStore();
@@ -20,11 +26,6 @@ const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
 const project = projectStore.getProjectById(id);
 const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined);
-
-const projectFound = ref(true);
-onMounted(() => {
-  if (!project.value) projectFound.value = false;
-})
 </script>
 
 <template>
@@ -42,8 +43,7 @@ onMounted(() => {
     </section>
   </div>
   <div v-else class="placeholder">
-    <AppLoader v-if="projectFound"></AppLoader>
-    <p v-else><h2>Project not found.</h2></p>
+    <p><h2>Project not found.</h2></p>
   </div>
 </template>
 

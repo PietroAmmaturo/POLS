@@ -1,16 +1,18 @@
 <script setup lang="ts">
-
+defineProps(['title', 'picture', 'type']);
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 </script>
 
 <template>
   <header>
     <div>
-      <h1>{{title}}</h1>
+      <div class="title">
+        <h1>{{title}}</h1>
+        <h2 v-if="type == 'project'"><font-awesome-icon class="icon" icon="hand-holding-heart" /> One of our projects</h2>
+        <h2 v-if="type == 'service'"><font-awesome-icon class="icon" icon="hand-holding-heart" /> One of our services</h2>
+      </div>
       <img :src="picture" alt="cover" />
     </div>
-    <section>
-      <p>{{subtitle}}</p>
-    </section>
   </header>
 </template>
 
@@ -19,44 +21,41 @@
 header {
   position: relative;
   width: 100%;
-  color: black;
+  color: var(--black);
   margin: 0;
 }
 
 header div {
   width: 100%;
   height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--shadow);
+  z-index: 1;
 }
 header img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 0;
 }
+.title{
+  position: absolute;
+  z-index: 2;
 
+}
 header h1 {
-  padding: 1em;
   text-align: center;
   margin: 0;
-  box-sizing: border-box;
-  width: fit-content;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  height: 4em;
-  bottom: 0;
-  background: linear-gradient(transparent, rgba(255, 255, 255, 0.6));
+  color: var(--white);
+  filter: drop-shadow(var(--accent) 0 0 10px);
+  font-size: 5vw;
 }
-
-p {
-  margin: auto;
-  margin-top: 1em;
-  text-align: center;
+header h2{
+  margin: 0;
+  color: var(--light);
+  filter: drop-shadow(var(--black) 0 0 10px);
 }
 </style>
-
-<script>
-export default {
-  props: ['title', 'subtitle', 'picture']
-}
-</script>

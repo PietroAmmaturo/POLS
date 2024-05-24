@@ -5,7 +5,7 @@ export interface Activity {
     id: number,
     type: string
 }
-export const activityOrders = ["name(asc)", "name(desc)"];
+export const activityOrders = ["Name (Asc)", "Name(Desc)"];
 export const orderActivities = (activities: Activity[], order: string) => {
     switch (order) {
         case activityOrders[0]:

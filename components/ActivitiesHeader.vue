@@ -10,24 +10,32 @@
 </template>
 
 <style scoped>
-/* Header styles */
 header {
   width: 100%;
-  justify-content: left;
-  color: black;
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  padding-top: 10vh;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  gap: 60px;
 }
 
 h1 {
-  margin: auto;
-  margin-top: 0.5em;
+  margin: 0;
+  width: auto;
+  text-align: center;
 }
 
 p {
-  margin: auto;
-  margin-top: 0.5em;
+  width: 50%;
+  text-align: justify;
+  white-space: pre-wrap;
+}
+@media screen and (max-width: 950px){
+  p{
+    width: 75%;
+  }
 }
 </style>
 

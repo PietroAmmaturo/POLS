@@ -14,15 +14,10 @@ export const useTestimonialStore = defineStore('testimonials', () => {
 
   async function init() {
     try {
-      const { data, error } = await supabase.from('Testimonial').select('*');
-      if (error) {
-        throw error;
-      }
-      if (data) {
-        testimonials.splice(0, testimonials.length, ...data);
-      }
+      const { data, error } = await useFetch("/api/testimonials");
+      if (data && data.value) testimonials.splice(0, testimonials.length, ...data.value);
     } catch (error) {
-      console.error('Error initializing testimonials:', error);
+      console.error('Error initializing projects:', error);
     }
   }
   const getTestimonialsByServiceId = (id: number) => computed(() => testimonials.filter(testimonial => testimonial.referTo === id));

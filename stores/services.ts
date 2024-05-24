@@ -18,15 +18,10 @@ export const useServiceStore = defineStore('services', () => {
 
   async function init() {
     try {
-      const {data, error} = await supabase.from('Service').select('*');
-      if (error) {
-        throw error;
-      }
-      if (data) {
-        services.splice(0, services.length, ...data);
-      }
+      const { data, error } = await useFetch("/api/services");
+      if (data && data.value) services.splice(0, services.length, ...data.value);
     } catch (error) {
-      console.error('Error initializing services:', error);
+      console.error('Error initializing projects:', error);
     }
   }
 

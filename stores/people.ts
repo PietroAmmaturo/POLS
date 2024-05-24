@@ -15,15 +15,10 @@ export const usePersonStore = defineStore('people', () => {
 
     async function init() {
         try {
-            const { data, error } = await supabase.from('Person').select('*');
-            if (error) {
-                throw error;
-            }
-            if (data) {
-                people.splice(0, people.length, ...data);
-            }
+            const { data, error } = await useFetch("/api/people");
+            if (data && data.value) people.splice(0, people.length, ...data.value);
         } catch (error) {
-            console.error('Error initializing people:', error);
+            console.error('Error initializing projects:', error);
         }
     }
 

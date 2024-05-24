@@ -109,14 +109,14 @@ function closeMobileMenu(resize: boolean){
 .navigation_bar{
   font-size: 24px;
   font-weight: bold;
-  color: black;
+  color: var(--white);
   width: 100%;
   height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background: #D9D9D9;
+  background: var(--accent);
   margin: 0;
   position: sticky;
   top: 0;
@@ -146,7 +146,8 @@ function closeMobileMenu(resize: boolean){
   position: fixed;
   left: 25px;
   top: 60px;
-  background: #9e9e9e;
+  background: var(--accent);
+  color: var(--white);
   z-index: 10;
   padding: 20px 20px 20px 20px;
   font-size: 16px;
@@ -208,7 +209,8 @@ function closeMobileMenu(resize: boolean){
     left: 0;
     top: 0;
     right: 0;
-    background: #9e9e9e;
+    background: var(--accent);
+    color: var(--white);
     z-index: 20;
     padding: 0;
     font-size: 32px;
@@ -218,14 +220,14 @@ function closeMobileMenu(resize: boolean){
     height: 0;
     width: auto;
     transition: height 0.5s ease;
-    overflow: hidden;
+    overflow: auto;
   }
   #mobile-landmarks{
     display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: flex-start;
-    height: 80%;
+    height: 100%;
     justify-content: center;
   }
   #mobile-subactivities{

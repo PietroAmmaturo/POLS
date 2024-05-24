@@ -14,7 +14,7 @@
 <style scoped>
 .lds-ellipsis {
   /* change color here */
-  color: #9e0048
+  color: var(--accent);
 }
 .lds-ellipsis,
 .lds-ellipsis div {
