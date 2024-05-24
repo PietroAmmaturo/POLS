@@ -10,8 +10,6 @@
   const selectedOrder = ref("");
   const services = store.getServices(selectedTag, selectedOrder);
 
-  const currentPage = "All the services";
-
   function updateTag(tag: string) {
     selectedTag.value = tag;
   }
@@ -26,7 +24,7 @@
 </script>
 
 <template>
-  <Breadcrumb :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
+  <Breadcrumb current-alias="All the services"></Breadcrumb>
   <ActivitiesHeader title="Services" subtitle="Our center provides essential services to address immediate needs and offer critical support to survivors of domestic violence.
 These services include crisis intervention, offering immediate assistance and shelter to those in danger.
 Counseling and therapy sessions are available to help survivors process their experiences and begin the healing journey.

@@ -27,8 +27,8 @@ const route = useRoute();
 </script>
 
 <template>
+  <Breadcrumb current-alias="Service"></Breadcrumb>
   <div v-if="service">
-    <Breadcrumb :current-page="service.name" current-alias="Service"></Breadcrumb>
     <ActivityHeader :title="service.name" :picture="service.picture" :type="'service'">
       </ActivityHeader>
     <div class="content">
@@ -56,7 +56,6 @@ const route = useRoute();
     </div>
   </div>
   <div v-else>
-    <Breadcrumb current-alias="Service"></Breadcrumb>
     <div class="placeholder">
       <p class="error"><font-awesome-icon class="icon" icon="circle-exclamation"/> Service not found.</p>
     </div>

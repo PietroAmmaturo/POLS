@@ -15,8 +15,6 @@ const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 const selectedOrder = ref("");
 const projects = store.getProjects(selectedTag, selectedOrder);
 
-const currentPage = "All the projects";
-
 function updateTag(tag: string) {
   selectedTag.value = tag;
 }
@@ -31,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Breadcrumb :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
+  <Breadcrumb current-alias="All the projects"></Breadcrumb>
   <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for long-term empowerment and self-sufficiency.
 These projects include educational workshops that cover topics such as financial literacy, career development, and personal safety.
 By equipping women with essential knowledge and skills, we help them build a foundation for a brighter future.
