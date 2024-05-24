@@ -5,7 +5,7 @@
 <template>
 
   <nuxt-link class="activity-card-small" :to="`/${type}/${id}`">
-    <div class="picture"><img :src="picture" alt="cover" /></div>
+    <div class="picture" :style="{ backgroundImage: `url(${picture})` }"></div>
     <h5 class="title">{{name}}</h5>
   </nuxt-link>
 </template>
@@ -32,22 +32,12 @@
 }
 
 .activity-card-small .picture {
-  width: 100%;
-  height: auto;
-}
-.activity-card-small .picture img {
+  position: relative;
   width: 100%;
   height: 125px;
-  position: relative;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-}
-
-.activity-card-small .picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 1px 1px #D9D9D9;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .activity-card-small h5 {

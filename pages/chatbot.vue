@@ -12,9 +12,17 @@ const store = useMessageStore();
 const messages = store.messages;
 
 const currentContent = ref("");
+const responseReady = ref(true);
 function sendMessage() {
-  if(!currentContent) return;
-  store.addUserMessage(currentContent.value).then(res => console.log(res));
+  // If there is something to send and the last response has been received
+  if(!currentContent || !currentContent.value || !responseReady || !responseReady.value) return;
+  // Response not ready yet
+  responseReady.value = false;
+  store.addUserMessage(currentContent.value).then(res => {
+    // Response ready
+    responseReady.value = true;
+  });
+  // Empty textarea
   currentContent.value = "";
 }
 </script>
