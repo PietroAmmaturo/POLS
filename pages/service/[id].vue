@@ -24,11 +24,6 @@ const route = useRoute();
   const testimonials = testimonialStore.getTestimonialsByServiceId(id);
   const personStore = usePersonStore();
   const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined);
-
-const serviceFound = ref(true);
-onMounted(() => {
-  if (!service.value) serviceFound.value = false;
-})
 </script>
 
 <template>
@@ -63,8 +58,7 @@ onMounted(() => {
   <div v-else>
     <Breadcrumb current-alias="Service"></Breadcrumb>
     <div class="placeholder">
-      <AppLoader v-if="serviceFound"></AppLoader>
-      <p class="error" v-else><font-awesome-icon class="icon" icon="circle-exclamation"/> Service not found.</p>
+      <p class="error"><font-awesome-icon class="icon" icon="circle-exclamation"/> Service not found.</p>
     </div>
   </div>
 </template>

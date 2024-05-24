@@ -9,25 +9,20 @@ export interface Project extends Activity{
 
 // store/projectsStore.ts
 export const useProjectStore = defineStore('projects', () => {
-    const supabase = useSupabaseClient();
-
     const projects = reactive([] as Project[]);
 
     async function init() {
         try {
-            const { data, error } = await supabase.from('Project').select('*');
-            if (error) {
-                throw error;
-            }
-            if (data) {
-                projects.splice(0, projects.length, ...data);
-            }
+            const { data, error } = await useFetch("/api/projects");
+            if (data && data.value) projects.splice(0, projects.length, ...data.value);
         } catch (error) {
             console.error('Error initializing projects:', error);
         }
     }
 
-    const getProjectById = (id: number) => computed(() => projects.find(project => project.id === id));
+    const getProjectById = (id: number) => computed(() => {
+        return projects.find(project => project.id === id);
+    });
 
     const getProjects = (filter: Ref<string>, order:  Ref<string>) => computed(() => {
         if (!filter.value && !order.value) return projects;

@@ -69,8 +69,7 @@ onMounted(() => {
     </section>
   </div>
   <div v-else class="placeholder">
-    <AppLoader v-if="personFound"></AppLoader>
-    <p v-else><h2>Person not found.</h2></p>
+    <p><h2>Person not found.</h2></p>
   </div>
 
 </template>
