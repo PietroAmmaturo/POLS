@@ -7,14 +7,22 @@ html, body, #__nuxt, #__layout{
     box-sizing: border-box;
     font-family: 'Montserrat';
     font-size: 1em;
+    --black: black;
+    --white: white;
+    --accent: #42326E;
+    --light: #B2A6CE;
+    --shadow: #B2A6CE7F;
+    background: var(--white);
+    color: var(--black);
 }
 
 #__nuxt{
     margin: 0;
+    overflow: auto;
 }
 
 body{
-    overflow: auto;
+    overflow: hidden!important;
 }
 
 .backgroundColor {
@@ -32,13 +40,18 @@ a {
     text-decoration: inherit; /* no underline */
 }
 h1 {
-    font-size: 3em;
+    font-size: 4em;
 }
 h2 {
     font-size: 1.5em;
 }
 h3 {
     font-size: 1.3em;
+}
+p {
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0;
 }
 
 .bounce-fade-enter-active {

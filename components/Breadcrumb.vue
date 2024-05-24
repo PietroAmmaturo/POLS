@@ -27,7 +27,6 @@ const parents = getPages(props.currentAlias);
 .breadcrumb{
   --distance: 30px;
   --opacity: 0.4;
-  --color: #9e0048;
   font-weight: 550;
   display: flex;
   flex-direction: row;
@@ -41,9 +40,9 @@ const parents = getPages(props.currentAlias);
 .breadcrumb-icon{
   font-size: 10px;
   margin-bottom: -2px;
-  color: var(--color);
+  color: var(--light);
 }
-.home{
+/*.home{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -51,7 +50,7 @@ const parents = getPages(props.currentAlias);
   flex-wrap: wrap;
   gap: var(--distance);
   opacity: var(--opacity);
-}
+}*/
 .parents{
   display: flex;
   flex-direction: row;
@@ -62,7 +61,7 @@ const parents = getPages(props.currentAlias);
   opacity: var(--opacity);
 }
 .current-category{
-  color: var(--color);
+  color: var(--accent);
   font-weight: 700;
   opacity: 1;
   display: flex;
@@ -71,15 +70,16 @@ const parents = getPages(props.currentAlias);
   align-items: center;
 }
 .current-shape{
-  width: 75%;
+  width: 65%;
   height: 5px;
-  background: var(--color);
+  background: var(--light);
   border-radius: 15px;
   transition: width 0.4s ease;
 }
 .current-category:hover{
   .current-shape{
     width: 100%;
+    background: var(--accent);
   }
 }
 </style>

@@ -43,7 +43,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <ActivitiesHeader title="Activities" subtitle="Our actvities are ...">
+  <ActivitiesHeader title="All our activities" subtitle="Our center offers a range of activities divided into projects and services.
+Projects focus on long-term empowerment, including educational workshops, job readiness programs, and community-building initiatives.
+These projects aim to equip women with the skills and confidence needed to rebuild their lives and achieve independence.
+
+Services provide immediate and essential support, addressing urgent needs.
+This includes crisis intervention, emergency shelter, counseling, and legal assistance.
+Our team is dedicated to offering compassionate and personalized help, ensuring that every woman receives the care and resources necessary to navigate and overcome the challenges of domestic violence.">
   </ActivitiesHeader>
   <ActivitiesExplorer>
     <template #options>
@@ -57,7 +63,7 @@ onMounted(() => {
     <template #showcase>
       <ActivitiesExplorerShowcaseDouble>
         <template #projects>
-          <ActivitiesBanner class="banner" align="right" :path="'/projects?tag='+selectedTag" title="PROJECTS"></ActivitiesBanner>
+          <ActivitiesBanner class="banner" align="right" :path="'/projects?tag='+selectedTag" title="See all the projects"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
             <transition-group v-if="projects.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
@@ -69,7 +75,7 @@ onMounted(() => {
           </ActivitiesExplorerShowcase>
         </template>
         <template #services>
-          <ActivitiesBanner class="banner"  align="left" :path="'/services?tag='+selectedTag" title="SERVICES"></ActivitiesBanner>
+          <ActivitiesBanner class="banner"  align="left" :path="'/services?tag='+selectedTag" title="See all the services"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
             <transition-group v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"

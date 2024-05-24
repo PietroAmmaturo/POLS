@@ -21,15 +21,21 @@ export default {
 
 <style scoped>
 select {
-  color: black;
+  color: var(--light);
   display: block;
   margin: auto;
   font-family: 'Montserrat';
   width: 190px;
   height: auto;
   padding: 5px;
-  border: 2px solid black;
+  border: 2px solid var(--light);
   border-radius: 12px;
   font-size: 20px;
+}
+select:after{
+  color: var(--light);
+}
+select:focus{
+  outline: none;
 }
 </style>

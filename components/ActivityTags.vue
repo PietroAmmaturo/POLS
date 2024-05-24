@@ -6,7 +6,7 @@ const props = defineProps(['tags']);
 <template>
   <div class="container">
     <transition-group name="bounce-fade" appear>
-    <NuxtLink v-for="tag in tags" :to="'/activities?tag=' + tag" class="tag backgroundColor">{{ tag }}</NuxtLink>
+    <NuxtLink v-for="tag in tags" :to="'/activities?tag=' + tag" class="tag">{{ tag }}</NuxtLink>
     </transition-group>
   </div>
 </template>
@@ -31,5 +31,10 @@ const props = defineProps(['tags']);
   margin: 1em;
   padding: 1em;
   border-radius: 5px;
+  background: var(--light);
+  color: var(--white);
+}
+.tag:hover{
+  background: var(--accent);
 }
 </style>

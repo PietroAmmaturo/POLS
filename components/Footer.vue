@@ -23,8 +23,12 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    background: #D9D9D9;
+    background: var(--light);
+    color: var(--white);
     margin-top: 50px;
+    /*position: absolute;
+    bottom: 0;*/
+    width: 100%;
   }
   .footer_left, .footer_right{
     display: flex;

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 </script>
 
 
@@ -17,6 +16,7 @@ import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 
 <style scoped>
 .columns {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -28,5 +28,6 @@ import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
   flex-basis: 50%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 </style>
