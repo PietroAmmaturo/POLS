@@ -40,15 +40,7 @@ Additionally, our job readiness programs prepare women for the workforce, offeri
 Community-building initiatives foster a sense of solidarity and support, creating a network of strong, empowered women.
 These projects collectively aim to restore confidence and independence in the lives of survivors.">
   </ActivitiesHeader>
-  <ActivitiesExplorer>
-    <template #options>
-      <ActivitiesExplorerOptions>
-        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag">
-        </ActivitiesExplorerOptionsFilter>
-        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
-        </ActivitiesExplorerOptionsOrder>
-      </ActivitiesExplorerOptions>
-    </template>
+  <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template  #showcase>
       <ActivitiesExplorerShowcaseIndividual>
         <transition-group v-if="projects.length" name="bounce-fade" appear>

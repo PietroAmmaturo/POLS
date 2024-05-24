@@ -51,15 +51,7 @@ Services provide immediate and essential support, addressing urgent needs.
 This includes crisis intervention, emergency shelter, counseling, and legal assistance.
 Our team is dedicated to offering compassionate and personalized help, ensuring that every woman receives the care and resources necessary to navigate and overcome the challenges of domestic violence.">
   </ActivitiesHeader>
-  <ActivitiesExplorer>
-    <template #options>
-      <ActivitiesExplorerOptions>
-        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag">
-        </ActivitiesExplorerOptionsFilter>
-        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
-        </ActivitiesExplorerOptionsOrder>
-      </ActivitiesExplorerOptions>
-    </template>
+  <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase>
       <ActivitiesExplorerShowcaseDouble>
         <template #projects>
