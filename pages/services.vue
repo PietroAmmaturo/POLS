@@ -35,15 +35,7 @@ Legal assistance is provided to navigate the complexities of the legal system, o
 Additionally, we offer advocacy services to ensure survivors' voices are heard and their rights are protected.
 Our commitment to providing compassionate and comprehensive care ensures that every woman receives the support and resources she needs to rebuild her life with safety and dignity.">
   </ActivitiesHeader>
-  <ActivitiesExplorer>
-    <template #options>
-      <ActivitiesExplorerOptions>
-        <ActivitiesExplorerOptionsFilter @filter-selected="updateTag" :filters="tags">
-        </ActivitiesExplorerOptionsFilter>
-        <ActivitiesExplorerOptionsOrder @order-selected="updateOrder" :orders="orders">
-        </ActivitiesExplorerOptionsOrder>
-      </ActivitiesExplorerOptions>
-    </template>
+  <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase>
       <ActivitiesExplorerShowcaseIndividual>
         <transition-group v-if="services.length"  name="bounce-fade" appear>

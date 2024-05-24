@@ -12,8 +12,6 @@ export interface Service extends Activity{
 // store/servicesStore.ts
 
 export const useServiceStore = defineStore('services', () => {
-  const supabase = useSupabaseClient();
-
   const services = reactive([] as Service[]);
 
   async function init() {

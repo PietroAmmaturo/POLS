@@ -19,7 +19,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <Breadcrumb :current-page="currentPage" :current-alias="currentPage"></Breadcrumb>
   <ActivitiesHeader title="People" subtitle="Our people are ...">
   </ActivitiesHeader>
   <ActivitiesExplorer>
