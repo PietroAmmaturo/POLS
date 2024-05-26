@@ -1,15 +1,20 @@
 <script setup lang="ts">
-
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+
+const props = defineProps(['name', 'picture', 'type', 'id'])
+
+const img = useImage()
+const imgUrl = img('/Project_Placeholder.jpg', { quality: 10, blur: 40 })
 </script>
 
 <template>
-
-  <nuxt-link class="activity-card" :to="`/${type}/${id}`">
-    <div class="picture" :style="{ backgroundImage: `url(${picture})` }"></div>
+  <NuxtLink class="activity-card" :to="`/${type}/${id}`">
+    <div class="picture">
+      <NuxtImg class="image" :src="picture" :placeholder="imgUrl" loading="lazy"></NuxtImg>
+    </div>
     <h3 class="title">{{name}}</h3>
     <p class="cta"><font-awesome-icon class="icon" icon="link" /> Learn more</p>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <style scoped>
@@ -34,6 +39,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 }
 
 .activity-card .picture {
+  display: flex;
   position: relative;
   width: 100%;
   height: 200px;
@@ -55,10 +61,22 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   font-weight: 700;
 }
 .activity-card:hover .cta {color: var(--accent);}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  width: min-content;
+  height: min-content;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>
 
 <script lang="ts">
-export default {
-  props: ['name', 'picture', 'type', 'id']
-}
 </script>

@@ -10,9 +10,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/general.css'],
   routeRules: {
     // prerender index route by default
-    '/': { prerender: true },
+    '/*': { prerender: true },
   },
-  modules: ['@nuxtjs/supabase', '@pinia/nuxt'],
+  modules: ['@nuxtjs/supabase', '@pinia/nuxt', "@nuxt/image"],
   pinia: {
     storesDirs: [
       './stores/**'
@@ -25,5 +25,8 @@ export default defineNuxtConfig({
   },
   build: {
     transpile: ['@fortawesome/vue-fontawesome']
+  },
+  image: {
+    dir: 'assets/img',
   },
 });

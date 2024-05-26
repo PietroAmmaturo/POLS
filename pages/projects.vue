@@ -22,10 +22,7 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 
-const projectsFound = ref(true);
-onMounted(() => {
-  if (projects.value && projects.value.length === 0) projectsFound.value = false;
-})
+const projectsFound = computed(() => projects.value.length  !== 0);
 </script>
 
 <template>
