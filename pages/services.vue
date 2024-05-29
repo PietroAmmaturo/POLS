@@ -17,10 +17,7 @@
     selectedOrder.value = order;
   }
 
-  const servicesFound = ref(true);
-  onMounted(() => {
-    if (services.value && services.value.length === 0) servicesFound.value = false;
-  })
+  const servicesFound = computed(() => services.value.length  !== 0);
 </script>
 
 <template>

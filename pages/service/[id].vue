@@ -38,7 +38,9 @@ const route = useRoute();
       </div>
       <div class="practical_info">
         <h2>Practical Info</h2>
-        <p v-if="service">{{service.information}}</p>
+        <p v-if="service"><strong>Availability: </strong>{{service.information.substring(0, service.information.indexOf("@"))}}</p>
+        <p v-if="service"><strong>Schedule: </strong>{{service.information.substring(service.information.indexOf("@")+1, service.information.indexOf("#"))}}</p>
+        <p v-if="service"><strong>Registration: </strong>{{service.information.substring(service.information.indexOf("#")+1)}}</p>
       </div>
       <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">
       </ActivityResponsible>
@@ -101,9 +103,6 @@ const route = useRoute();
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-  }
-  h2{
-    margin: 0;
   }
   .error{
     font-size: 24px;

@@ -30,19 +30,21 @@ const services = serviceStore.getServices(selectedTag, selectedOrder);
 
 function updateTag(tag: string) {
   selectedTag.value = tag;
+  const router = useRouter()
+  router.push({
+    path: '/activities',
+    query: { tag: tag },
+  })
 }
 function updateOrder(order: string) {
   selectedOrder.value = order;
 }
-const projectsFound = ref(true);
-const servicesFound = ref(true);
-onMounted(() => {
-  if (projects.value && projects.value.length === 0) projectsFound.value = false;
-  if (services.value && services.value.length === 0) servicesFound.value = false;
-})
+const projectsFound = computed(() => projects.value.length  !== 0);
+const servicesFound = computed(() => services.value.length  !== 0);
 </script>
 
 <template>
+  <NuxtLoadingIndicator />
   <ActivitiesHeader title="All our activities" subtitle="Our center offers a range of activities divided into projects and services.
 Projects focus on long-term empowerment, including educational workshops, job readiness programs, and community-building initiatives.
 These projects aim to equip women with the skills and confidence needed to rebuild their lives and achieve independence.
@@ -69,11 +71,11 @@ Our team is dedicated to offering compassionate and personalized help, ensuring 
         <template #services>
           <ActivitiesBanner class="banner"  align="left" :path="'/services?tag='+selectedTag" title="See all the services"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
-            <transition-group v-if="services.length" name="bounce-fade" appear>
+            <TransitionGroup v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
                             type="service" :id="activity.id">
               </ActivityCard>
-            </transition-group>
+            </TransitionGroup>
             <AppLoader v-else-if="servicesFound"></AppLoader>
             <p v-else>There are no services with the selected tag.</p>
           </ActivitiesExplorerShowcase>
