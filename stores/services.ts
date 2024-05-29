@@ -26,7 +26,6 @@ export const useServiceStore = defineStore('services', () => {
   const getServiceById = (id: number) => computed(() => services.find(service => service.id === id));
 
   const getServices = (filter: Ref<string>, order:  Ref<string>) => computed(() => {
-    console.log(filter.value, order.value)
     if (!filter.value && !order.value) return services;
     if (!filter.value) return orderActivities(services, order.value);
     if (!order.value) return filterActivities(services, filter.value);
