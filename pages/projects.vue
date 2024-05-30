@@ -17,11 +17,15 @@ const projects = store.getProjects(selectedTag, selectedOrder);
 
 function updateTag(tag: string) {
   selectedTag.value = tag;
+  const router = useRouter()
+  router.push({
+    path: '/projects',
+    query: { tag: tag },
+  })
 }
 function updateOrder(order: string) {
   selectedOrder.value = order;
 }
-
 const projectsFound = computed(() => projects.value.length  !== 0);
 </script>
 

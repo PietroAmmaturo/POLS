@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 const props = defineProps(['name', 'picture', 'type', 'id'])
 
 const img = useImage()
-const imgUrl = img('/Project_Placeholder.jpg', { quality: 10, blur: 40 })
+const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
 </script>
 
 <template>

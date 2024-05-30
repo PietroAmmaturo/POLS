@@ -12,11 +12,15 @@
 
   function updateTag(tag: string) {
     selectedTag.value = tag;
+    const router = useRouter()
+    router.push({
+      path: '/services',
+      query: { tag: tag },
+    })
   }
   function updateOrder(order: string) {
     selectedOrder.value = order;
   }
-
   const servicesFound = computed(() => services.value.length  !== 0);
 </script>
 

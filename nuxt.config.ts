@@ -25,8 +25,5 @@ export default defineNuxtConfig({
   },
   build: {
     transpile: ['@fortawesome/vue-fontawesome']
-  },
-  image: {
-    dir: 'assets/img',
-  },
+  }
 });
