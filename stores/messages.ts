@@ -13,7 +13,13 @@ export const useMessageStore = defineStore('messages', () => {
     }
 
     async function addUserMessage(message : string) {
-        messages.unshift({bot: false, content: message});
+        const redactedMessage = await $fetch('/api/redact', {
+            method: 'POST',
+            body: {
+                message: message,
+            }
+        });
+        messages.unshift({bot: false, content: redactedMessage as string});
         const botMessage = {bot: true, content: ""};
         messages.unshift(botMessage);
         const response = await $fetch('/api/chatbot', {
