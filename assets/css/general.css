@@ -10,7 +10,7 @@ html, body, #__nuxt, #__layout{
     --black: black;
     --white: white;
     --accent: #42326E;
-    --light: #B2A6CE;
+    --light: #6E5B9A;
     --shadow: #B2A6CE7F;
     background: var(--white);
     color: var(--black);
