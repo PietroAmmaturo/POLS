@@ -31,6 +31,7 @@ function sendMessage() {
     <div class="chat">
       <div class="chat-messages">
         <div v-for="(message, index) in messages" :key="index" :class="message.bot ? 'container-botMessage' : 'container-myMessage'">
+          <div class="botIcon" v-if="message.bot"><NuxtImg class="image" src="https://toppng.com/uploads/thumbnail/medusa-11562856825p8imhywh3d.png"></NuxtImg></div>
           <div class="botMessage" v-if="message.bot">
             <p v-if="message.content">{{ message.content }}</p>
             <AppLoader v-else></AppLoader>
@@ -39,9 +40,15 @@ function sendMessage() {
             <p>{{ message.content }}</p>
           </div>
         </div>
+        <div class="container-botMessage">
+          <div class="botIcon"><NuxtImg class="image" src="https://toppng.com/uploads/thumbnail/medusa-11562856825p8imhywh3d.png"></NuxtImg></div>
+          <div class="botMessage">
+            <p>Hi! I'm here to provide you assistance. Let me know if you need help!</p>
+          </div>
+        </div>
       </div>
       <div class="write-box">
-        <textarea id="message" placeholder="Chat with the bot..." v-model="currentContent" v-on:keyup.enter="sendMessage()"></textarea>
+        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()"></textarea>
         <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
         </div>
@@ -57,19 +64,20 @@ function sendMessage() {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 75%;
-  padding-top: 60px;
+  height: calc(100% - 60px);
+  margin: 0;
+  overflow: hidden;
 }
 .chat{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 96%;
   height: 100%;
-  padding: 2% 2% 15px 2%;
+  padding: 0 2% 15px 2%;
   overflow-y: auto;
   overflow-x: hidden;
-  border-radius: 15px;
+  /*border-radius: 15px;*/
   background: #9e9e9e;
 }
 .chat-messages{
@@ -103,12 +111,12 @@ textarea{
   height: auto;
   font-family: 'Montserrat';
   border-radius: 15px;
-  border: #9e0048 solid 1px;
+  border: var(--light) solid 1px;
   background: white;
   padding: 10px 40px 10px 20px;
 }
 #send-button{
-  background: #9e0048;
+  background: var(--light);
   border-radius: 15px;
   position: absolute;
   right: 0;
@@ -133,7 +141,7 @@ textarea{
 }
 .myMessage{
   border-radius: 30px;
-  background: #9e0048;
+  background: var(--light);
   color: white;
   width: auto;
   max-width: 600px;
@@ -148,7 +156,7 @@ textarea{
   bottom: -10px;
   height: 20px;
   width: 20px;
-  border-left: 20px solid #9e0048;
+  border-left: 20px solid var(--light);
   border-bottom-left-radius: 25px 20px;
   transform: translate(25px, -4px);
 }
@@ -156,7 +164,10 @@ textarea{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-end;
+  gap: 15px;
   width: 100%;
+  margin-bottom: 5px;
 }
 .botMessage{
   border-radius: 30px;
@@ -177,6 +188,21 @@ textarea{
   border-right: 20px solid white;
   border-bottom-right-radius: 25px 20px;
   transform: translate(0, -4px);
+}
+.botIcon{
+  width: 30px;
+  height: 30px;
+  background: var(--accent);
+  border-radius: 15px;
+  transform: translateY(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image{
+  width: auto;
+  height: 75%;
+  object-fit: cover;
 }
 p{
   padding: 15px;

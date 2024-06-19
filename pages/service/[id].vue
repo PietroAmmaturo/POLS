@@ -81,10 +81,10 @@ const route = useRoute();
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 60px;
+    gap: 100px;
   }
   p {
-    margin: 0 5vw 0 5vw;
+    margin: 10px 5vw 10px 5vw;
     text-align: justify;
   }
   h2{
@@ -108,5 +108,10 @@ const route = useRoute();
     font-size: 24px;
     font-weight: 500;
     text-align: center;
+  }
+  .practical_info{
+    background: var(--light);
+    color: white;
+    padding-bottom: 20px;
   }
 </style>

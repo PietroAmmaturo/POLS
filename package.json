@@ -27,6 +27,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "@google/generative-ai": "^0.11.2",
     "dotenv": "^16.4.5",
-    "openai": "^4.47.1"
+    "openai": "^4.47.1",
+    "redact-pii": "^3.4.0"
   }
 }

@@ -2,7 +2,7 @@
 
 const props = defineProps(['filters', 'initialFilter', 'orders', 'initialOrder']);
 
-const defaultFilter =  "Category";
+const defaultFilter =  "Filter";
 const selectedFilter = ref(props.initialFilter ? props.initialFilter : defaultFilter);
 const defaultOrder = "Order by";
 const selectedOrder = ref(defaultOrder);

@@ -1,11 +1,13 @@
 import { type Project } from "./projects"
+import {peopleOrders, filterPeopleByGender, orderPeople} from "~/composables/exploring";
 
 export interface Person {
     id: number,
     name: string,
     picture: string,
     cv: string,
-    description: string
+    description: string,
+    gender: string
 }
 
 export const usePersonStore = defineStore('people', () => {
@@ -32,11 +34,19 @@ export const usePersonStore = defineStore('people', () => {
         return people.find(person => person.id === personId);
     });
 
-    const getPeople = () => computed(() => {
-        return people;
+    // Filtering people is a bit different since the filtering happens by gender (which is a string, not an array)
+    const getPeopleByGender = (filter:  Ref<string>, order:  Ref<string>) => computed(() => {
+        if (!filter.value && !order.value) return people;
+        if (!filter.value || filter.value === "all") return orderPeople(people, order.value);
+        if (!order.value) return filterPeopleByGender(people, filter.value);
+        return orderPeople(filterPeopleByGender(people, filter.value), order.value);
     });
+
+    // Maybe also other kind of filters could be implemented
+    const getPeopleOrders = () => computed(() => peopleOrders);
+    const getPeopleFilters = () => computed(() => ["all", ...Array.from(new Set(people.flatMap(person => [person.gender])))]);
 
     init();
 
-    return { people, getPersonById, getPersonByProject, getPersonByService, getPeople};
+    return { people, getPersonById, getPersonByProject, getPersonByService, getPeopleByGender, getPeopleOrders, getPeopleFilters};
 });

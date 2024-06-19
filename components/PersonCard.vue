@@ -1,63 +1,76 @@
 <script setup lang="ts">
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
+const props = defineProps(['name', 'picture', 'type', 'id'])
+
+const img = useImage()
+const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
 </script>
 
 <template>
-
-  <nuxt-link class="activity-card" :to="`/${type}/${id}`">
-    <div class="picture"><img :src="picture" alt="cover" /></div>
-    <h3 class="title">{{name}}</h3>
-  </nuxt-link>
+  <div class="person-card">
+    <div class="picture">
+      <NuxtLink :to="`/${type}/${id}`"><NuxtImg class="image" :src="picture" :placeholder="imgUrl" loading="lazy"></NuxtImg></NuxtLink>
+    </div>
+    <NuxtLink :to="`/${type}/${id}`"><h3 class="title">{{name}}</h3></NuxtLink>
+  </div>
 </template>
 
 <style scoped>
 
-.activity-card {
+.person-card {
   max-width: 80vw;
-  background-color: #D9D9D9;
-  width: 350px;
+  width: 300px;
   height: auto;
-  border-radius: 5px;
+  border-radius: 100px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  /*box-shadow: 0 0 30px var(--shadow);*/
   transition: all 300ms;
   margin-block: 2em;
-  padding: 1em;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.activity-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+.person-card:hover {
+  transform: translateY(-10px);
+  background: var(--light);
+  /*box-shadow: 0 0 20px var(--shadow), 0 0 40px var(--light);*/
 }
 
-.activity-card .picture {
-  width: 100%;
-  height: auto;
-}
-.activity-card .picture img {
-  width: 100%;
-  height: auto;
+.person-card .picture {
+  display: flex;
   position: relative;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  width: 250px;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.activity-card .picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 1px 1px #D9D9D9;
-}
-
-.activity-card h3 {
+.person-card h3 {
   position: relative;
   text-align: center;
+  color: var(--light);
+}
+.person-card:hover h3 {color: var(--white);}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 150px;
+}
+
+.placeholder {
+  width: min-content;
+  height: min-content;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
-
-<script lang="ts">
-export default {
-  props: ['name', 'picture', 'type', 'id']
-}
-</script>

@@ -26,9 +26,10 @@
     background: var(--light);
     color: var(--white);
     margin-top: 50px;
-    /*position: absolute;
+/*    position: absolute;
     bottom: 0;*/
     width: 100%;
+    height: 170px;
   }
   .footer_left, .footer_right{
     display: flex;

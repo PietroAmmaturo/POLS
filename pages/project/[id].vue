@@ -66,7 +66,7 @@ span {
 }
 .content{
   display: flex;
-  margin-top: 60px;
+  margin-top: 100px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -74,14 +74,11 @@ span {
   gap: 60px;
 }
 p {
-  margin: 0 5vw 0 5vw;
+  margin: 10px 5vw 10px 5vw;
   text-align: justify;
 }
 h2{
   text-align: center;
-}
-h2{
-  margin: 0;
 }
 .error{
   font-size: 24px;
