@@ -36,6 +36,7 @@ section{
   background-color: var(--white);
   box-shadow: 0 0 30px var(--shadow);
   padding: 20px;
+  margin-top: 20px;
   gap: 30px;
 }
 .responsible-image {

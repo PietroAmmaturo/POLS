@@ -28,7 +28,7 @@ defineProps(['author', 'text', 'referTo']);
   padding: 30px;
   margin: 0 5vw 0 5vw;
 }
-.testimonial-card:hover{
+/*.testimonial-card:hover{
   border: var(--accent) 3px solid;
   .author_name{
     color: var(--accent);
@@ -36,7 +36,7 @@ defineProps(['author', 'text', 'referTo']);
   .icon{
     color: var(--accent);
   }
-}
+}*/
 
 .head {
   width: 100%;

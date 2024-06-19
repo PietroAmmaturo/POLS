@@ -52,10 +52,16 @@ header h1 {
   color: var(--white);
   filter: drop-shadow(var(--accent) 0 0 10px);
   font-size: 5vw;
+  @media screen and (max-width: 950px){
+    font-size: 8vw;
+  }
 }
 header h2{
   margin: 0;
   color: var(--light);
-  filter: drop-shadow(var(--black) 0 0 10px);
+  filter: drop-shadow(2px 0 var(--white))
+  drop-shadow(-1px 0 var(--white))
+  drop-shadow(0 2px var(--white))
+  drop-shadow(0 -1px var(--white));
 }
 </style>

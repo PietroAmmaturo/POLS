@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+
 definePageMeta({
   validate: async (route) => {
     // Check if the id is made up of digits
@@ -17,6 +19,7 @@ const id = parseInt(route.params.id as string);
 const person = store.getPersonById(id); 
 const projects = projectStore.getProjectsByPerson(id)
 const services = serviceStore.getServicesByPerson(id)
+const img = useImage()
 
 const projectsFound = ref(true);
 onMounted(() => {
@@ -40,76 +43,122 @@ onMounted(() => {
 
 <template>
   <Breadcrumb current-alias="Person"></Breadcrumb>
-  <div v-if="person" >
-    <ActivityHeader :title="person.name" :subtitle="person.description" :picture="person.picture" >
-    </ActivityHeader>
-    <section>
-      <ActivitiesBanner class="banner" align="right" :path="'/projects?tag='+selectedTag" title="PROJECTS"></ActivitiesBanner>
-          <ActivitiesExplorerShowcase>
-            <transition-group v-if="projects.length" name="bounce-fade" appear>
-              <ActivityCardSmall v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
-                            type="project" :id="activity.id">
-              </ActivityCardSmall>
-            </transition-group>
-            <AppLoader v-else-if="projectsFound"></AppLoader>
-            <p v-else>{{person.name}} is not responsible for any project.</p>
-          </ActivitiesExplorerShowcase>
-    </section>
-    <section>
-      <ActivitiesBanner class="banner"  align="left" :path="'/services?tag='+selectedTag" title="SERVICES"></ActivitiesBanner>
-      <ActivitiesExplorerShowcase>
+  <div v-if="person">
+    <ActivitiesHeader :title="person.name">
+    </ActivitiesHeader>
+    <div class="content">
+      <div class="information">
+        <div class="picture">
+          <NuxtImg class="image" :src="person.picture"></NuxtImg>
+        </div>
+        <p> {{person.description}} </p>
+      </div>
+      <div class="heading project"><h2>My projects:</h2></div>
+      <div class="activities project">
+        <transition-group v-if="projects.length" name="bounce-fade" appear>
+          <ActivityCardSmall v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
+                             type="project" :id="activity.id">
+          </ActivityCardSmall>
+        </transition-group>
+        <AppLoader v-else-if="projectsFound"></AppLoader>
+        <p v-else><font-awesome-icon class="icon" icon="face-frown" /> At the moment, I'm not in charge of any project!</p>
+      </div>
+      <div class="heading service" ><h2>My services:</h2></div>
+      <div class="activities service">
         <transition-group v-if="services.length" name="bounce-fade" appear>
           <ActivityCardSmall v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
-                        type="service" :id="activity.id">
+                             type="service" :id="activity.id">
           </ActivityCardSmall>
         </transition-group>
         <AppLoader v-else-if="servicesFound"></AppLoader>
-        <p v-else>{{person.name}} is not responsible for any service.</p>
-      </ActivitiesExplorerShowcase>
-    </section>
+        <p v-else><font-awesome-icon class="icon" icon="face-frown" /> At the moment, I'm not in charge of any service!</p>
+      </div>
+    </div>
   </div>
-  <div v-else class="placeholder">
-    <p><h2>Person not found.</h2></p>
+  <div v-else>
+    <div class="placeholder">
+      <p class="error"><font-awesome-icon class="icon" icon="circle-exclamation"/> Person not found.</p>
+    </div>
   </div>
 
 </template>
 
 <style scoped>
 .placeholder {
-  margin: auto;
-  width: fit-content;
-  height: calc(100% - 300px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
-  .placeholder > p {
-    margin-top: 20;
+.content{
+  display: flex;
+  margin-top: 60px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+  padding-bottom: 60px;
+}
+.information{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 25px;
+  background: var(--light);
+  color: var(--white);
+}
+.image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 150px;
+}
+.picture {
+  width: 250px;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.information p{
+  width: 50%;
+  text-align: justify;
+  white-space: pre-wrap;
+  @media screen and (max-width: 950px){
+    width: 90%;
   }
-
-  .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%; /* Make sure the container takes the full width */
-  }
-
-  .title h2 {
-    flex-grow: 1;
-    text-align: center;
-    background-color: #D9D9D9;
-    transition: all 0.2s linear;
-    padding: 0.2em;
-  }
-  p {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .banner {
-    width: 100%;
-  }
-
-   span {
-    text-align: center;
-  }
+}
+.error{
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
+h2{
+  margin: 0;
+  color: var(--light);
+}
+.heading{
+  display: flex;
+  border-radius: 15px;
+  border: 3px solid var(--light);
+  width: 300px;
+  justify-content: center;
+  padding: 5px;
+}
+.activities{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 90%;
+  padding: 0 10px 0 10px;
+}
+.activities p{
+  color: var(--accent);
+  font-weight: 600;
+}
 </style>

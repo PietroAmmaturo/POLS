@@ -6,10 +6,14 @@ import NavigationBar from "~/components/NavigationBar.vue";
 
 <template>
   <NavigationBar></NavigationBar>
-  <slot></slot>
+  <div class="wrapper">
+    <slot/>
+  </div>
   <Footer></Footer>
 </template>
 
 <style scoped>
-
+.wrapper{
+  min-height: calc(100% - 170px - 50px - 60px);
+}
 </style>

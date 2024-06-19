@@ -8,7 +8,7 @@ const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
 </script>
 
 <template>
-  <NuxtLink class="activity-card" :to="`/${type}/${id}`">
+  <NuxtLink class="person-card" :to="`/${type}/${id}`">
     <div class="picture">
       <NuxtImg class="image" :src="picture" :placeholder="imgUrl" loading="lazy"></NuxtImg>
     </div>
@@ -19,7 +19,7 @@ const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
 
 <style scoped>
 
-.activity-card {
+.person-card {
   max-width: 80vw;
   background-color: var(--white);
   width: 300px;
@@ -33,12 +33,12 @@ const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
   padding: 25px;
 }
 
-.activity-card:hover {
+.person-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 20px var(--shadow), 0 0 40px var(--light);
 }
 
-.activity-card .picture {
+.person-card .picture {
   display: flex;
   position: relative;
   width: 100%;
@@ -48,7 +48,7 @@ const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
   background-size: cover;
 }
 
-.activity-card h3 {
+.person-card h3 {
   position: relative;
   text-align: center;
 }
@@ -60,7 +60,7 @@ const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
   font-size: 16px;
   font-weight: 700;
 }
-.activity-card:hover .cta {color: var(--accent);}
+.person-card:hover .cta {color: var(--accent);}
 
 .image {
   width: 100%;
