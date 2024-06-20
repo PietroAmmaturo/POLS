@@ -4,15 +4,34 @@
 
 <template>
 <div class="footer">
-  <div class="footer_left">
-    <span>Women Center Ltd</span>
-    <span>55 Trinity Ave SW, Atlanta<br>United States</span>
-    <span>EIN: 19-2837465</span>
-  </div>
-  <div class="footer_right">
-    <div class="brand"><font-awesome-icon icon="fa-brands fa-instagram" size="xl" style="color: #FF0AC8; margin: 3px; width: 24px;" /><span>@WomenCenter</span></div>
-    <div class="brand"><font-awesome-icon icon="fa-brands fa-twitter" size="xl" style="color: #74C0FC; margin: 3px;" /><span>@WomenCenter</span></div>
-    <div class="brand"><font-awesome-icon icon="fa-brands fa-facebook" size="xl" style="color: #004678; margin: 3px;" /><span>@WomenCenter</span></div>
+  <div class="wrapper">
+    <div class="sub">
+      <p class="subtitle"><strong>The activities</strong></p>
+      <NuxtLink to="/projects"><p>All the projects</p></NuxtLink>
+      <NuxtLink to="/services"><p>All the services</p></NuxtLink>
+    </div>
+    <div class="sub">
+      <p class="subtitle"><strong>The center</strong></p>
+      <NuxtLink to="/people"><p>Staffers</p></NuxtLink>
+      <NuxtLink to="/about"><p>About us</p></NuxtLink>
+      <NuxtLink to="/contact"><p>Our contacts</p></NuxtLink>
+    </div>
+    <div class="sub alt">
+      <NuxtLink to="/chatbot"><div class="bot"><p>CHAT WITH THE BOT</p></div></NuxtLink>
+      <div class="social">
+        <font-awesome-icon class="icon" icon="fa-brands fa-facebook-f"/>
+        <font-awesome-icon class="icon" icon="fa-brands fa-twitter"/>
+        <font-awesome-icon class="icon" icon="fa-brands fa-instagram"/>
+        <font-awesome-icon class="icon" icon="fa-brands fa-whatsapp"/>
+        <font-awesome-icon class="icon" icon="fa-brands fa-telegram-plane"/>
+        <font-awesome-icon class="icon" icon="fa-brands fa-linkedin-in"/>
+        <font-awesome-icon class="icon" icon="fa-brands fa-youtube"/>
+      </div>
+      <div class="center">
+        <p><font-awesome-icon icon="location-dot" /> MEDUSA Center Ltd</p>
+        <p>123 Hope Street, New Haven, CT<br>United States</p>
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -20,28 +39,69 @@
 <style scoped>
   .footer{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     background: var(--light);
     color: var(--white);
     margin-top: 50px;
-/*    position: absolute;
-    bottom: 0;*/
     width: 100%;
-    height: 170px;
+    @media screen and (max-width: 700px){
+      height: auto;
+      padding: 25px 0 25px 0;
+    }
+    height: 200px;
   }
-  .footer_left, .footer_right{
+  .wrapper{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: flex-start;
-    padding: 30px 0 30px 0;
-    gap: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    flex-wrap: wrap;
+    width: 100%;
+    @media screen and (max-width: 700px){
+      gap: 25px;
+    }
   }
-  .brand {
-    display: flex;
+.sub{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.alt{
+  align-items: flex-end;
+  gap: 15px;
+  text-align: right;
+  @media screen and (max-width: 700px){
     align-items: center;
+    text-align: center;
   }
+}
+.bot{
+  background: white;
+  color: var(--light);
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  font-weight: bold;
+  box-shadow: 0 3px 5px var(--accent);
+}
+.bot:hover{
+  color: var(--accent);
+}
+.social{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  .icon{
+    cursor: pointer;
+  }
+}
+.subtitle{
+  margin-bottom: 10px;
+}
+a:hover{
+  text-decoration: white underline;
+}
 </style>
