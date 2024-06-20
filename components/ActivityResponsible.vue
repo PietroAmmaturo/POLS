@@ -38,6 +38,7 @@ section{
   padding: 20px;
   margin-top: 20px;
   gap: 30px;
+  flex-wrap: wrap;
 }
 .responsible-image {
   width: 150px;
