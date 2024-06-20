@@ -190,7 +190,7 @@ textarea{
   transform: translate(0, -4px);
 }
 .botIcon{
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background: var(--accent);
   border-radius: 15px;
