@@ -6,8 +6,8 @@
   <div class="content">
     <h1>Our contacts</h1>
     <div class="information">
-      <p><font-awesome-icon class="icon" icon="at" /> mail@mail.com</p>
-      <p><font-awesome-icon class="icon" icon="phone" /> + 39 XXX XXX XXXX</p>
+      <p><font-awesome-icon class="icon" icon="at" /> info@medusa.org</p>
+      <p><font-awesome-icon class="icon" icon="phone" /> + 1 (415) 867-9342</p>
     </div>
     <div class="form_container">
       <form>
@@ -34,7 +34,6 @@ h1{
   margin: 0;
   width: auto;
   text-align: center;
-  padding-top: 10vh;
 }
 .information{
   margin: 0;
@@ -48,16 +47,15 @@ h1{
   gap: 60px;
   position: relative;
   width: 100%;
-  background: #FFFFFF;
 }
 .form_container{
-  background: #D9D9D9;
-  border: black solid 1px;
+  background: var(--light);
   width: auto;
-  margin: 0 25px 0 25px;
+  margin: 0 25px 100px 25px;
+  border-radius: 15px;
 }
 form{
-  color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,6 +68,9 @@ input{
   font-family: 'Montserrat';
   font-size: 16px;
   width: 75%;
+  background: white;
+  color: var(--accent);
+  border-radius: 5px;
 }
 textarea{
   width: 100%;
@@ -89,5 +90,12 @@ textarea{
   align-items: flex-start;
   padding: 0;
   width: 100%;
+}
+.icon{
+  color: var(--light);
+}
+p{
+  font-weight: 500;
+  font-size: 16pt;
 }
 </style>

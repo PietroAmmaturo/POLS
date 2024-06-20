@@ -14,6 +14,6 @@ import NavigationBar from "~/components/NavigationBar.vue";
 
 <style scoped>
 .wrapper{
-  min-height: calc(100% - 170px - 50px - 60px);
+  min-height: calc(100% - 200px - 50px - 60px);
 }
 </style>
