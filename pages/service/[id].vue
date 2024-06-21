@@ -115,4 +115,7 @@ const route = useRoute();
     color: white;
     padding-bottom: 20px;
   }
+  strong{
+    color: var(--white) !important;
+  }
 </style>
