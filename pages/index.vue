@@ -230,6 +230,9 @@ const services = serviceStore.getRandomServices();
     color: var(--white);
     text-align: center;
     margin: 5px 0 0 0;
+    @media screen and (max-width: 950px){
+      font-size: 3em;
+    }
   }
 }
 .box{
@@ -243,7 +246,7 @@ const services = serviceStore.getRandomServices();
   color: white;
   padding: 25px 0 50px 0;
   margin: 15px 0 0 0;
-  border-bottom: 4px solid var(--accent);
+  border-bottom: 7px solid var(--accent);
 }
 .activity{
   width: 100%;

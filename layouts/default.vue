@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import Footer from "~/components/Footer.vue";
 import NavigationBar from "~/components/NavigationBar.vue";
 </script>
@@ -14,6 +13,6 @@ import NavigationBar from "~/components/NavigationBar.vue";
 
 <style scoped>
 .wrapper{
-  min-height: calc(100% - 210px - 50px - 60px);
+  min-height: calc(100% - 210px - 60px);
 }
 </style>
