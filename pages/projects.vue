@@ -31,13 +31,13 @@ const projectsFound = computed(() => projects.value.length  !== 0);
 
 <template>
   <Breadcrumb current-alias="All the projects"></Breadcrumb>
-  <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for long-term empowerment and self-sufficiency.
-These projects include educational workshops that cover topics such as financial literacy, career development, and personal safety.
-By equipping women with essential knowledge and skills, we help them build a foundation for a brighter future.
+  <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for <strong>long-term empowerment and self-sufficiency</strong>.
+These projects include <strong>educational workshops</strong> that cover topics such as financial literacy, career development, and personal safety.
+By equipping women with essential knowledge and skills, we help them build a <strong>foundation for a brighter future</strong>.
 
-Additionally, our job readiness programs prepare women for the workforce, offering resume building, interview preparation, and job placement assistance.
-Community-building initiatives foster a sense of solidarity and support, creating a network of strong, empowered women.
-These projects collectively aim to restore confidence and independence in the lives of survivors.">
+Additionally, our job readiness programs <strong>prepare women for the workforce</strong>, offering resume building, interview preparation, and job placement assistance.
+Community-building initiatives foster a <strong>sense of solidarity and support</strong>, creating a network of strong, empowered women.
+These projects collectively aim to <strong>restore confidence and independence</strong> in the lives of survivors.">
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template  #showcase>
@@ -54,4 +54,7 @@ These projects collectively aim to restore confidence and independence in the li
 </template>
 
 <style>
+strong{
+  color: var(--accent);
+}
 </style>

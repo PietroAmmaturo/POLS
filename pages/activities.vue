@@ -44,20 +44,21 @@ const servicesFound = computed(() => services.value.length  !== 0);
 </script>
 
 <template>
+  <StructuralLinker class="strclnk" family-page="activities"></StructuralLinker>
   <NuxtLoadingIndicator />
-  <ActivitiesHeader title="All our activities" subtitle="Our center offers a range of activities divided into projects and services.
-Projects focus on long-term empowerment, including educational workshops, job readiness programs, and community-building initiatives.
-These projects aim to equip women with the skills and confidence needed to rebuild their lives and achieve independence.
+  <ActivitiesHeader title="All our activities" subtitle="<p>Our center offers a range of activities divided into <strong>projects and services</strong>.
+Projects focus on <strong>long-term empowerment</strong>, including educational workshops, job readiness programs, and community-building initiatives.
+These projects aim to equip women with the <strong>skills and confidence</strong> needed to <strong>rebuild their lives and achieve independence</strong>.
 
-Services provide immediate and essential support, addressing urgent needs.
+Services provide <strong>immediate and essential support</strong>, addressing urgent needs.
 This includes crisis intervention, emergency shelter, counseling, and legal assistance.
-Our team is dedicated to offering compassionate and personalized help, ensuring that every woman receives the care and resources necessary to navigate and overcome the challenges of domestic violence.">
+Our team is dedicated to offering <strong>compassionate and personalized help</strong>, ensuring that every woman receives the care and resources necessary to navigate and overcome the challenges of domestic violence.</p>">
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase>
       <ActivitiesExplorerShowcaseDouble>
         <template #projects>
-          <ActivitiesBanner class="banner" align="right" :path="'/projects?tag='+selectedTag" title="See all the projects"></ActivitiesBanner>
+          <ActivitiesBanner id="projects" class="banner" align="right" :path="'/projects?tag='+selectedTag" title="See all the projects"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
             <transition-group v-if="projects.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
@@ -69,7 +70,7 @@ Our team is dedicated to offering compassionate and personalized help, ensuring 
           </ActivitiesExplorerShowcase>
         </template>
         <template #services>
-          <ActivitiesBanner class="banner"  align="left" :path="'/services?tag='+selectedTag" title="See all the services"></ActivitiesBanner>
+          <ActivitiesBanner class="banner" id="services" align="left" :path="'/services?tag='+selectedTag" title="See all the services"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
             <TransitionGroup v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
@@ -88,5 +89,14 @@ Our team is dedicated to offering compassionate and personalized help, ensuring 
 <style>
 .banner {
   width: 100%;
+}
+strong{
+  color: var(--accent);
+}
+.strclnk{
+  display: none !important;
+  @media screen and (max-width: 780px){
+    display: flex !important;
+  }
 }
 </style>

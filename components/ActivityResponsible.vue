@@ -5,7 +5,7 @@ defineProps(['name', 'description', 'picture', 'type', 'id']);
 
 <template>
   <section>
-    <h2>Who is the responsible?</h2>
+    <h2 id="responsible">Who is the responsible?</h2>
     <div class="responsible-content">
       <img class="responsible-image" :src="picture ? picture : 'https://via.placeholder.com/200'" alt="Placeholder image" />
       <div class="responsible-info">

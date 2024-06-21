@@ -6,7 +6,7 @@
 <div class="footer">
   <div class="wrapper">
     <div class="sub">
-      <p class="subtitle"><strong>The activities</strong></p>
+      <NuxtLink to="/activities"><p class="subtitle"><strong>The activities</strong></p></NuxtLink>
       <NuxtLink to="/projects"><p>All the projects</p></NuxtLink>
       <NuxtLink to="/services"><p>All the services</p></NuxtLink>
     </div>
@@ -37,19 +37,22 @@
 </template>
 
 <style scoped>
+  strong{
+    color: var(--white) !important;
+  }
   .footer{
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--light);
     color: var(--white);
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     width: 100%;
     @media screen and (max-width: 700px){
       height: auto;
       padding: 25px 0 25px 0;
     }
-    height: 200px;
+    height: 210px;
   }
   .wrapper{
     display: flex;

@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'Women Center'
+      title: 'MEDUSA Center'
     }
   },
   css: ['~/assets/css/general.css'],
