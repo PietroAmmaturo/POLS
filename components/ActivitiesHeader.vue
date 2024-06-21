@@ -1,11 +1,12 @@
 <script setup lang="ts">
-
+defineProps(['title', 'subtitle']);
+import {html} from "ultrahtml";
 </script>
 
 <template>
   <header>
       <h1>{{title}}</h1>
-      <p>{{subtitle}}</p>
+      <p v-html="subtitle"></p>
   </header>
 </template>
 
@@ -38,9 +39,3 @@ p {
   }
 }
 </style>
-
-<script>
-export default {
-  props: ['title', 'subtitle']
-}
-</script>

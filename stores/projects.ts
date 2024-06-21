@@ -40,7 +40,11 @@ export const useProjectStore = defineStore('projects', () => {
 
     const getProjectsOrders = () => computed(() => activityOrders);
 
+    const getRandomProjects = () => computed( () => {
+        return Array.from(projects).sort(() => Math.random() - 0.5).slice(0, 3);
+    });
+
     init();
 
-    return { projects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders , getProjectsByPerson};
+    return { projects, getProjectById, getProjects, getProjectsFilters, getProjectsOrders , getProjectsByPerson, getRandomProjects};
 });

@@ -31,7 +31,7 @@ function sendMessage() {
     <div class="chat">
       <div class="chat-messages">
         <div v-for="(message, index) in messages" :key="index" :class="message.bot ? 'container-botMessage' : 'container-myMessage'">
-          <div class="botIcon" v-if="message.bot"><NuxtImg class="image" src="https://toppng.com/uploads/thumbnail/medusa-11562856825p8imhywh3d.png"></NuxtImg></div>
+          <div class="botIcon" v-if="message.bot"><img class="image" src="~/assets/img/icona-bot.png" alt="bot icon"></div>
           <div class="botMessage" v-if="message.bot">
             <p v-if="message.content">{{ message.content }}</p>
             <AppLoader v-else></AppLoader>
@@ -41,7 +41,7 @@ function sendMessage() {
           </div>
         </div>
         <div class="container-botMessage">
-          <div class="botIcon"><NuxtImg class="image" src="https://toppng.com/uploads/thumbnail/medusa-11562856825p8imhywh3d.png"></NuxtImg></div>
+          <div class="botIcon"><img class="image" src="~/assets/img/icona-bot.png" alt="bot icon"></div>
           <div class="botMessage">
             <p>Hi! I'm here to provide you assistance. Let me know if you need help!</p>
           </div>
@@ -72,19 +72,20 @@ function sendMessage() {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
   width: 96%;
   height: 100%;
   padding: 0 2% 15px 2%;
   overflow-y: auto;
   overflow-x: hidden;
   /*border-radius: 15px;*/
-  background: #9e9e9e;
+  background: #D7C8ED;
 }
 .chat-messages{
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  width: 100%;
+  width: 85%;
   height: 90%;
   overflow-y: auto;
   gap: 15px;
@@ -93,7 +94,7 @@ function sendMessage() {
 .write-box{
   position: sticky;
   bottom: 0;
-  width: 100%;
+  width: 85%;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -143,7 +144,7 @@ textarea{
   border-radius: 30px;
   background: var(--light);
   color: white;
-  width: auto;
+  width: 100%;
   max-width: 600px;
   word-wrap: break-word;
   position: relative;
@@ -196,17 +197,19 @@ textarea{
   border-radius: 15px;
   transform: translateY(15px);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 .image{
   width: auto;
-  height: 75%;
+  height: 85%;
   object-fit: cover;
 }
 p{
   padding: 15px;
   margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 ::-webkit-scrollbar {
   width: 5px;

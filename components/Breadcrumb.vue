@@ -30,7 +30,7 @@ const parents = getPages(props.currentAlias);
   font-weight: 550;
   display: flex;
   flex-direction: row;
-  gap: var(--distance);
+  column-gap: var(--distance);
   padding: 10px 30px 10px 30px;
   align-items: flex-start;
   justify-content: flex-start;
@@ -48,7 +48,7 @@ const parents = getPages(props.currentAlias);
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: var(--distance);
+  column-gap: var(--distance);
   opacity: var(--opacity);
 }*/
 .parents{
@@ -57,7 +57,7 @@ const parents = getPages(props.currentAlias);
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: var(--distance);
+  column-gap: var(--distance);
   opacity: var(--opacity);
 }
 .current-category{
@@ -66,7 +66,7 @@ const parents = getPages(props.currentAlias);
   opacity: 1;
   display: flex;
   flex-direction: column;
-  gap: 3.5px;
+  column-gap: 3.5px;
   align-items: center;
 }
 .current-shape{

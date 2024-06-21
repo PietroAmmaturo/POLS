@@ -28,15 +28,16 @@ const route = useRoute();
 
 <template>
   <Breadcrumb current-alias="Service"></Breadcrumb>
+  <StructuralLinker family-page="service"></StructuralLinker>
   <div v-if="service">
     <ActivityHeader :title="service.name" :picture="service.picture" :type="'service'">
       </ActivityHeader>
     <div class="content">
-      <div class="description">
+      <div id="description" class="description">
         <h2>What does it deals with?</h2>
         <p v-if="service">{{service.description}}</p>
       </div>
-      <div class="practical_info">
+      <div id="practical" class="practical_info">
         <h2>Practical Info</h2>
         <p v-if="service"><strong>Availability: </strong>{{service.information.substring(0, service.information.indexOf("@"))}}</p>
         <p v-if="service"><strong>Schedule: </strong>{{service.information.substring(service.information.indexOf("@")+1, service.information.indexOf("#"))}}</p>
@@ -44,7 +45,7 @@ const route = useRoute();
       </div>
       <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">
       </ActivityResponsible>
-      <div class="testimonials">
+      <div id="testimonials" class="testimonials">
         <h2>What they say of us?</h2>
         <div class="testimonials-showcase">
           <TestimonialCard v-for="(testimonial, index) in testimonials" :key="index" :author="testimonial.author" :text="testimonial.text">

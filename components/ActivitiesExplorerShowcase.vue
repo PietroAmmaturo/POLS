@@ -13,9 +13,8 @@
 <style scoped>
 
 .container {
-  width: 95%;
-  background: #f1f1f1;
-  border-radius: 30px;
+  width: 80%;
+  border-radius: 15px;
 }
 .box {
   flex-grow: 1;

@@ -41,7 +41,11 @@ export const useServiceStore = defineStore('services', () => {
 
   const getServicesOrders = () => computed(() => activityOrders);
 
+  const getRandomServices = () => computed( () => {
+    return Array.from(services).sort(() => Math.random() - 0.5).slice(0, 3);
+  });
+
   init();
 
-  return { services, getServiceById, getServices, getServicesFilters, getServicesOrders, getServicesByPerson};
+  return { services, getServiceById, getServices, getServicesFilters, getServicesOrders, getServicesByPerson, getRandomServices};
 });
