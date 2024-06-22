@@ -64,7 +64,7 @@ function sendMessage() {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: calc(100% - 60px);
+  height: calc(100vh - 60px);
   margin: 0;
   overflow: hidden;
 }
@@ -90,6 +90,7 @@ function sendMessage() {
   overflow-y: auto;
   gap: 15px;
   padding-bottom: 15px;
+  padding-top: 15px;
 }
 .write-box{
   position: sticky;
@@ -144,7 +145,7 @@ textarea{
   border-radius: 30px;
   background: var(--light);
   color: white;
-  width: 100%;
+  width: auto;
   max-width: 600px;
   word-wrap: break-word;
   position: relative;

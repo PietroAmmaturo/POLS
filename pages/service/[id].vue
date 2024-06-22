@@ -28,10 +28,10 @@ const route = useRoute();
 
 <template>
   <Breadcrumb current-alias="Service"></Breadcrumb>
-  <StructuralLinker family-page="service"></StructuralLinker>
   <div v-if="service">
     <ActivityHeader :title="service.name" :picture="service.picture" :type="'service'">
       </ActivityHeader>
+    <StructuralLinker family-page="service"></StructuralLinker>
     <div class="content">
       <div id="description" class="description">
         <h2>What does it deals with?</h2>
