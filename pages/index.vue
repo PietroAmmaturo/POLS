@@ -97,7 +97,6 @@ const services = serviceStore.getRandomServices();
   }
 }
 .header{
-  margin-top: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
