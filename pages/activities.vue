@@ -2,6 +2,7 @@
 
 import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import ActivitiesExplorerShowcaseDouble from "~/components/ActivitiesExplorerShowcaseDouble.vue";
 
 definePageMeta({
   validate: async (route) => {
