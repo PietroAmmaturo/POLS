@@ -34,7 +34,7 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
       <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">
       </ActivityResponsible>
       <div class="tags">
-        <h2>Do you want to see any other activity related to these categories?</h2>
+        <h2>See other activities related to these categories:</h2>
         <ActivityTags :tags="project.tags"></ActivityTags>
       </div>
     </div>

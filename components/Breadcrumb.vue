@@ -34,8 +34,12 @@ const parents = getPages(props.currentAlias);
   padding: 10px 30px 10px 30px;
   align-items: flex-start;
   justify-content: flex-start;
-  flex-wrap: wrap;
-  width: auto !important;
+  width: auto;
+  @media screen and (max-width: 530px){
+    max-width: calc(100% - 20px)!important;
+    padding: 10px;
+    column-gap: 5px;
+  }
 }
 .breadcrumb-icon{
   font-size: 10px;
@@ -56,9 +60,13 @@ const parents = getPages(props.currentAlias);
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap;
   column-gap: var(--distance);
   opacity: var(--opacity);
+  @media screen and (max-width: 530px){
+    max-width: fit-content;
+    width: 100%;
+    column-gap: 5px;
+  }
 }
 .current-category{
   color: var(--accent);
@@ -66,8 +74,11 @@ const parents = getPages(props.currentAlias);
   opacity: 1;
   display: flex;
   flex-direction: column;
-  column-gap: 3.5px;
+  gap: 3.5px;
   align-items: center;
+  @media screen and (max-width: 530px){
+    max-width: fit-content;
+  }
 }
 .current-shape{
   width: 65%;

@@ -18,7 +18,7 @@ const services = serviceStore.getRandomServices();
 <template>
   <div class="content">
     <div class="header">
-      <NuxtLink to="/"><div class="image"><img class="pic" src="~/assets/img/logo.png" alt="logo"></div></NuxtLink>
+      <NuxtLink to="/"><div class="image"><img class="pic" src="/logo.png" alt="logo"></div></NuxtLink>
       <div class="title">
         <NuxtLink to="/"><h1>MEDUSA</h1></NuxtLink>
         <h2>The women's Center.<br>Empowering Strength, Inspiring Change.</h2>
@@ -37,7 +37,7 @@ const services = serviceStore.getRandomServices();
       </div>
     </div>
     <div class="showcase">
-      <h1>Discover all our activities!</h1>
+      <NuxtLink to="/activities"><h1><font-awesome-icon class="icon" icon="link" /> Discover all our activities!</h1></NuxtLink>
       <div class="box">
         <div class="activity project">
           <div class="subtitle">
@@ -78,7 +78,7 @@ const services = serviceStore.getRandomServices();
   justify-content: center;
   gap: 100px;
   margin: 0;
-  background: url("/assets/img/pattern.png") repeat;
+  background: url("/pattern.png") repeat;
 }
 .image{
   height: 100%;
@@ -229,6 +229,9 @@ const services = serviceStore.getRandomServices();
     color: var(--white);
     text-align: center;
     margin: 5px 0 0 0;
+    .icon{
+      font-size: 0.7em;
+    }
     @media screen and (max-width: 950px){
       font-size: 3em;
     }

@@ -38,6 +38,7 @@ const selectedOrder = ref(defaultOrder);
   align-items: flex-start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  gap: 15px;
   justify-content: space-evenly;
 }
 select {

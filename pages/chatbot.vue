@@ -31,7 +31,7 @@ function sendMessage() {
     <div class="chat">
       <div class="chat-messages">
         <div v-for="(message, index) in messages" :key="index" :class="message.bot ? 'container-botMessage' : 'container-myMessage'">
-          <div class="botIcon" v-if="message.bot"><img class="image" src="~/assets/img/icona-bot.png" alt="bot icon"></div>
+          <div class="botIcon" v-if="message.bot"><img class="image" src="/icona-bot.png" alt="bot icon"></div>
           <div class="botMessage" v-if="message.bot">
             <p v-if="message.content">{{ message.content }}</p>
             <AppLoader v-else></AppLoader>
@@ -41,7 +41,7 @@ function sendMessage() {
           </div>
         </div>
         <div class="container-botMessage">
-          <div class="botIcon"><img class="image" src="~/assets/img/icona-bot.png" alt="bot icon"></div>
+          <div class="botIcon"><NuxtImg class="image" src="/icona-bot.png" loading="lazy" alt="bot icon"></NuxtImg></div>
           <div class="botMessage">
             <p>Hi! I'm here to provide you assistance. Let me know if you need help!</p>
           </div>

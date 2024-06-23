@@ -28,9 +28,9 @@
 }
 
 .activity-card-small:hover {
-  /*transform: translateY(-2px);*/
-  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
-  background: var(--accent);
+  box-shadow: 0 5px 15px var(--accent)!important;
+  transform: translateY(-5px);
+  /*background: var(--accent);*/
 }
 
 .activity-card-small .picture {

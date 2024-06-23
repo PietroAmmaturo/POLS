@@ -110,6 +110,7 @@ onMounted(() => {
   padding: 25px;
   background: var(--light);
   color: var(--white);
+  width: 100%;
 }
 .image {
   width: 250px;
