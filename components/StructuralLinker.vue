@@ -20,11 +20,11 @@ const structures = getSections(props.familyPage);
 
 <template>
   <div class="strct" v-if="structures">
+    <p>Go to: </p>
     <div class="menu-icon closed">
       <font-awesome-icon class="plus-icon" icon="plus" @click="Menu" />
       <font-awesome-icon class="minus-icon hidden" icon="minus" @click="Menu"/></div>
     <div class="menu-list hidden">
-      <p>Go to: </p>
       <transition-group v-for="structure in structures">
         <a :href="structure.id">{{structure.title}}</a>
       </transition-group>
@@ -40,6 +40,10 @@ const structures = getSections(props.familyPage);
   align-items: center;
   column-gap: 15px;
   padding: 15px;
+  font-weight: 500;
+  p{
+    white-space: nowrap;
+  }
 }
 .menu-list{
   display: flex;
@@ -49,7 +53,6 @@ const structures = getSections(props.familyPage);
   column-gap: 15px;
   flex-wrap: wrap;
   color: var(--light);
-  font-weight: 500;
   a{
     font-weight: 700;
     text-decoration: underline 2px;

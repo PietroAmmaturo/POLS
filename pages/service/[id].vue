@@ -53,7 +53,7 @@ const route = useRoute();
         </div>
       </div>
       <div class="tags">
-        <h2>Do you want to see any other activity related to these categories?</h2>
+        <h2>See other activities related to these categories:</h2>
         <ActivityTags :tags="service.tags"></ActivityTags>
       </div>
     </div>
@@ -114,6 +114,7 @@ const route = useRoute();
     background: var(--light);
     color: white;
     padding-bottom: 20px;
+    width: 100%;
   }
   strong{
     color: var(--white) !important;

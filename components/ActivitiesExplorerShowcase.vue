@@ -14,6 +14,9 @@
 
 .container {
   width: 80%;
+  @media screen and (max-width: 380px){
+    width: 80vw;
+  }
   border-radius: 15px;
 }
 .box {

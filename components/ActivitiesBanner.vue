@@ -31,6 +31,11 @@ h2 {
   transition: all 0.2s linear;
   padding: 0.2em;
   margin: 0;
+  /*@media screen and (min-width: 764px){
+    position: fixed;
+    width: 50%;
+    z-index: 10;
+  }*/
 }
 p {
   padding-inline: 4em;

@@ -37,7 +37,7 @@ const services = serviceStore.getRandomServices();
       </div>
     </div>
     <div class="showcase">
-      <h1>Discover all our activities!</h1>
+      <NuxtLink to="/activities"><h1><font-awesome-icon class="icon" icon="link" /> Discover all our activities!</h1></NuxtLink>
       <div class="box">
         <div class="activity project">
           <div class="subtitle">
@@ -229,6 +229,9 @@ const services = serviceStore.getRandomServices();
     color: var(--white);
     text-align: center;
     margin: 5px 0 0 0;
+    .icon{
+      font-size: 0.7em;
+    }
     @media screen and (max-width: 950px){
       font-size: 3em;
     }
