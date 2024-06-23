@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import ActivitiesBanner from "~/components/ActivitiesBanner.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import ActivitiesExplorerShowcaseDouble from "~/components/ActivitiesExplorerShowcaseDouble.vue";
 
@@ -58,10 +57,9 @@ This includes crisis intervention, emergency shelter, counseling, and legal assi
 Our team is dedicated to offering <strong>compassionate and personalized help</strong>, ensuring that every woman receives the care and resources necessary to navigate and overcome the challenges of domestic violence.">
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
-    <template #showcase>
+    <template #showcase class="showcase-double">
       <ActivitiesExplorerShowcaseDouble>
         <template #projects>
-          <ActivitiesBanner id="projects" class="banner" align="right" :path="'/projects?tag='+selectedTag" title="See all the projects"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
             <transition-group v-if="projects.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
@@ -73,7 +71,6 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
           </ActivitiesExplorerShowcase>
         </template>
         <template #services>
-          <ActivitiesBanner class="banner" id="services" align="left" :path="'/services?tag='+selectedTag" title="See all the services"></ActivitiesBanner>
           <ActivitiesExplorerShowcase>
             <TransitionGroup v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
@@ -90,9 +87,6 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
 </template>
 
 <style>
-.banner {
-  width: 100%;
-}
 strong{
   color: var(--accent);
 }
@@ -118,5 +112,9 @@ strong{
   @media screen and (max-width: 780px){
     display: flex;
   }
+}
+.showcase-double {
+  position: relative;
+  top: 100px;
 }
 </style>
