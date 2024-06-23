@@ -57,11 +57,13 @@ p {
   padding-inline: 4em;
 }
 .separator {
-  width: 10px;
+  width: 4px;
   align-self: stretch;
   @media screen and (max-width: 790px){
     display: none;
   }
-  background: linear-gradient(var(--light) 5%,  var(--shadow) 10%, var(--shadow) 90%, var(--light) 95%);
+  background: linear-gradient(var(--light) 39.2px, transparent 39.2px, transparent 90px, var(--shadow) 90px);
+  border-radius: 0 0 5px 5px;
+  margin: 0 0 40px 0;
 }
 </style>

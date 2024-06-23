@@ -38,7 +38,7 @@ const parents = getPages(props.currentAlias);
   @media screen and (max-width: 530px){
     max-width: calc(100% - 20px)!important;
     padding: 10px;
-    column-gap: 5px;
+    column-gap: 10px;
   }
 }
 .breadcrumb-icon{
@@ -65,7 +65,7 @@ const parents = getPages(props.currentAlias);
   @media screen and (max-width: 530px){
     max-width: fit-content;
     width: 100%;
-    column-gap: 5px;
+    column-gap: 10px;
   }
 }
 .current-category{

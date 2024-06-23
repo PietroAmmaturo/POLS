@@ -9,11 +9,11 @@ const pageTree : Page = {
     path: "/",
     children: [
         {
-            page: "All the activities",
+            page: "All activities",
             path: "/activities",
             children: [
                 {
-                    page: "All the projects",
+                    page: "All projects",
                     path: "/projects",
                     children: [
                         {
@@ -24,7 +24,7 @@ const pageTree : Page = {
                     ]
                 },
                 {
-                    page: "All the services",
+                    page: "All services",
                     path: "/services",
                     children: [
                         {
@@ -37,7 +37,7 @@ const pageTree : Page = {
             ]
         },
         {
-            page: "All the people",
+            page: "All people",
             path: "/people",
             children: [
                 {
