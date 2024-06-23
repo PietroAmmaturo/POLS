@@ -4,7 +4,21 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'MEDUSA Center'
+      title: 'MEDUSA Center',
+      charset: "utf-8",
+      htmlAttrs: {
+        lang: 'en'
+      },
+      meta: [
+        {
+          name: "description",
+          content: "A Center to support Women in difficulty and victims of violence"
+        },
+        {
+          name: "keywords",
+          content: "Medusa, Women, Help, Violence, Support, Center"
+        }
+      ]
     }
   },
   css: ['~/assets/css/general.css'],

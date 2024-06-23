@@ -33,6 +33,7 @@ h1{
 }
 h2{
   color: var(--light);
+  text-align: center;
 }
 p{
   text-align: justify;

@@ -71,6 +71,7 @@ input{
   background: white;
   color: var(--accent);
   border-radius: 5px;
+  cursor: pointer;
 }
 textarea{
   width: 100%;

@@ -5,7 +5,7 @@
 <template>
 
   <nuxt-link class="activity-card-small" :to="`/${type}/${id}`">
-    <div class="picture" :style="{ backgroundImage: `url(${picture})` }"></div>
+    <NuxtImg class="picture" :src="picture" loading="lazy" alt="Link to Activity Page"></NuxtImg>
     <h4 class="title">{{name}}</h4>
   </nuxt-link>
 </template>

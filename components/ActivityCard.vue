@@ -10,7 +10,7 @@ const imgUrl = img(`/${props.type}.jpg`, { quality: 10, blur: 40 })
 <template>
   <NuxtLink class="person-card" :to="`/${type}/${id}`">
     <div class="picture">
-      <NuxtImg class="image" :src="picture" :placeholder="imgUrl" loading="lazy"></NuxtImg>
+      <NuxtImg class="image" :src="picture" :placeholder="imgUrl" loading="lazy" alt="Link to Activity Page"></NuxtImg>
     </div>
     <h3 class="title">{{name}}</h3>
     <p class="cta"><font-awesome-icon class="icon" icon="link" /> Learn more</p>

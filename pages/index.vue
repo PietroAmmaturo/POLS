@@ -18,7 +18,7 @@ const services = serviceStore.getRandomServices();
 <template>
   <div class="content">
     <div class="header">
-      <NuxtLink to="/"><div class="image"><img class="pic" src="/logo.png" alt="logo"></div></NuxtLink>
+      <NuxtLink to="/"><div class="image"><NuxtImg class="pic" src="/logo.png" alt="logo" /></div></NuxtLink>
       <div class="title">
         <NuxtLink to="/"><h1>MEDUSA</h1></NuxtLink>
         <h2>The women's Center.<br>Empowering Strength, Inspiring Change.</h2>

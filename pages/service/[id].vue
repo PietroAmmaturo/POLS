@@ -34,7 +34,7 @@ const route = useRoute();
     <StructuralLinker family-page="service"></StructuralLinker>
     <div class="content">
       <div id="description" class="description">
-        <h2>What does it deals with?</h2>
+        <h2>What does it deal with?</h2>
         <p v-if="service">{{service.description}}</p>
       </div>
       <div id="practical" class="practical_info">

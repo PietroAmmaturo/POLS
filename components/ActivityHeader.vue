@@ -11,7 +11,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
         <h2 v-if="type == 'project'"><font-awesome-icon class="icon" icon="hand-holding-heart" /> One of our projects</h2>
         <h2 v-if="type == 'service'"><font-awesome-icon class="icon" icon="hand-holding-heart" /> One of our services</h2>
       </div>
-      <img :src="picture" alt="cover" />
+      <NuxtImg id="pic" :src="picture" alt="Activity Image" />
     </div>
   </header>
 </template>
@@ -35,7 +35,7 @@ header div {
   background: var(--shadow);
   z-index: 1;
 }
-header img {
+#pic {
   width: 100%;
   height: 100%;
   object-fit: cover;

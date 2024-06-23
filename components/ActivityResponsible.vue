@@ -7,7 +7,7 @@ defineProps(['name', 'description', 'picture', 'type', 'id']);
   <section>
     <h2 id="responsible">Who is the responsible?</h2>
     <div class="responsible-content">
-      <img class="responsible-image" :src="picture ? picture : 'https://via.placeholder.com/200'" alt="Placeholder image" />
+      <NuxtImg class="responsible-image" :src="picture ? picture : 'https://via.placeholder.com/200'" alt="Link to Responsible Page" />
       <div class="responsible-info">
         <h3>{{name ? name : "No person responsible"}}</h3>
         <p>{{description ? description : "No description available"}}</p>
