@@ -19,7 +19,7 @@ export const useMessageStore = defineStore('messages', () => {
                 message: message,
             }
         });
-        messages.unshift({bot: false, content: redactedMessage as string});
+        messages.unshift({bot: false, content: redactedMessage.choices[0].message.content as string});
         const botMessage = {bot: true, content: ""};
         messages.unshift(botMessage);
         const response = await $fetch('/api/chatbot', {
