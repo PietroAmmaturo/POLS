@@ -111,6 +111,7 @@ onMounted(() => {
   background: var(--light);
   color: var(--white);
   width: 100%;
+  box-sizing: border-box;
 }
 .image {
   width: 250px;
