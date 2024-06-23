@@ -52,6 +52,6 @@ Our commitment to providing compassionate and comprehensive care ensures that <s
     color: var(--accent);
   }
   .larger{
-    width: 100%;
+    width: 100% !important;
   }
 </style>
