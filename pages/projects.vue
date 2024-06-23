@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {useProjectStore} from '~/stores/projects';
+import ActivitiesExplorerShowcaseIndividual from "~/components/ActivitiesExplorerShowcaseIndividual.vue";
 definePageMeta({
   validate: async (route) => {
     return (!route.query.tag || typeof route.query.tag === 'string');
@@ -40,14 +41,14 @@ These projects collectively aim to <strong>restore confidence and independence</
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template  #showcase>
-      <ActivitiesExplorerShowcase class="larger">
+      <ActivitiesExplorerShowcaseIndividual>
         <transition-group v-if="projects.length" name="bounce-fade" appear>
           <ActivityCard v-for="(project) in projects" type="project" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
           </ActivityCard>
           </transition-group>
         <AppLoader v-else-if="projectsFound"></AppLoader>
         <p v-else>There are no projects with the selected tag.</p>
-      </ActivitiesExplorerShowcase>
+      </ActivitiesExplorerShowcaseIndividual>
     </template>
   </ActivitiesExplorer>
 </template>
@@ -55,8 +56,5 @@ These projects collectively aim to <strong>restore confidence and independence</
 <style>
 strong{
   color: var(--accent);
-}
-.larger{
-    width: 100% !important;
 }
 </style>
