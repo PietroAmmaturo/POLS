@@ -62,7 +62,8 @@ p {
   @media screen and (max-width: 790px){
     display: none;
   }
-  background: linear-gradient(var(--light) 39.2px, transparent 39.2px, transparent 90px, var(--shadow) 90px);
+  font-size: 1.9em;
+  background: linear-gradient(var(--light) 1.29em, transparent 1.29em, transparent 90px, var(--shadow) 90px);
   border-radius: 0 0 5px 5px;
   margin: 0 0 40px 0;
 }

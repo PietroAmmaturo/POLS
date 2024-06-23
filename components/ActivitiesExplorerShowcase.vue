@@ -13,7 +13,7 @@
 <style scoped>
 
 .container {
-  width: 100%;
+  width: 80%;
 }
 .box {
   flex-grow: 1;
