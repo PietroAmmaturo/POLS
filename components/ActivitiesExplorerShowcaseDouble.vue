@@ -33,7 +33,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 .column {
   flex-shrink: 0;
   flex-grow: 1;
-  flex-basis: calc(50% - 5px);
+  flex-basis: calc(50% - 2px);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
