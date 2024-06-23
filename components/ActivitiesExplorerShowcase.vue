@@ -13,11 +13,7 @@
 <style scoped>
 
 .container {
-  width: 80%;
-  @media screen and (max-width: 380px){
-    width: 80vw;
-  }
-  border-radius: 15px;
+  width: 100%;
 }
 .box {
   flex-grow: 1;
@@ -26,7 +22,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 1em;
-  gap: 60px;
+  gap: 0px;
   justify-content: space-around;
 }
 </style>

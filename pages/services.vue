@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useServiceStore } from '~/stores/services';
-import ActivitiesExplorerShowcaseIndividual from "~/components/ActivitiesExplorerShowcaseIndividual.vue";
 
 const store = useServiceStore();
 const tags = store.getServicesFilters();
@@ -36,14 +35,14 @@ Our commitment to providing compassionate and comprehensive care ensures that <s
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase>
-      <ActivitiesExplorerShowcaseIndividual>
+      <ActivitiesExplorerShowcase>
         <transition-group v-if="services.length"  name="bounce-fade" appear>
           <ActivityCard v-for="(service) in services" type="service" :key="service.name" :name="service.name" :picture="service.picture" :id="service.id">
           </ActivityCard>
         </transition-group>
         <AppLoader v-else-if="servicesFound"></AppLoader>
         <p v-else>There are no services with the selected tag.</p>
-      </ActivitiesExplorerShowcaseIndividual>
+      </ActivitiesExplorerShowcase>
     </template>
   </ActivitiesExplorer>
 </template>
