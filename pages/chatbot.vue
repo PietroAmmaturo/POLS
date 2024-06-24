@@ -23,6 +23,10 @@ function sendMessage() {
   });
   // Empty textarea
   currentContent.value = "";
+  useSeoMeta({
+    title: "MEDUSA - Chatbot",
+  description: "Our Chatbot that will help you to find an immediate help"
+})
 }
 </script>
 

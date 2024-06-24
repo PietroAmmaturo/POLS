@@ -1,5 +1,9 @@
 <script setup lang="ts">
   import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+  useSeoMeta({
+    title: "MEDUSA - Contacts",
+  description: "Our Contacts to address every need or doubt"
+})
 </script>
 
 <template>

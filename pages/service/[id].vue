@@ -24,6 +24,10 @@ const route = useRoute();
   const testimonials = testimonialStore.getTestimonialsByServiceId(id);
   const personStore = usePersonStore();
   const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined);
+useSeoMeta({
+  title: "MEDUSA - Services",
+  description: "One of our Services for the MEDUSA Center"
+})
 </script>
 
 <template>

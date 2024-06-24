@@ -26,6 +26,10 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 const peopleFound = computed(() => people.value.length  !== 0);
+useSeoMeta({
+  title: "MEDUSA - Our Team",
+  description: "The people who work with us to make the MEDUSA Center a reality"
+})
 </script>
 
 <template>

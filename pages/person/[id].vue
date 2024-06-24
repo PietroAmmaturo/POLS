@@ -39,6 +39,10 @@ const personFound = ref(true);
 onMounted(() => {
   if (!person.value) personFound.value = false;
 })
+useSeoMeta({
+  title: "MEDUSA - Team",
+  description: "One of our Collaborators for the MEDUSA Center"
+})
 </script>
 
 <template>

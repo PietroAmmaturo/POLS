@@ -19,6 +19,10 @@ const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
 const project = projectStore.getProjectById(id);
 const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined);
+useSeoMeta({
+  title: "MEDUSA - Projects",
+  description: "One of our Projects for the MEDUSA Center"
+})
 </script>
 
 <template>

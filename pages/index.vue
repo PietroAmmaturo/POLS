@@ -13,6 +13,10 @@ const projectStore = useProjectStore();
 const serviceStore = useServiceStore();
 const projects = projectStore.getRandomProjects();
 const services = serviceStore.getRandomServices();
+useSeoMeta({
+  title: "MEDUSA Center",
+  description: "A Center to support Women in difficulty and victims of violence"
+})
 </script>
 
 <template>
