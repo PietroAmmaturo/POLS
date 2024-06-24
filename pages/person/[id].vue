@@ -39,6 +39,10 @@ const personFound = ref(true);
 onMounted(() => {
   if (!person.value) personFound.value = false;
 })
+useSeoMeta({
+  title: "MEDUSA - Team",
+  description: "One of our Collaborators for the MEDUSA Center"
+})
 </script>
 
 <template>
@@ -49,7 +53,7 @@ onMounted(() => {
     <div class="content">
       <div class="information">
         <div class="picture">
-          <NuxtImg class="image" :src="person.picture"></NuxtImg>
+          <NuxtImg class="image" :src="person.picture" alt="Person Image"></NuxtImg>
         </div>
         <p> {{person.description}} </p>
       </div>
@@ -162,5 +166,6 @@ h2{
 .activities p{
   color: var(--accent);
   font-weight: 600;
+  text-align: center;
 }
 </style>
