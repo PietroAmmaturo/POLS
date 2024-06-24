@@ -53,17 +53,14 @@ h2 {
   padding: 0.2em;
   margin: 0;
 }
-p {
-  padding-inline: 4em;
-}
 .separator {
   width: 4px;
   align-self: stretch;
   @media screen and (max-width: 790px){
     display: none;
   }
-  background: linear-gradient(var(--light) 5%,  var(--shadow) 10%);
+  background: linear-gradient(var(--light) 5%,  var(--shadow) 10%, var(--shadow) 70%, transparent 100%);
   border-radius: 0 0 5px 5px;
-  margin: 0 0 40px 0;
+  margin: 0 0 100px 0;
 }
 </style>

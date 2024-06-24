@@ -43,7 +43,7 @@ Community-building initiatives foster a <strong>sense of solidarity and support<
 These projects collectively aim to <strong>restore confidence and independence</strong> in the lives of survivors.">
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
-    <template  #showcase>
+    <template #showcase>
       <ActivitiesExplorerShowcase class="larger">
         <transition-group v-if="projects.length" name="bounce-fade" appear>
           <ActivityCard v-for="(project) in projects" type="project" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
@@ -59,8 +59,5 @@ These projects collectively aim to <strong>restore confidence and independence</
 <style>
 strong{
   color: var(--accent);
-}
-.larger{
-  width: 100% !important;
 }
 </style>
