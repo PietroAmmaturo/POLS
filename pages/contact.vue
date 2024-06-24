@@ -16,14 +16,15 @@
     <div class="form_container">
       <form>
         <div class="form_names">
-          <label>Name and Surname: </label>
-          <input type="text">
+          <label for="name">Name and Surname: </label>
+          <input type="text" id="name">
         </div>
         <div class="form_mail">
-          <label>e-mail: </label>
-          <input type="text">
+          <label for="e-mail">e-mail: </label>
+          <input type="email" id="e-mail">
         </div>
-        <textarea rows="10" cols="30"></textarea>
+        <label for="message" hidden>Message: </label>
+        <textarea id="message" rows="10" cols="30"></textarea>
         <input type="button" value="Send the message">
       </form>
     </div>

@@ -52,6 +52,7 @@ function sendMessage() {
         </div>
       </div>
       <div class="write-box">
+        <label for="message" hidden>Message</label>
         <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()"></textarea>
         <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
