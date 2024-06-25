@@ -21,6 +21,11 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 const servicesFound = computed(() => services.value.length  !== 0);
+
+useSeoMeta({
+  title: "MEDUSA - Our Services",
+  description: "Our Services to address immediate needs and offer support to Women"
+})
 </script>
 
 <template>
@@ -35,7 +40,7 @@ Our commitment to providing compassionate and comprehensive care ensures that <s
   </ActivitiesHeader>
   <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase>
-      <ActivitiesExplorerShowcase class="larger">
+      <ActivitiesExplorerShowcase>
         <transition-group v-if="services.length"  name="bounce-fade" appear>
           <ActivityCard v-for="(service) in services" type="service" :key="service.name" :name="service.name" :picture="service.picture" :id="service.id">
           </ActivityCard>
@@ -50,8 +55,5 @@ Our commitment to providing compassionate and comprehensive care ensures that <s
 <style scoped>
   strong{
     color: var(--accent);
-  }
-  .larger{
-    width: 100% !important;
   }
 </style>

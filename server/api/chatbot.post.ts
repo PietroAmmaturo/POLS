@@ -173,21 +173,21 @@ const getBotResponse = async (messages: Message[]) => {
             model: "gpt-3.5-turbo-0125",
             messages: [{role: "system", content: INSPECTOR_PROMPT}, ...formatMessages(messages, 5)],
             temperature: 1,
-            max_tokens: 54,
+            max_tokens: 128,
             top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
+            frequency_penalty: -0.5,
+            presence_penalty: -1,
         }
     );
 
     const generalSituation = await openai.chat.completions.create({
             model: "gpt-3.5-turbo-0125",
             messages: [{role: "system", content: ANALYST_PROMPT}, ...formatMessages(messages, 20)],
-            temperature: 1,
-            max_tokens: 128,
+            temperature: 0.5,
+            max_tokens: 256,
             top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
+            frequency_penalty: -0.5,
+            presence_penalty: -1,
         }
     );
     const systemPrompt =
@@ -200,12 +200,12 @@ const getBotResponse = async (messages: Message[]) => {
 
     return await openai.chat.completions.create({
             model: "gpt-3.5-turbo-0125",
-            messages: [{role: "system", content: systemPrompt}, ...formatMessages(messages, 10)],
+            messages: [{role: "system", content: systemPrompt}, ...formatMessages(messages, 5)],
             temperature: 1,
             max_tokens: 128,
             top_p: 1,
-            frequency_penalty: 0.5,
-            presence_penalty: 0,
+            frequency_penalty: 1,
+            presence_penalty: -1,
         }
     );
 }

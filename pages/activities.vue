@@ -42,6 +42,10 @@ function updateOrder(order: string) {
 }
 const projectsFound = computed(() => projects.value.length  !== 0);
 const servicesFound = computed(() => services.value.length  !== 0);
+useSeoMeta({
+  title: "MEDUSA - Our Activities",
+  description: "All our Activities, Projects and Services to help Women"
+})
 </script>
 
 <template>

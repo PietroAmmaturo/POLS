@@ -19,6 +19,10 @@ const personStore = usePersonStore();
 const id = parseInt(route.params.id as string);
 const project = projectStore.getProjectById(id);
 const person = computed(() => project.value ? personStore.getPersonByProject(project.value) : undefined);
+useSeoMeta({
+  title: "MEDUSA - Projects",
+  description: "One of our Projects for the MEDUSA Center"
+})
 </script>
 
 <template>
@@ -28,7 +32,7 @@ const person = computed(() => project.value ? personStore.getPersonByProject(pro
     </ActivityHeader>
     <div class="content">
       <div class="description">
-        <h2>What does it deals with?</h2>
+        <h2>What does it deal with?</h2>
         <p v-if="project">{{project.description}}</p>
       </div>
       <ActivityResponsible :name="person?.value?.name" :description="person?.value?.description" :picture="person?.value?.picture" type="person" :id="person?.value?.id">

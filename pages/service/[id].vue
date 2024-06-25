@@ -24,6 +24,10 @@ const route = useRoute();
   const testimonials = testimonialStore.getTestimonialsByServiceId(id);
   const personStore = usePersonStore();
   const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined);
+useSeoMeta({
+  title: "MEDUSA - Services",
+  description: "One of our Services for the MEDUSA Center"
+})
 </script>
 
 <template>
@@ -34,7 +38,7 @@ const route = useRoute();
     <StructuralLinker family-page="service"></StructuralLinker>
     <div class="content">
       <div id="description" class="description">
-        <h2>What does it deals with?</h2>
+        <h2>What does it deal with?</h2>
         <p v-if="service">{{service.description}}</p>
       </div>
       <div id="practical" class="practical_info">

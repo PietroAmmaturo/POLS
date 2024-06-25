@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   import StructuralLinker from "~/components/StructuralLinker.vue";
+  useSeoMeta({
+  title: "MEDUSA - About Us",
+  description: "An overview of our History and our Mission for the MEDUSA Center"
+})
 </script>
 
 <template>
@@ -33,6 +37,7 @@ h1{
 }
 h2{
   color: var(--light);
+  text-align: center;
 }
 p{
   text-align: justify;

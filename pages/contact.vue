@@ -1,5 +1,9 @@
 <script setup lang="ts">
   import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+  useSeoMeta({
+    title: "MEDUSA - Contacts",
+  description: "Our Contacts to address every need or doubt"
+})
 </script>
 
 <template>
@@ -71,6 +75,7 @@ input{
   background: white;
   color: var(--accent);
   border-radius: 5px;
+  cursor: pointer;
 }
 textarea{
   width: 100%;
