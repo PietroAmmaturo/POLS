@@ -7,14 +7,14 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   <div class="columns">
     <div class="column">
       <NuxtLink class="title" to="./projects">
-        <h2><font-awesome-icon class="icon" icon="link" />See all the Projects</h2>
+        <h2><font-awesome-icon class="icon" icon="link" /> See all the Projects</h2>
       </NuxtLink>
       <slot name="projects"></slot>
     </div>
     <div class="separator"></div>
     <div class="column">
-      <NuxtLink class="title" to="./projects">
-        <h2><font-awesome-icon class="icon" icon="link" />See all the Projects</h2>
+      <NuxtLink class="title" to="./services">
+        <h2><font-awesome-icon class="icon" icon="link" /> See all the Services</h2>
       </NuxtLink>
       <slot name="services"></slot>
     </div>
@@ -65,5 +65,8 @@ p {
   background: linear-gradient(var(--light) 5%,  var(--shadow) 10%);
   border-radius: 0 0 5px 5px;
   margin: 0 0 40px 0;
+}
+.icon{
+  font-size: 0.8em;
 }
 </style>

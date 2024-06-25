@@ -29,7 +29,7 @@ const projectsFound = computed(() => projects.value.length  !== 0);
 </script>
 
 <template>
-  <Breadcrumb current-alias="All the projects"></Breadcrumb>
+  <Breadcrumb current-alias="All projects"></Breadcrumb>
   <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for <strong>long-term empowerment and self-sufficiency</strong>.
 These projects include <strong>educational workshops</strong> that cover topics such as financial literacy, career development, and personal safety.
 By equipping women with essential knowledge and skills, we help them build a <strong>foundation for a brighter future</strong>.
