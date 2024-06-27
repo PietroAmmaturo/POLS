@@ -29,7 +29,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="All the services"></Breadcrumb>
+  <Breadcrumb current-alias="All services"></Breadcrumb>
   <ActivitiesHeader title="Services" subtitle="Our center provides essential services to <strong>address immediate needs and offer critical support</strong> to survivors of domestic violence.
 These services include <strong>crisis intervention</strong>, offering immediate assistance and shelter to those in danger.
 <strong>Counseling and therapy sessions</strong> are available to help survivors process their experiences and <strong>begin the healing journey</strong>.

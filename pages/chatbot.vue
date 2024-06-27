@@ -23,11 +23,11 @@ function sendMessage() {
   });
   // Empty textarea
   currentContent.value = "";
-  useSeoMeta({
-    title: "MEDUSA - Chatbot",
+}
+useSeoMeta({
+  title: "MEDUSA - Chatbot",
   description: "Our Chatbot that will help you to find an immediate help"
 })
-}
 </script>
 
 <template>
@@ -42,12 +42,6 @@ function sendMessage() {
           </div>
           <div class="myMessage" v-else>
             <p>{{ message.content }}</p>
-          </div>
-        </div>
-        <div class="container-botMessage">
-          <div class="botIcon"><NuxtImg class="image" src="/icona-bot.png" loading="lazy" alt="bot icon"></NuxtImg></div>
-          <div class="botMessage">
-            <p>Hi! I'm here to provide you assistance. Let me know if you need help!</p>
           </div>
         </div>
       </div>

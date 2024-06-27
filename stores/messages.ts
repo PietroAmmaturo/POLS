@@ -9,7 +9,16 @@ export const useMessageStore = defineStore('messages', () => {
     const messages = reactive([] as Message[]);
 
     function init() {
-
+        const startingMessage = {bot: true, content: "Hi! I'm here to provide you assistance. Let me know if you need help!"}
+        if(process.client) {
+            const storedMessages = sessionStorage.getItem('messages');
+            if (storedMessages) {
+                messages.push(...JSON.parse(storedMessages));
+                console.log(storedMessages, messages)
+            } else {
+                messages.push(startingMessage);
+            }
+        }
     }
 
     async function addUserMessage(message : string) {
@@ -33,6 +42,11 @@ export const useMessageStore = defineStore('messages', () => {
     }
 
     init()
+
+    // Watch the messages array and save to session storage on change
+    watch(messages, async (newMessages) => {
+        sessionStorage.setItem('messages', JSON.stringify(newMessages));
+    }, { deep: true });
 
     return {messages, addUserMessage};
 });
