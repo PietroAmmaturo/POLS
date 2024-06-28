@@ -55,7 +55,7 @@ useSeoMeta({
         <div class="picture">
           <NuxtImg class="image" :src="person.picture" alt="Person Image"></NuxtImg>
         </div>
-        <p> {{person.description}} </p>
+        <p> {{person.cv}} </p>
       </div>
       <div class="heading project"><h2>My projects:</h2></div>
       <div class="activities project">
