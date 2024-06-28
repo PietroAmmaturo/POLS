@@ -7,8 +7,10 @@ const orders = store.getServicesOrders();
 const route = useRoute();
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 const selectedOrder = ref("");
-const services = store.getServices(selectedTag, selectedOrder);
-
+const showNumber = ref(10);
+const showIncrement = 10;
+const maxNumber = computed(() => store.getServices(selectedTag, selectedOrder).value.length);
+const services = computed(() => store.getServices(selectedTag, selectedOrder).value.slice(0, showNumber.value));
 function updateTag(tag: string) {
   selectedTag.value = tag;
   const router = useRouter()
@@ -21,7 +23,9 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 const servicesFound = computed(() => services.value.length  !== 0);
-
+function showMore() {
+  showNumber.value += showIncrement;
+}
 useSeoMeta({
   title: "MEDUSA - Our Services",
   description: "Our Services to address immediate needs and offer support to Women"
@@ -48,6 +52,7 @@ Our commitment to providing compassionate and comprehensive care ensures that <s
         <AppLoader v-else-if="servicesFound"></AppLoader>
         <p v-else>There are no services with the selected tag.</p>
       </ActivitiesExplorerShowcase>
+      <div class="show-more"><button v-if="(showNumber < maxNumber)" @click="showMore()" type="button">SHOW MORE</button></div>
     </template>
   </ActivitiesExplorer>
 </template>

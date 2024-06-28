@@ -12,8 +12,10 @@ const orders = store.getProjectsOrders();
 const route = useRoute();
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 const selectedOrder = ref("");
-const projects = store.getProjects(selectedTag, selectedOrder);
-
+const showNumber = ref(10);
+const showIncrement = 10;
+const maxNumber = computed(() => store.getProjects(selectedTag, selectedOrder).value.length);
+const projects = computed(() => store.getProjects(selectedTag, selectedOrder).value.slice(0, showNumber.value));
 function updateTag(tag: string) {
   selectedTag.value = tag;
   const router = useRouter()
@@ -26,6 +28,9 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 const projectsFound = computed(() => projects.value.length  !== 0);
+function showMore() {
+  showNumber.value += showIncrement;
+}
 useSeoMeta({
   title: "MEDUSA - Our Projects",
   description: "Our Projects to create a better community for Women and build their independence"
@@ -52,6 +57,7 @@ These projects collectively aim to <strong>restore confidence and independence</
         <AppLoader v-else-if="projectsFound"></AppLoader>
         <p v-else>There are no projects with the selected tag.</p>
       </ActivitiesExplorerShowcase>
+      <div class="show-more"><button v-if="(showNumber < maxNumber)" @click="showMore()" type="button">SHOW MORE</button></div>
     </template>
   </ActivitiesExplorer>
 </template>

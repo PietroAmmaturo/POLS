@@ -32,11 +32,3 @@ export const orderPeople = (people: Person[], order: string) => {
 }
 // Only allow people to be filtered by gender for the current implementation
 export const filterPeopleByGender = (people: Person[], filter: string) => people.filter(person => person.gender === filter);
-
-export const filterPeopleById = (people: Person[], filter: string) => {
-    if(filter === "Odd") {
-        return people.filter(person => person.id%2 !== 0);
-    } else {
-        return people;
-    }
-}

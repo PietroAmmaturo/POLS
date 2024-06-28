@@ -49,6 +49,25 @@ p {
     line-height: 1.5em;
     margin: 0;
 }
+.show-more {
+    width: 100%;
+    display: flex;
+}
+.show-more button{
+    background: var(--accent);
+    color:white;
+    border-radius: 5px;
+    padding: 15px 40px 15px 40px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    margin-inline: auto;
+    cursor: pointer;
+}
+.show-more:hover button{
+    background: white;
+    color: var(--accent);
+    box-shadow: 0 3px 10px var(--accent);
+}
 
 .bounce-fade-enter-active {
     animation: bounce-in .5s;

@@ -35,11 +35,11 @@ export const usePersonStore = defineStore('people', () => {
     });
 
     // Filtering people is a bit different since the filtering happens by gender (which is a string, not an array)
-    const getPeopleByGender = (filter:  Ref<string>, order:  Ref<string>, show: Ref<string>) => computed(() => {
-        if (!filter.value && !order.value) return filterPeopleById(people, show.value);
-        if (!filter.value || filter.value === "all") return orderPeople(filterPeopleById(people, show.value), order.value);
-        if (!order.value) return filterPeopleByGender(filterPeopleById(people, show.value), filter.value);
-        return orderPeople(filterPeopleByGender(filterPeopleById(people, show.value), filter.value), order.value);
+    const getPeopleByGender = (filter:  Ref<string>, order:  Ref<string>) => computed(() => {
+        if (!filter.value && !order.value) return people;
+        if (!filter.value || filter.value === "all") return orderPeople(people, order.value);
+        if (!order.value) return filterPeopleByGender(people, filter.value);
+        return orderPeople(filterPeopleByGender(people, filter.value), order.value);
     });
 
     // Maybe also other kind of filters could be implemented
