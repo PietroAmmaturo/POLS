@@ -38,7 +38,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="All projects"></Breadcrumb>
+  <AppBreadcrumb current-alias="All projects"></AppBreadcrumb>
   <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for <strong>long-term empowerment and self-sufficiency</strong>.
 These projects include <strong>educational workshops</strong> that cover topics such as financial literacy, career development, and personal safety.
 By equipping women with essential knowledge and skills, we help them build a <strong>foundation for a brighter future</strong>.
@@ -57,7 +57,7 @@ These projects collectively aim to <strong>restore confidence and independence</
         <AppLoader v-else-if="projectsFound"></AppLoader>
         <p v-else>There are no projects with the selected tag.</p>
       </ActivitiesExplorerShowcase>
-      <div class="show-more"><button v-if="(showNumber < maxNumber)" @click="showMore()" type="button">SHOW MORE</button></div>
+      <AppLoadMore v-if="(showNumber < maxNumber)" @click="showMore()">LOAD MORE</AppLoadMore>
     </template>
   </ActivitiesExplorer>
 </template>

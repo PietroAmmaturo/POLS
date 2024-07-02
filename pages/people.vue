@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {usePersonStore} from '~/stores/people';
+import AppLoadMore from "~/components/AppLoadMore.vue";
 definePageMeta({
   validate: async (route) => {
     return (!route.query.gender || typeof route.query.gender === 'string');
@@ -50,7 +51,7 @@ useSeoMeta({
           <AppLoader v-else-if="peopleFound"></AppLoader>
           <p v-else>There are no people with the selected tag.</p>
         </ActivitiesExplorerShowcase>
-        <div class="show-more"><button v-if="(showNumber < maxNumber)" @click="showMore()" type="button">SHOW MORE</button></div>
+        <AppLoadMore v-if="(showNumber < maxNumber)" @click="showMore()">LOAD MORE</AppLoadMore>
       </template>
     </ActivitiesExplorer>
 </template>

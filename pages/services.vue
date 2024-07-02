@@ -33,7 +33,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="All services"></Breadcrumb>
+  <AppBreadcrumb current-alias="All services"></AppBreadcrumb>
   <ActivitiesHeader title="Services" subtitle="Our center provides essential services to <strong>address immediate needs and offer critical support</strong> to survivors of domestic violence.
 These services include <strong>crisis intervention</strong>, offering immediate assistance and shelter to those in danger.
 <strong>Counseling and therapy sessions</strong> are available to help survivors process their experiences and <strong>begin the healing journey</strong>.
@@ -52,7 +52,7 @@ Our commitment to providing compassionate and comprehensive care ensures that <s
         <AppLoader v-else-if="servicesFound"></AppLoader>
         <p v-else>There are no services with the selected tag.</p>
       </ActivitiesExplorerShowcase>
-      <div class="show-more"><button v-if="(showNumber < maxNumber)" @click="showMore()" type="button">SHOW MORE</button></div>
+      <AppLoadMore v-if="(showNumber < maxNumber)" @click="showMore()">LOAD MORE</AppLoadMore>
     </template>
   </ActivitiesExplorer>
 </template>

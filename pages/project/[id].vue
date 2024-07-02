@@ -26,7 +26,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="Project"></Breadcrumb>
+  <AppBreadcrumb current-alias="Project"></AppBreadcrumb>
   <div v-if="project" >
     <ActivityHeader :title="project.name" :picture="project.picture" :type="'project'" >
     </ActivityHeader>

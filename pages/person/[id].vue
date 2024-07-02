@@ -46,7 +46,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="Person"></Breadcrumb>
+  <AppBreadcrumb current-alias="Person"></AppBreadcrumb>
   <div v-if="person">
     <ActivitiesHeader :title="person.name">
     </ActivitiesHeader>

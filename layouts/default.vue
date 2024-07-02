@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import Footer from "~/components/Footer.vue";
-import NavigationBar from "~/components/NavigationBar.vue";
 </script>
 
 <template>
-  <NavigationBar></NavigationBar>
+  <AppNavigationBar></AppNavigationBar>
   <div class="wrapper">
     <slot/>
   </div>
-  <Footer></Footer>
+  <AppFooter></AppFooter>
 </template>
 
 <style scoped>

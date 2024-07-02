@@ -31,11 +31,11 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="Service"></Breadcrumb>
+  <AppBreadcrumb current-alias="Service"></AppBreadcrumb>
   <div v-if="service">
     <ActivityHeader :title="service.name" :picture="service.picture" :type="'service'">
       </ActivityHeader>
-    <StructuralLinker family-page="service"></StructuralLinker>
+    <AppStructuralLinker family-page="service"></AppStructuralLinker>
     <div class="content">
       <div id="description" class="description">
         <h2>What does it deal with?</h2>

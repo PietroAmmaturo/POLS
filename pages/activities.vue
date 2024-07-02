@@ -2,6 +2,7 @@
 
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import ActivitiesExplorerShowcaseDouble from "~/components/ActivitiesExplorerShowcaseDouble.vue";
+import AppLoadMore from "~/components/AppLoadMore.vue";
 
 definePageMeta({
   validate: async (route) => {
@@ -62,7 +63,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <StructuralLinker class="strclnk" family-page="activities"></StructuralLinker>
+  <AppStructuralLinker class="strclnk" family-page="activities"></AppStructuralLinker>
   <a href="#top"><div class="scrollToTop"><font-awesome-icon class="breadcrumb-icon" icon="chevron-up"/></div></a>
   <NuxtLoadingIndicator />
   <ActivitiesHeader title="All our activities" subtitle="Our center offers a range of activities divided into <strong>projects and services</strong>.
@@ -86,10 +87,10 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
             <AppLoader v-else-if="projectsFound"></AppLoader>
             <p v-else>There are no projects with the selected tag.</p>
           </ActivitiesExplorerShowcase>
-          <div class="show-more"><button v-if="(projectsShowNumber < projectsMaxNumber)" @click="showMoreProjects()" type="button">SHOW MORE</button></div>
+          <AppLoadMore v-if="(projectsShowNumber < projectsMaxNumber)" @click="showMoreProjects()">LOAD MORE</AppLoadMore>
         </template>
         <template #services>
-          <ActivitiesExplorerShowcase>
+          <ActivitiesExplorerShowcase id="services">
             <TransitionGroup v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
                             type="service" :id="activity.id">
@@ -98,7 +99,7 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
             <AppLoader v-else-if="servicesFound"></AppLoader>
             <p v-else>There are no services with the selected tag.</p>
           </ActivitiesExplorerShowcase>
-          <div class="show-more"><button v-if="(servicesShowNumber < servicesMaxNumber)" @click="showMoreServices()" type="button">SHOW MORE</button></div>
+          <AppLoadMore v-if="(servicesShowNumber < servicesMaxNumber)" @click="showMoreServices()">LOAD MORE</AppLoadMore>
         </template>
       </ActivitiesExplorerShowcaseDouble>
     </template>
