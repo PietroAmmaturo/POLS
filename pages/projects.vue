@@ -12,8 +12,10 @@ const orders = store.getProjectsOrders();
 const route = useRoute();
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 const selectedOrder = ref("");
-const projects = store.getProjects(selectedTag, selectedOrder);
-
+const showNumber = ref(10);
+const showIncrement = 10;
+const maxNumber = computed(() => store.getProjects(selectedTag, selectedOrder).value.length);
+const projects = computed(() => store.getProjects(selectedTag, selectedOrder).value.slice(0, showNumber.value));
 function updateTag(tag: string) {
   selectedTag.value = tag;
   const router = useRouter()
@@ -26,6 +28,9 @@ function updateOrder(order: string) {
   selectedOrder.value = order;
 }
 const projectsFound = computed(() => projects.value.length  !== 0);
+function showMore() {
+  showNumber.value += showIncrement;
+}
 useSeoMeta({
   title: "MEDUSA - Our Projects",
   description: "Our Projects to create a better community for Women and build their independence"
@@ -33,7 +38,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <Breadcrumb current-alias="All projects"></Breadcrumb>
+  <AppBreadcrumb current-alias="All projects"></AppBreadcrumb>
   <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for <strong>long-term empowerment and self-sufficiency</strong>.
 These projects include <strong>educational workshops</strong> that cover topics such as financial literacy, career development, and personal safety.
 By equipping women with essential knowledge and skills, we help them build a <strong>foundation for a brighter future</strong>.
@@ -52,6 +57,7 @@ These projects collectively aim to <strong>restore confidence and independence</
         <AppLoader v-else-if="projectsFound"></AppLoader>
         <p v-else>There are no projects with the selected tag.</p>
       </ActivitiesExplorerShowcase>
+      <AppLoadMore v-if="(showNumber < maxNumber)" @click="showMore()">LOAD MORE</AppLoadMore>
     </template>
   </ActivitiesExplorer>
 </template>

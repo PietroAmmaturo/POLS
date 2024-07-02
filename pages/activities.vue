@@ -2,6 +2,7 @@
 
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import ActivitiesExplorerShowcaseDouble from "~/components/ActivitiesExplorerShowcaseDouble.vue";
+import AppLoadMore from "~/components/AppLoadMore.vue";
 
 definePageMeta({
   validate: async (route) => {
@@ -26,8 +27,15 @@ const route = useRoute();
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 const selectedOrder = ref("");
 
-const projects = projectStore.getProjects(selectedTag, selectedOrder);
-const services = serviceStore.getServices(selectedTag, selectedOrder);
+const showIncrement = 3;
+const projectsShowNumber = ref(3);
+const projectsMaxNumber = computed(() => projectStore.getProjects(selectedTag, selectedOrder).value.length);
+const projects = computed(() => projectStore.getProjects(selectedTag, selectedOrder).value.slice(0, projectsShowNumber.value));
+
+const servicesShowNumber = ref(3);
+const servicesMaxNumber = computed(() => serviceStore.getServices(selectedTag, selectedOrder).value.length);
+const services = computed(() => serviceStore.getServices(selectedTag, selectedOrder).value.slice(0, servicesShowNumber.value));
+
 
 function updateTag(tag: string) {
   selectedTag.value = tag;
@@ -42,6 +50,12 @@ function updateOrder(order: string) {
 }
 const projectsFound = computed(() => projects.value.length  !== 0);
 const servicesFound = computed(() => services.value.length  !== 0);
+function showMoreProjects() {
+  projectsShowNumber.value += showIncrement;
+}
+function showMoreServices() {
+  servicesShowNumber.value += showIncrement;
+}
 useSeoMeta({
   title: "MEDUSA - Our Activities",
   description: "All our Activities, Projects and Services to help Women"
@@ -49,7 +63,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <StructuralLinker class="strclnk" family-page="activities"></StructuralLinker>
+  <AppStructuralLinker class="strclnk" family-page="activities"></AppStructuralLinker>
   <a href="#top"><div class="scrollToTop"><font-awesome-icon class="breadcrumb-icon" icon="chevron-up"/></div></a>
   <NuxtLoadingIndicator />
   <ActivitiesHeader title="All our activities" subtitle="Our center offers a range of activities divided into <strong>projects and services</strong>.
@@ -73,9 +87,10 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
             <AppLoader v-else-if="projectsFound"></AppLoader>
             <p v-else>There are no projects with the selected tag.</p>
           </ActivitiesExplorerShowcase>
+          <AppLoadMore v-if="(projectsShowNumber < projectsMaxNumber)" @click="showMoreProjects()">LOAD MORE</AppLoadMore>
         </template>
         <template #services>
-          <ActivitiesExplorerShowcase>
+          <ActivitiesExplorerShowcase id="services">
             <TransitionGroup v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
                             type="service" :id="activity.id">
@@ -84,6 +99,7 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
             <AppLoader v-else-if="servicesFound"></AppLoader>
             <p v-else>There are no services with the selected tag.</p>
           </ActivitiesExplorerShowcase>
+          <AppLoadMore v-if="(servicesShowNumber < servicesMaxNumber)" @click="showMoreServices()">LOAD MORE</AppLoadMore>
         </template>
       </ActivitiesExplorerShowcaseDouble>
     </template>

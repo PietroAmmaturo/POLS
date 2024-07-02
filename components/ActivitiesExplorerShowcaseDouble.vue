@@ -6,14 +6,14 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 <template>
   <div class="columns">
     <div class="column">
-      <NuxtLink class="title" to="./projects">
+      <NuxtLink id="projects" class="title" to="./projects">
         <h2><font-awesome-icon class="icon" icon="link" /> See all the Projects</h2>
       </NuxtLink>
       <slot name="projects"></slot>
     </div>
     <div class="separator"></div>
     <div class="column">
-      <NuxtLink class="title" to="./services">
+      <NuxtLink id="services" class="title" to="./services">
         <h2><font-awesome-icon class="icon" icon="link" /> See all the Services</h2>
       </NuxtLink>
       <slot name="services"></slot>

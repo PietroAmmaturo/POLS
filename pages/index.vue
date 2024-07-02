@@ -140,22 +140,6 @@ useSeoMeta({
   align-items: center;
   justify-content: space-evenly;
 }
-.button{
-  background: var(--accent);
-  border-radius: 5px;
-  padding: 15px;
-  font-weight: 600;
-  @media screen and (max-width: 950px){
-    p{
-      font-size: 0.7em;
-    }
-  }
-}
-.button:hover{
-  background: white;
-  color: var(--accent);
-  box-shadow: 0 3px 10px var(--accent);
-}
 .help{
   position: relative;
   padding: 50px;
@@ -308,9 +292,6 @@ useSeoMeta({
   color: var(--accent)!important;
   box-shadow: 0 5px 15px var(--accent)!important;
   transform: translateY(-5px);
-}
-.xl{
-  padding: 15px 40px 15px 40px;
 }
 .divider{
   background: var(--shadow);

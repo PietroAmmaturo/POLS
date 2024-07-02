@@ -24,6 +24,7 @@ function sendMessage() {
   // Empty textarea
   currentContent.value = "";
 }
+
 useSeoMeta({
   title: "MEDUSA - Chatbot",
   description: "Our Chatbot that will help you to find an immediate help"
@@ -47,7 +48,8 @@ useSeoMeta({
       </div>
       <div class="write-box">
         <label for="message" hidden>Message</label>
-        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()"></textarea>
+        <p class="counter">{{currentContent.length}} / 256</p>
+        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()" maxlength="256"></textarea>
         <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
         </div>
@@ -58,6 +60,14 @@ useSeoMeta({
 
 
 <style scoped>
+.counter {
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: -18px;
+  left: 10px;
+}
 .content{
   display: flex;
   flex-direction: column;
