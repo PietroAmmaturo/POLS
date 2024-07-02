@@ -25,6 +25,7 @@ const props = defineProps(['currentlyShown', 'total', 'orders', 'initialOrder'])
   color: var(--white);
   pointer-events: all;
   cursor: pointer;
+  font-weight: 600;
 }
 .load-button:hover{
   background: var(--accent);
