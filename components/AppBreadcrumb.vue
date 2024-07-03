@@ -2,7 +2,7 @@
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {getPages} from "~/composables/breadcrumbs";
 
-const props = defineProps(['currentPage', 'currentAlias']);
+const props = defineProps(['currentAlias']);
 
 const parents = getPages(props.currentAlias);
 </script>
