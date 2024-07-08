@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {getChat} from "~/composables/bot messages";
-import OpenAI from "openai";
+
 import {useMessageStore} from "~/stores/messages";
 definePageMeta({
   layout: 'chatbot'
@@ -10,6 +9,7 @@ definePageMeta({
 const store = useMessageStore();
 const messages = store.messages;
 
+const maxContentLength = 256;
 const currentContent = ref("");
 const responseReady = ref(true);
 function sendMessage() {
@@ -48,8 +48,8 @@ useSeoMeta({
       </div>
       <div class="write-box">
         <label for="message" hidden>Message</label>
-        <p class="counter">{{currentContent.length}} / 256</p>
-        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()" maxlength="256"></textarea>
+        <p class="counter">{{currentContent.length}} / {{maxContentLength}}</p>
+        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()" :maxlength="maxContentLength"></textarea>
         <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
         </div>

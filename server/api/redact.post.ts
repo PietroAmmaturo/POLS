@@ -2,6 +2,7 @@ import {SyncRedactor} from 'redact-pii';
 const redactor = new SyncRedactor();
 import OpenAI from "openai";
 
+const MAX_CONTENT_LENGTH = 256;
 const REDACTOR_PROMPT =
     "## INSTRUCT ## \n" +
     "\n" +
@@ -82,5 +83,5 @@ const redactWithAI = async (message: string) => {
 export default defineEventHandler(async (event) => {
     const {message} = await readBody(event);
     // 2 Step redaction: using a simple redactor and then using another AI as redactor
-    return redactWithAI(redactor.redact(message));
+    return redactWithAI(redactor.redact(message.slice(0, MAX_CONTENT_LENGTH)));
 });
