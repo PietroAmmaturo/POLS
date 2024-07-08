@@ -72,7 +72,7 @@ const redactWithAI = async (message: string) => {
             model: "gpt-3.5-turbo-0125",
             messages: [{role: "system", content: REDACTOR_PROMPT}, {role: "user", content: message}, ],
             temperature: 0.1,
-            max_tokens: 54,
+            max_tokens: 128,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
