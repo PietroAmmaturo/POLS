@@ -8,7 +8,7 @@
 
 <template>
   <div class="content">
-    <h1>Our contacts</h1>
+    <AppHeader title="Contacts"></AppHeader>
     <div class="information">
       <p><font-awesome-icon class="icon" icon="at" /> info@medusa.org</p>
       <p><font-awesome-icon class="icon" icon="phone" /> + 1 (415) 867-9342</p>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {usePersonStore} from '~/stores/people';
-import AppLoadMore from "~/components/AppLoadMore.vue";
+
 definePageMeta({
   validate: async (route) => {
     return (!route.query.gender || typeof route.query.gender === 'string');
@@ -39,19 +39,19 @@ useSeoMeta({
 </script>
 
 <template>
-  <ActivitiesHeader title="People" subtitle="Meet our dedicated team of professionals who are committed to supporting and empowering survivors of domestic violence. Our staff includes counselors, legal advocates, social workers, and volunteers, all working together to provide compassionate and comprehensive care. Together, we strive to make a positive impact and foster a safe, supportive community.">
-  </ActivitiesHeader>
-    <ActivitiesExplorer @filter-selected="updateGender" :filters="genders" :initial-filter="selectedGender" @order-selected="updateOrder" :orders="orders">
+  <AppHeader title="People" subtitle="Meet our dedicated team of professionals who are committed to supporting and empowering survivors of domestic violence. Our staff includes counselors, legal advocates, social workers, and volunteers, all working together to provide compassionate and comprehensive care. Together, we strive to make a positive impact and foster a safe, supportive community.">
+  </AppHeader>
+    <Explorer @filter-selected="updateGender" :filters="genders" :initial-filter="selectedGender" @order-selected="updateOrder" :orders="orders">
       <template  #showcase>
-        <ActivitiesExplorerShowcase class="larger">
+        <ExplorerShowcase class="larger">
         <transition-group v-if="people.length" name="bounce-fade" appear>
             <PersonCard v-for="(person) in people" type="person" :key="person.id" :name="person.name" :picture="person.picture" :id="person.id">
             </PersonCard>
           </transition-group>
           <AppLoader v-else-if="peopleFound"></AppLoader>
           <p v-else>There are no people with the selected tag.</p>
-        </ActivitiesExplorerShowcase>
+        </ExplorerShowcase>
         <AppLoadMore v-if="(showNumber < maxNumber)" @click="showMore()">LOAD MORE</AppLoadMore>
       </template>
-    </ActivitiesExplorer>
+    </Explorer>
 </template>

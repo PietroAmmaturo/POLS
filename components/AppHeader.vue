@@ -6,7 +6,7 @@ import {html} from "ultrahtml";
 <template>
   <header>
       <h1>{{title}}</h1>
-      <p v-html="subtitle"></p>
+      <p v-if="subtitle" v-html="subtitle"></p>
   </header>
 </template>
 
@@ -17,8 +17,8 @@ header {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   gap: 60px;
 }
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const props = defineProps(['currentlyShown', 'total', 'orders', 'initialOrder']);
 </script>
 
 <template>

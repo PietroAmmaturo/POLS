@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import ActivitiesExplorerShowcaseDouble from "~/components/ActivitiesExplorerShowcaseDouble.vue";
 import AppLoadMore from "~/components/AppLoadMore.vue";
 
 definePageMeta({
@@ -66,19 +65,19 @@ useSeoMeta({
   <AppStructuralLinker class="strclnk" family-page="activities"></AppStructuralLinker>
   <a href="#top"><div class="scrollToTop"><font-awesome-icon class="breadcrumb-icon" icon="chevron-up"/></div></a>
   <NuxtLoadingIndicator />
-  <ActivitiesHeader title="All our activities" subtitle="Our center offers a range of activities divided into <strong>projects and services</strong>.
+  <AppHeader title="All our activities" subtitle="Our center offers a range of activities divided into <strong>projects and services</strong>.
 Projects focus on <strong>long-term empowerment</strong>, including educational workshops, job readiness programs, and community-building initiatives.
 These projects aim to equip women with the <strong>skills and confidence</strong> needed to <strong>rebuild their lives and achieve independence</strong>.
 
 Services provide <strong>immediate and essential support</strong>, addressing urgent needs.
 This includes crisis intervention, emergency shelter, counseling, and legal assistance.
 Our team is dedicated to offering <strong>compassionate and personalized help</strong>, ensuring that every woman receives the care and resources necessary to navigate and overcome the challenges of domestic violence.">
-  </ActivitiesHeader>
-  <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
+  </AppHeader>
+  <Explorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase class="showcase-double">
-      <ActivitiesExplorerShowcaseDouble>
+      <ExplorerActivitiesShowcase>
         <template #projects>
-          <ActivitiesExplorerShowcase>
+          <ExplorerShowcase>
             <transition-group v-if="projects.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in projects" :key="activity.id" :name="activity.name" :picture="activity.picture"
                             type="project" :id="activity.id">
@@ -86,11 +85,11 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
             </transition-group>
             <AppLoader v-else-if="projectsFound"></AppLoader>
             <p v-else>There are no projects with the selected tag.</p>
-          </ActivitiesExplorerShowcase>
+          </ExplorerShowcase>
           <AppLoadMore v-if="(projectsShowNumber < projectsMaxNumber)" @click="showMoreProjects()">LOAD MORE</AppLoadMore>
         </template>
         <template #services>
-          <ActivitiesExplorerShowcase id="services">
+          <ExplorerShowcase id="services">
             <TransitionGroup v-if="services.length" name="bounce-fade" appear>
               <ActivityCard v-for="(activity) in services" :key="activity.id" :name="activity.name" :picture="activity.picture"
                             type="service" :id="activity.id">
@@ -98,12 +97,12 @@ Our team is dedicated to offering <strong>compassionate and personalized help</s
             </TransitionGroup>
             <AppLoader v-else-if="servicesFound"></AppLoader>
             <p v-else>There are no services with the selected tag.</p>
-          </ActivitiesExplorerShowcase>
+          </ExplorerShowcase>
           <AppLoadMore v-if="(servicesShowNumber < servicesMaxNumber)" @click="showMoreServices()">LOAD MORE</AppLoadMore>
         </template>
-      </ActivitiesExplorerShowcaseDouble>
+      </ExplorerActivitiesShowcase>
     </template>
-  </ActivitiesExplorer>
+  </Explorer>
 </template>
 
 <style>
