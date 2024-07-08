@@ -10,7 +10,7 @@
 <template>
   <AppStructuralLinker family-page="about"></AppStructuralLinker>
     <div class="content">
-      <AppHeader title="Contacts"></AppHeader>
+      <AppHeader title="About Us"></AppHeader>
     <div id="mission" class="subinfo mission">
       <h2><font-awesome-icon class="icon" icon="shield-heart"/> Our mission</h2>
       <p>At Medusa Support Center, our mission is to provide comprehensive <strong>assistance to women</strong> who have experienced abuse, violence, and injustice. We are dedicated to offering immediate support through <strong>crisis intervention, counseling, and legal assistance</strong>. Beyond immediate care, we focus on <strong>long-term rehabilitation</strong> by empowering women with <strong>educational workshops, job readiness programs, and community-building initiatives</strong>. Our goal is to create a safe, supportive environment where <strong>survivors can heal, regain their strength, and rebuild their lives</strong>. United by our commitment to this mission, our team and community members work together <strong>to foster resilience, independence, and hope</strong> for all women who seek our help.</p>
