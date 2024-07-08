@@ -5,7 +5,7 @@ const props = defineProps(['filters', 'initialFilter', 'orders', 'initialOrder']
 const defaultFilter =  "Filter";
 const selectedFilter = ref(props.initialFilter ? props.initialFilter : defaultFilter);
 const defaultOrder = "Order by";
-const selectedOrder = ref(defaultOrder);
+const selectedOrder = ref(props.initialOrder ? props.initialOrder : defaultOrder);
 </script>
 
 <template>

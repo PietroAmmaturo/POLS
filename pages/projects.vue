@@ -39,27 +39,27 @@ useSeoMeta({
 
 <template>
   <AppBreadcrumb current-alias="All projects"></AppBreadcrumb>
-  <ActivitiesHeader title="Projects" subtitle="Our center offers various projects designed for <strong>long-term empowerment and self-sufficiency</strong>.
+  <AppHeader title="Projects" subtitle="Our center offers various projects designed for <strong>long-term empowerment and self-sufficiency</strong>.
 These projects include <strong>educational workshops</strong> that cover topics such as financial literacy, career development, and personal safety.
 By equipping women with essential knowledge and skills, we help them build a <strong>foundation for a brighter future</strong>.
 
 Additionally, our job readiness programs <strong>prepare women for the workforce</strong>, offering resume building, interview preparation, and job placement assistance.
 Community-building initiatives foster a <strong>sense of solidarity and support</strong>, creating a network of strong, empowered women.
 These projects collectively aim to <strong>restore confidence and independence</strong> in the lives of survivors.">
-  </ActivitiesHeader>
-  <ActivitiesExplorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
+  </AppHeader>
+  <Explorer @filter-selected="updateTag" :filters="tags" :initial-filter="selectedTag" @order-selected="updateOrder" :orders="orders">
     <template #showcase>
-      <ActivitiesExplorerShowcase class="larger">
+      <ExplorerShowcase class="larger">
         <transition-group v-if="projects.length" name="bounce-fade" appear>
           <ActivityCard v-for="(project) in projects" type="project" :key="project.name" :name="project.name" :picture="project.picture" :id="project.id">
           </ActivityCard>
           </transition-group>
         <AppLoader v-else-if="projectsFound"></AppLoader>
         <p v-else>There are no projects with the selected tag.</p>
-      </ActivitiesExplorerShowcase>
+      </ExplorerShowcase>
       <AppLoadMore v-if="(showNumber < maxNumber)" @click="showMore()">LOAD MORE</AppLoadMore>
     </template>
-  </ActivitiesExplorer>
+  </Explorer>
 </template>
 
 <style>
