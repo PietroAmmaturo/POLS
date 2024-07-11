@@ -13,8 +13,10 @@ const maxContentLength = 256;
 const currentContent = ref("");
 const responseReady = ref(true);
 function sendMessage() {
+  // Remove newline (newline may have been used to send the message)
+  currentContent.value = currentContent.value.replace(/(\r\n|\n|\r)/gm, "");
   // If there is something to send and the last response has been received
-  if(!currentContent || !currentContent.value || !responseReady || !responseReady.value) return;
+  if(!currentContent || !(currentContent.value) || !responseReady || !responseReady.value) return;
   // Response not ready yet
   responseReady.value = false;
   store.addUserMessage(currentContent.value).then(res => {
@@ -49,7 +51,7 @@ useSeoMeta({
       <div class="write-box">
         <label for="message" hidden>Message</label>
         <p class="counter">{{currentContent.length}} / {{maxContentLength}}</p>
-        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter="sendMessage()" :maxlength="maxContentLength"></textarea>
+        <textarea id="message" placeholder="Chat with the bot ..." v-model="currentContent" v-on:keyup.enter.prevent.self v-on:keyup.enter="sendMessage()" :maxlength="maxContentLength"></textarea>
         <div id="send-button" @click="sendMessage()">
           <font-awesome-icon class="icon" icon="arrow-up"/>
         </div>
