@@ -40,7 +40,7 @@ onMounted(() => {
   if (!person.value) personFound.value = false;
 })
 useSeoMeta({
-  title: "MEDUSA - Team",
+  title: "MEDUSA - "+person.value?.name,
   description: "One of our Collaborators for the MEDUSA Center"
 })
 </script>
