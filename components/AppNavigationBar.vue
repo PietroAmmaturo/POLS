@@ -71,9 +71,9 @@ function closeMobileMenu(resize: boolean){
       <p class="menu-button" id="dropdown_button" @click="openMenu">Activities <font-awesome-icon id="caret-down" class="icon" icon="caret-down" /><font-awesome-icon style="display: none" id="caret-up" class="icon" icon="caret-up" /></p>
       <NuxtLink to="/people"><p>People</p></NuxtLink>
     </div>
-    <NuxtLink to="/" id="home"><font-awesome-icon class="icon" icon="house"/></NuxtLink>
+    <NuxtLink to="/" id="home"><font-awesome-icon class="icon" icon="house" alt="home"/></NuxtLink>
     <div class="navbar_right">
-      <NuxtLink to="/chatbot"><font-awesome-icon class="icon" icon="comments" /></NuxtLink>
+      <NuxtLink to="/chatbot"><font-awesome-icon class="icon" icon="comments"  alt="chatbot"/></NuxtLink>
       <NuxtLink to="/about"><p>About us</p></NuxtLink>
       <NuxtLink to="/contact"><p>Contact us</p></NuxtLink>
       <i class="fas fa-sun"></i>

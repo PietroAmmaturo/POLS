@@ -48,8 +48,8 @@ useSeoMeta({
 <template>
   <AppBreadcrumb current-alias="Person"></AppBreadcrumb>
   <div v-if="person">
-    <ActivitiesHeader :title="person.name">
-    </ActivitiesHeader>
+    <AppHeader :title="person.name">
+    </AppHeader>
     <div class="content">
       <div class="information">
         <div class="picture">
