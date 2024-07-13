@@ -28,6 +28,12 @@
         <input type="button" value="Send the message">
       </form>
     </div>
+    <div class="information">
+      <p id="address"><font-awesome-icon class="icon" icon="address-card" /> 123 Hope Street, New Haven<br>CT, United States</p>
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16953.47397867382!2d-72.93953618904466!3d41.30931819669333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d8443a8070e5%3A0xf6a354c659b264ed!2sNew%20Haven%2C%20Connecticut%2C%20Stati%20Uniti!5e0!3m2!1sit!2sit!4v1720877105377!5m2!1sit!2sit" width="100%" height="450" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </template>
 
@@ -56,7 +62,7 @@ h1{
 .form_container{
   background: var(--light);
   width: auto;
-  margin: 0 25px 100px 25px;
+  margin: 0 25px 50px 25px;
   border-radius: 15px;
 }
 form{
@@ -103,5 +109,12 @@ textarea{
 p{
   font-weight: 500;
   font-size: 16pt;
+}
+.map{
+  width: 75%;
+  margin-bottom: 40px;
+}
+#address{
+  text-align: center;
 }
 </style>
