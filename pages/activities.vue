@@ -26,12 +26,12 @@ const route = useRoute();
 const selectedTag = route.query.tag ? ref(route.query.tag as string) : ref("");
 const selectedOrder = ref("");
 
-const showIncrement = 3;
-const projectsShowNumber = ref(3);
+const showIncrement = 10;
+const projectsShowNumber = ref((window && window.innerWidth >= 790) ? 10 : 2);
 const projectsMaxNumber = computed(() => projectStore.getProjects(selectedTag, selectedOrder).value.length);
 const projects = computed(() => projectStore.getProjects(selectedTag, selectedOrder).value.slice(0, projectsShowNumber.value));
 
-const servicesShowNumber = ref(3);
+const servicesShowNumber = ref(window && window.innerWidth >= 790 ? 10 : 2);
 const servicesMaxNumber = computed(() => serviceStore.getServices(selectedTag, selectedOrder).value.length);
 const services = computed(() => serviceStore.getServices(selectedTag, selectedOrder).value.slice(0, servicesShowNumber.value));
 
