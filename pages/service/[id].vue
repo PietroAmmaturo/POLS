@@ -25,7 +25,7 @@ const route = useRoute();
   const personStore = usePersonStore();
   const person = computed(() => service.value ? personStore.getPersonByService(service.value) : undefined);
 useSeoMeta({
-  title: "MEDUSA - Services",
+  title: "MEDUSA - "+service.value?.name,
   description: "One of our Services for the MEDUSA Center"
 })
 </script>
