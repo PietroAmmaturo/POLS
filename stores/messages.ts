@@ -17,7 +17,6 @@ export const useMessageStore = defineStore('messages', () => {
             const storedMessages = sessionStorage.getItem('messages');
             if (storedMessages) {
                 messages.push(...JSON.parse(storedMessages));
-                console.log(storedMessages, messages)
             } else {
                 messages.push(startingMessage);
             }
