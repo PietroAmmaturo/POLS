@@ -85,7 +85,7 @@ h2{
 }
 .form_container{
   background: var(--light);
-  width: calc(50vw + 50px);
+  width: auto;
   margin: -30px 25px 0 25px;
   border-radius: 15px;
 }
