@@ -72,6 +72,23 @@ const GlobalStructures : Structure[] = [
                 id: "#testimonials"
             }
         ]
+    },
+    {
+        name: "contact",
+        sections: [
+            {
+                title: "Contact details",
+                id: "#details"
+            },
+            {
+                title: "Send email",
+                id: "#email"
+            },
+            {
+                title: "Where are we?",
+                id: "#where"
+            }
+        ]
     }
 ]
 

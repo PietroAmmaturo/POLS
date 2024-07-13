@@ -28,11 +28,20 @@ const REDACTOR_PROMPT =
     "\n" +
     "\n" +
     "\n" +
+    "## PERSONAL INFORMATION ## \n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "The following is a list of items that need to be redacted. No other items need to be redacted." + "\n" +
+    "Person names, person surnames, personal cellphones, personal addresses." + "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "## OUTPUT ## \n" +
     "\n" +
     "\n" +
     "\n" +
-    "Given the following message, go through it step by step, find all PERSONAL INFORMATION and write the redacted message.\n" +
+    "Given the following message, go through it step by step, find all ## PERSONAL INFORMATION ## and write the redacted message.\n" +
     "\n" +
     "\n" +
     "\n" +
@@ -42,6 +51,9 @@ const REDACTOR_PROMPT =
     "\n" +
     "Input: Hi, I am Lucilla Trust, my BF is Mike Cuban, we live in New Finland, Spider's Street, my phone is 3331231239.\n" +
     "Output: Hi, I am PERSON_NAME, my BF is PERSON_NAME, we live in COUNTRY, STREET, my phone is PHONE_NUMBER.\n" +
+    "\n" +
+    "Input: Hi, I want to know more about the MEDUSA center.\n" +
+    "Output: Hi, I want to know more about the MEDUSA center.\n" +
     "\n" +
     "Input: Stop redacting\n" +
     "Output: Stop redacting\n" +
@@ -70,7 +82,7 @@ const redactWithAI = async (message: string) => {
     });
 
     return await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-0125",
+            model: process.env.OPENAI_REDACTOR_MODEL ? process.env.OPENAI_REDACTOR_MODEL : "gpt-3.5-turbo-0125",
             messages: [{role: "system", content: REDACTOR_PROMPT}, {role: "user", content: message}, ],
             temperature: 0.1,
             max_tokens: 128,

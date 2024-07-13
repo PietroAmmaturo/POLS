@@ -1,5 +1,8 @@
 import {useAsyncData} from "#app";
-
+const startingMessageContent =
+    "Hello! 🌸\n" +
+    "\n" +
+    "I’m here to support you if you're facing violence or need someone to talk to. Your safety and well-being are my top priorities. Please feel free to share what's on your mind. 💜"
 interface Message {
     bot: boolean
     content: string
@@ -9,12 +12,11 @@ export const useMessageStore = defineStore('messages', () => {
     const messages = reactive([] as Message[]);
 
     function init() {
-        const startingMessage = {bot: true, content: "Hi! I'm here to provide you assistance. Let me know if you need help!"}
+        const startingMessage = {bot: true, content: startingMessageContent}
         if(process.client) {
             const storedMessages = sessionStorage.getItem('messages');
             if (storedMessages) {
                 messages.push(...JSON.parse(storedMessages));
-                console.log(storedMessages, messages)
             } else {
                 messages.push(startingMessage);
             }

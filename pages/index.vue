@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {useBreadcrumbStore} from "~/stores/history";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-
-const breadcrumbStore = useBreadcrumbStore();
-const currentPage = "Home";
-const currentPath = "/";
-breadcrumbStore.updateBreadcrumbs(currentPage, currentPath);
 
 import { useProjectStore } from '~/stores/projects';
 import { useServiceStore } from '~/stores/services';
