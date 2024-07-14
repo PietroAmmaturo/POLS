@@ -44,7 +44,7 @@
           <label for="message">Message: </label>
           <textarea id="message" rows="10" cols="30"></textarea>
         </div>
-        <input class="b" type="button" value="Send the message">
+        <input class="b" type="submit" value="Send the message">
       </form>
     </div>
     <div class="information">
