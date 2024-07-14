@@ -31,17 +31,19 @@
       <p>Please, send us an e-mail using the form below!</p>
     </div>
     <div class="form_container">
-      <form>
+      <form action="mailto:info@medusa.org" method="POST">
         <div class="form_names">
-          <label for="name">Name and Surname: </label>
+          <label for="name">Name: </label>
           <input type="text" id="name">
         </div>
         <div class="form_mail">
           <label for="e-mail">e-mail: </label>
           <input type="email" id="e-mail">
         </div>
-        <label for="message" hidden>Message: </label>
-        <textarea id="message" rows="10" cols="30"></textarea>
+        <div class="form_message">
+          <label for="message">Message: </label>
+          <textarea id="message" rows="10" cols="30"></textarea>
+        </div>
         <input class="b" type="button" value="Send the message">
       </form>
     </div>
@@ -99,7 +101,7 @@ form{
   gap: 20px;
   width: auto;
 }
-input{
+input, textarea{
   font-family: 'Montserrat';
   font-size: 16px;
   width: 75%;
@@ -125,6 +127,14 @@ textarea{
 .form_names{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+  width: 100%;
+}
+.form_message{
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   padding: 0;
